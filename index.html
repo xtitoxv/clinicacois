@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clínica Cois - Fisioterapia e Estética em Salvador</title>
+<meta name="description" content="Na Clínica Cois, você encontra uma equipe dedicada e pronta pra cuidar de você com atenção e resultados reais em Salvador, Bahia.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --blue-primary: #0078D7;
+  --blue-dark: #005A9E;
+  --blue-light: #4DABF5;
+  --blue-hover: #006CBE;
+  --blue-bg: #004578;
+  --text-white: #FFFFFF;
+  --text-dark: #333333;
+  --text-gray: #666666;
+  --bg-light: #f0f6fc;
+  --border-color: #cce4f7;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Poppins', sans-serif; color: var(--text-dark); overflow-x: hidden; }
+h1, h2, h3, h4 { font-family: 'Poppins', sans-serif; }
+img { max-width: 100%; height: auto; }
+a { text-decoration: none; color: inherit; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+/* Header */
+.header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(0, 69, 120, 0.92); backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-color);
+  padding: 10px 20px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.header-logo { display: flex; align-items: center; gap: 10px; }
+.header-logo h1 {
+  color: var(--text-white); font-size: 24px; font-weight: 700;
+  background: var(--blue-primary); padding: 4px 12px; border-radius: 6px;
+}
+.header-logo span { color: var(--text-white); font-size: 14px; opacity: 0.8; }
+.header-nav { display: flex; align-items: center; gap: 20px; }
+.header-nav a {
+  color: var(--text-white); font-size: 15px; font-weight: 400;
+  position: relative; padding-bottom: 3px;
+}
+.header-nav a::after {
+  content: ''; position: absolute; bottom: 0; left: 0;
+  width: 0; height: 2px; background: var(--blue-light);
+  transition: width 0.3s;
+}
+.header-nav a:hover::after { width: 100%; }
+.header-btn {
+  background: var(--blue-primary); color: var(--text-white);
+  padding: 10px 24px; border-radius: 6px; font-weight: 500; font-size: 14px;
+  transition: background 0.3s;
+}
+.header-btn:hover { background: var(--blue-hover); }
+.mobile-toggle { display: none; background: none; border: none; color: var(--text-white); font-size: 28px; cursor: pointer; }
+
+/* Hero */
+.hero {
+  min-height: 100vh; display: flex; align-items: center;
+  background: linear-gradient(135deg, #003366 0%, #004578 40%, #005A9E 70%, #0078D7 100%);
+  position: relative; overflow: hidden; padding-top: 80px;
+}
+.hero::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none"><path fill="white" opacity="0.05" d="M761.9,44.1L643.1,27.2L333.8,98L0,3.8V0l1000,0v3.9"/></svg>') bottom/100% auto no-repeat;
+}
+.hero-content { text-align: center; max-width: 800px; margin: 0 auto; padding: 60px 20px; position: relative; z-index: 1; }
+.hero-content h1 {
+  color: var(--text-white); font-size: 48px; font-weight: 700; margin-bottom: 15px;
+  animation: fadeInDown 1s ease;
+}
+.hero-content h2 {
+  color: var(--text-white); font-size: 22px; font-weight: 300; margin-bottom: 25px;
+  opacity: 0.9; animation: fadeInDown 1s ease 0.2s both;
+}
+.hero-content p {
+  color: var(--text-white); font-size: 18px; line-height: 1.7; margin-bottom: 35px;
+  opacity: 0.85; animation: fadeInDown 1s ease 0.4s both;
+}
+.hero-btn {
+  display: inline-block; background: var(--text-white); color: var(--blue-dark);
+  padding: 16px 40px; border-radius: 6px; font-size: 16px; font-weight: 600;
+  transition: all 0.3s; animation: fadeInDown 1s ease 0.6s both;
+}
+.hero-btn:hover { background: #deecf9; transform: translateY(-2px); }
+
+/* Section common */
+.section { padding: 80px 0; }
+.section-title {
+  text-align: center; margin-bottom: 15px;
+}
+.section-title h2 {
+  font-size: 36px; font-weight: 700; color: var(--blue-dark);
+  position: relative; display: inline-block;
+}
+.section-title h2::after {
+  content: ''; display: block; width: 60px; height: 4px;
+  background: var(--blue-primary); margin: 10px auto 0; border-radius: 2px;
+}
+.section-subtitle {
+  text-align: center; font-size: 18px; color: var(--text-gray); margin-bottom: 50px;
+}
+
+/* About */
+.about { background: var(--bg-light); }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.about-image {
+  background: linear-gradient(135deg, var(--blue-dark), var(--blue-primary));
+  border-radius: 12px; padding: 40px; text-align: center; min-height: 400px;
+  display: flex; align-items: center; justify-content: center;
+}
+.about-image i { font-size: 120px; color: rgba(255,255,255,0.2); }
+.about-text h3 { font-size: 28px; color: var(--blue-dark); margin-bottom: 10px; }
+.about-text h4 { font-size: 16px; color: var(--blue-primary); font-weight: 500; margin-bottom: 20px; }
+.about-text p { font-size: 16px; line-height: 1.8; color: #444; margin-bottom: 15px; }
+
+/* Services */
+.services { background: var(--bg-light); position: relative; }
+.services::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+  height: 60px; background: var(--text-white);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+.services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+.service-card {
+  display: flex; gap: 25px; background: var(--text-white);
+  border-radius: 12px; padding: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.service-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0,0,0,0.12); }
+.service-icon {
+  min-width: 80px; height: 80px; background: var(--bg-light);
+  border-radius: 10px; display: flex; align-items: center; justify-content: center;
+  font-size: 32px; color: var(--blue-primary);
+}
+.service-info h3 { font-size: 18px; color: var(--blue-dark); margin-bottom: 10px; }
+.service-info p { font-size: 14px; color: var(--text-gray); line-height: 1.7; margin-bottom: 15px; }
+.service-btn {
+  display: inline-block; color: var(--blue-primary); font-weight: 500; font-size: 14px;
+  border-bottom: 2px solid transparent; transition: border-color 0.3s;
+}
+.service-btn:hover { border-bottom-color: var(--blue-primary); }
+
+/* Category section */
+.category-section { margin-top: 60px; }
+.category-title {
+  font-size: 24px; font-weight: 700; color: var(--blue-dark);
+  margin-bottom: 5px; display: flex; align-items: center; gap: 10px;
+}
+.category-title i { color: var(--blue-primary); font-size: 22px; }
+.category-subtitle { font-size: 14px; color: var(--text-gray); margin-bottom: 25px; }
+.services-grid-sm { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.service-card-sm {
+  background: var(--text-white); border-radius: 10px; padding: 22px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  transition: transform 0.3s, box-shadow 0.3s;
+  border: 1px solid #eef2f7;
+}
+.service-card-sm:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.1); }
+.service-card-sm .card-badge {
+  display: inline-block; font-size: 11px; font-weight: 600; padding: 3px 10px;
+  border-radius: 20px; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.5px;
+}
+.card-badge-fisio { background: #deecf9; color: #004578; }
+.card-badge-estetica { background: #e3f2fd; color: #005A9E; }
+.service-card-sm h3 { font-size: 15px; color: var(--blue-dark); margin-bottom: 8px; }
+.service-card-sm p { font-size: 13px; color: var(--text-gray); line-height: 1.6; margin-bottom: 12px; }
+.service-card-sm .service-btn { font-size: 13px; }
+@media (max-width: 1024px) { .services-grid-sm { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .services-grid-sm { grid-template-columns: 1fr; } }
+
+/* Structure */
+.structure-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.structure-text h3 { font-size: 28px; color: var(--blue-dark); margin-bottom: 10px; }
+.structure-text h4 { font-size: 16px; color: var(--blue-primary); font-weight: 500; margin-bottom: 20px; }
+.structure-text p { font-size: 16px; line-height: 1.8; color: #444; margin-bottom: 15px; }
+.structure-carousel {
+  background: linear-gradient(135deg, var(--blue-dark), var(--blue-primary), #deecf9);
+  border-radius: 12px; padding: 40px; text-align: center; min-height: 300px;
+  display: flex; align-items: center; justify-content: center;
+}
+.structure-carousel i { font-size: 80px; color: rgba(255,255,255,0.2); }
+.structure-carousel p { color: rgba(255,255,255,0.6); margin-top: 15px; }
+
+/* Pathologies */
+.pathologies { background: var(--bg-light); }
+.patho-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.patho-card {
+  background: var(--text-white); border-radius: 10px; padding: 25px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05); cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.patho-card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.1); }
+.patho-card .pill {
+  display: inline-block; background: var(--bg-light); color: var(--blue-primary);
+  font-size: 12px; font-weight: 500; padding: 3px 10px; border-radius: 20px; margin-bottom: 8px;
+}
+.patho-card h3 { font-size: 16px; color: var(--blue-dark); margin-bottom: 10px; }
+.patho-card ul { list-style: none; }
+.patho-card ul li {
+  font-size: 13px; color: var(--text-gray); padding: 3px 0;
+  position: relative; padding-left: 18px;
+}
+.patho-card ul li::before {
+  content: '\f00c'; font-family: 'Font Awesome 6 Free'; font-weight: 900;
+  position: absolute; left: 0; color: var(--blue-light); font-size: 11px;
+}
+.patho-card .patho-cta {
+  display: inline-block; margin-top: 12px; color: var(--blue-primary);
+  font-size: 13px; font-weight: 500;
+}
+.patho-footer { text-align: center; margin-top: 40px; }
+.patho-footer p { color: var(--text-gray); margin-bottom: 15px; }
+
+/* Testimonials */
+.testimonials {
+  background: linear-gradient(135deg, #003366, var(--blue-dark), var(--blue-primary));
+  padding: 80px 0;
+}
+.testimonials .section-title h2 { color: var(--text-white); }
+.testimonials .section-title h2::after { background: var(--text-white); }
+.testimonials .section-subtitle { color: rgba(255,255,255,0.8); }
+.testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
+.testi-card {
+  background: rgba(255,255,255,0.1); backdrop-filter: blur(10px);
+  border-radius: 12px; padding: 30px; border: 1px solid rgba(255,255,255,0.15);
+}
+.testi-stars { color: #FFD700; margin-bottom: 15px; }
+.testi-text { color: rgba(255,255,255,0.9); font-size: 14px; line-height: 1.7; margin-bottom: 20px; font-style: italic; }
+.testi-author { display: flex; align-items: center; gap: 12px; }
+.testi-avatar {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center;
+  font-weight: 600; color: var(--text-white); font-size: 16px;
+}
+.testi-name { color: var(--text-white); font-weight: 500; font-size: 14px; }
+.testi-source { color: rgba(255,255,255,0.5); font-size: 12px; }
+
+/* Map */
+.map-section iframe { width: 100%; height: 400px; border: none; display: block; }
+
+/* Footer */
+.footer {
+  background: #002b4f; color: rgba(255,255,255,0.8); padding: 60px 0 30px;
+}
+.footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.5fr; gap: 40px; }
+.footer-logo h3 {
+  color: var(--text-white); font-size: 20px; font-weight: 700; margin-bottom: 10px;
+}
+.footer-logo h3 span {
+  background: var(--blue-primary); padding: 3px 10px; border-radius: 4px;
+}
+.footer-logo p { font-size: 14px; line-height: 1.7; margin-bottom: 20px; }
+.footer h4 { color: var(--text-white); font-size: 16px; font-weight: 600; margin-bottom: 20px; }
+.footer-links a {
+  display: block; color: rgba(255,255,255,0.7); font-size: 14px;
+  margin-bottom: 10px; transition: color 0.3s;
+}
+.footer-links a:hover { color: var(--blue-light); }
+.footer-contact-item { display: flex; gap: 10px; margin-bottom: 12px; font-size: 14px; }
+.footer-contact-item i { color: var(--blue-light); width: 18px; margin-top: 3px; }
+.footer-divider { border: none; height: 1px; background: rgba(255,255,255,0.1); margin: 30px 0; }
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: rgba(255,255,255,0.5); }
+
+/* WhatsApp floating button */
+.whatsapp-float {
+  position: fixed; bottom: 24px; right: 24px; z-index: 999;
+  width: 60px; height: 60px; border-radius: 50%;
+  background: #25D366; color: var(--text-white);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 30px; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6); color: var(--text-white); }
+
+/* Animations */
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .about-grid, .structure-grid { grid-template-columns: 1fr; gap: 40px; }
+  .services-grid { grid-template-columns: 1fr; }
+  .patho-grid { grid-template-columns: repeat(2, 1fr); }
+  .testi-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  .header-nav { display: none; }
+  .mobile-toggle { display: block; }
+  .header-nav.active { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: var(--blue-bg); padding: 20px; gap: 15px; border-bottom: 3px solid var(--blue-primary); }
+  .hero-content h1 { font-size: 32px; }
+  .hero-content h2 { font-size: 18px; }
+  .hero-content p { font-size: 15px; }
+  .section-title h2 { font-size: 28px; }
+  .patho-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .service-card { flex-direction: column; }
+  .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-logo">
+    <img src="logo.jpeg" alt="Clínica Cois" style="height:42px;width:auto;">
+  </div>
+  <button class="mobile-toggle" onclick="document.querySelector('.header-nav').classList.toggle('active')">
+    <i class="fas fa-bars"></i>
+  </button>
+  <nav class="header-nav">
+    <a href="#inicio">Inicio</a>
+    <a href="#sobre">Sobre</a>
+    <a href="#servicos">Serviços</a>
+    <a href="#patologias">Patologias</a>
+    <a href="#depoimentos">Depoimentos</a>
+    <a class="header-btn" href="https://api.whatsapp.com/send/?phone=5571992502766&text=Ol%C3%A1%2C+vim+atrav%C3%A9s+do+site+e+gostaria+de+saber+mais+informa%C3%A7%C3%B5es%21" target="_blank" rel="nofollow noopener">
+      Agendar consulta
+    </a>
+  </nav>
+</header>
+
+<section class="hero" id="inicio">
+  <div class="hero-content">
+    <h1>Clínica de Fisioterapia e Estética em Salvador</h1>
+    <h2>Tratamentos personalizados para quem busca mais qualidade de vida</h2>
+    <p>Na Clínica Cois, você encontra uma equipe dedicada e pronta pra cuidar de você com atenção e resultados reais. Seja para reabilitação pós-cirúrgica, alívio de dores, mobilidade ou performance, aqui você é prioridade.</p>
+    <a class="hero-btn" href="https://api.whatsapp.com/send/?phone=5571992502766&text=Ol%C3%A1%2C+vim+atrav%C3%A9s+do+site+e+gostaria+de+saber+mais+informa%C3%A7%C3%B5es%21" target="_blank" rel="nofollow noopener">
+      Agende sua avaliação agora
+    </a>
+  </div>
+</section>
+
+<section class="section about" id="sobre">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-image">
+        <i class="fas fa-clinic-medical"></i>
+      </div>
+      <div class="about-text">
+        <h3>Conheça a Clínica Cois</h3>
+        <h4>Cuidando de pessoas com excelência, atenção e resultado</h4>
+        <p>Bem-vindo à <strong>Clínica Cois</strong>, um centro de referência em <strong>Fisioterapia</strong> no coração do Rio Vermelho, em Salvador. Temos orgulho em oferecer tratamentos personalizados que respeitam o tempo, a dor e a história de cada paciente.</p>
+        <p>Nosso trabalho vai além da recuperação física — acreditamos no cuidado integral, onde técnica e acolhimento caminham juntos. Com uma equipe multidisciplinar altamente qualificada e atualizada, utilizamos métodos modernos e uma estrutura completa para entregar mais do que resultados: entregamos confiança.</p>
+        <p>Aqui, você vai encontrar profissionais que escutam, acolhem e caminham lado a lado com você em cada etapa da sua evolução. Estamos prontos pra cuidar do que realmente importa: a sua saúde.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section services" id="servicos" style="padding-bottom:100px;">
+  <div class="container">
+    <div class="section-title">
+      <h2>Nossos Serviços em Salvador</h2>
+    </div>
+    <div class="section-subtitle">Realizamos abordagens terapêuticas centradas na individualidade de cada paciente</div>
+    <p style="text-align:center;max-width:800px;margin:0 auto 40px;color:#666;line-height:1.7;">
+      Na Clínica Cois, entendemos que cada pessoa tem um corpo, uma história e uma dor diferente — por isso, nossos atendimentos nunca seguem um modelo padrão. Oferecemos uma variedade de serviços de fisioterapia pensados para diferentes necessidades e fases da vida.
+    </p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-bone"></i></div>
+        <div class="service-info">
+          <h3>Pós-operatório de cirurgias ortopédicas</h3>
+          <p>Os primeiros 21 dias pós-cirurgia são determinantes. A eficácia do procedimento e seu retorno à vida ativa é possível, conheça mais sobre a nossa metodologia de reabilitação.</p>
+          <a class="service-btn" href="https://api.whatsapp.com/send/?phone=5571992502766&text=Ol%C3%A1%2C+gostaria+de+saber+mais+sobre+o+servi%C3%A7o+de+P%C3%B3s-operat%C3%B3rio+de+cirurgias+ortop%C3%A9dicas">Saiba mais <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-brain"></i></div>
+        <div class="service-info">
+          <h3>Dor e movimento — vamos decifrar esse enigma!</h3>
+          <p>Na Clínica Cois, entendemos que dor não é apenas um sintoma, é uma experiência individual, influenciada por fatores físicos, emocionais e neurofisiológicos. Vamos ajudar você.</p>
+          <a class="service-btn" href="https://api.whatsapp.com/send/?phone=5571992502766&text=Ol%C3%A1%2C+gostaria+de+saber+mais+sobre+o+tratamento+de+Dor+e+Movimento">Saiba mais <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-running"></i></div>
+        <div class="service-info">
+          <h3>Treinamento e performance — o que te impede?</h3>
+          <p>Aqui na Clínica Cois você não esta sozinho. Conheça os nossos pilares e descubra os verdadeiros obstáculos e como você pode transformá-los em ação e resultado consistente!</p>
+          <a class="service-btn" href="https://api.whatsapp.com/send/?phone=5571992502766&text=Ol%C3%A1%2C+gostaria+de+saber+mais+sobre+Treinamento+e+Performance">Saiba mais <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-user-friends"></i></div>
+        <div class="service-info">
+          <h3>Idosos — AGF (Avaliação Geriátrica Funcional)</h3>
+          <p>Investir em condicionamento físico na terceira idade é essencial para garantir uma vida mais ativa, saudável e independente. Veja o que torna o nosso serviço único.</p>
+          <a class="service-btn" href="https://api.whatsapp.com/send/?phone=5571992502766&text=Ol%C3%A1%2C+gostaria+de+saber+mais+sobre+a+Avalia%C3%A7%C3%A3o+Geriatrica+Funcional">Saiba mais <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-dna"></i></div>
+        <div class="service-info">
+          <h3>Biomecânica Funcional — Recupere seu lifestyle com segurança</h3>
+          <p>Quando se trata de recuperar a qualidade de vida, precisão e segurança são fundamentais. Na Clínica Cois, sua reabilitação é conduzida com base em dados objetivos.</p>
+          <a class="service-btn" href="https://api.whatsapp.com/send/?phone=5571992502766&text=Ol%C3%A1%2C+gostaria+de+saber+mais+sobre+Biomec%C3%A2nica+Funcional">Saiba mais <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="category-section">
+      <div class="category-title"><i class="fas fa-spa"></i> Fisioterapia e Terapias</div>
+      <div class="category-subtitle">Tratamentos especializados para o cuidado do corpo e da mente</div>
+      <div class="services-grid-sm">
+        <div class="service-card-sm">
+          <span class="card-badge card-badge-fisio">Fisioterapia</span>
+          <h3>Reeducação Postural Global (RPG)</h3>
+          <p>Método que trata desvios posturais através de alongamentos globais, aliviando dores e realinhando o corpo de forma integrada e duradoura.</p>
+          <a class="service-btn" href="https://api.whatsapp.com/send/?phone=5571992502766&text=Ol%C3%A1%2C+gostaria+de+saber+mais+sobre+RPG">Saiba mais <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="service-card-sm">
+          <span class="card-badge card-badge-fisio">Fisioterapia</span>
+          <h3>Quiropraxia</h3>
+          <p>Ajustes articulares precisos para restaurar a função do sistema nervoso e musculoesquelético, aliviando dores na coluna e melhorando a mobilidade.</p>
+          <a class="service-btn" href="https://api.whatsapp.com/send/?phone=5571992502766&text=Ol%C3%A1%2C+gostaria+de+saber+mais+sobre+Quiropraxia">Saiba mais <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="service-card-sm">
+          <span class="card-badge card-badge-fisio">Fisioterapia</span>
+          <h3>Acupuntura</h3>
+          <p>Técnica milenar que estimula pontos energéticos do corpo para alívio de dores, redução do estresse e tratamento de condições crônicas com agulhas finas.</p>
+          <a class="service-btn" href="https://api.whatsapp.com/send/?phone=5571992502766&text=Ol%C3%A1%2C+gostaria+de+saber+mais+sobre+Acupuntura">Saiba mais <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="service-card-sm">
+          <span class="card-badge card-badge-fisio">Fisioterapia</span>
+          <h3>Ozonioterapia</h3>
+          <p>Terapia com ozônio medicinal que potencializa a cicatrização, reduz inflamações e fortalece o sistema imunológico, auxiliando em diversos tratamentos.</p>
+          <a class="service-btn" href="https://api.whatsapp.com/send/?phone=5571992502766&text=Ol%C3%A1%2C+gostaria+de+saber+mais+sobre+Ozonioterapia">Saiba mais <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="service-card-sm">
+          <span class="card-badge card-badge-fisio">Fisioterapia</span>
+          <h3>Pilates Adulto</h3>
+          <p>Método de condicionamento físico que fortalece o core, melhora a flexibilidade e a postura, com exercícios controlados e respiração coordenada.</p>
+          <a class="service-btn" href="https://api.whatsapp.com/send/?phone=5571992502766&text=Ol%C3%A1%2C+gostaria+de+saber+mais+sobre+Pilates+Adulto">Saiba mais <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="service-card-sm">
+          <span class="card-badge card-badge-fisio">Fisioterapia</span>
+          <h3>Pilates Kids</h3>
+          <p>Pilates adaptado para crianças, desenvolvendo coordenação motora, equilíbrio e concentração de forma lúdica, auxiliando no desenvolvimento saudável.</p>
+          <a class="service-btn" href="https://api.whatsapp.com/send/?phone=5571992502766&text=Ol%C3%A1%2C+gostaria+de+saber+mais+sobre+Pilates+Kids">Saiba mais <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="service-card-sm">
+          <span class="card-badge card-badge-fisio">Fisioterapia</span>
+          <h3>Fisioterapia Pélvica</h3>
+          <p>Tratamento especializado para disfunções do assoalho pélvico, incontinência urinária, dores pélvicas e recuperação no pós-parto, com abordagem humanizada.</p>
+          <a class="service-btn" href="https://api.whatsapp.com/send/?phone=5571992502766&text=Ol%C3%A1%2C+gostaria+de+saber+mais+sobre+Fisioterapia+P%C3%A9lvica">Saiba mais <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="service-card-sm">
+          <span class="card-badge card-badge-fisio">Fisioterapia</span>
+          <h3>Fisioterapia para Gestantes</h3>
+          <p>Acompanhamento fisioterapêutico durante a gestação para alívio de dores, preparação para o parto e recuperação pós-parto com segurança e acolhimento.</p>
+          <a class="service-btn" href="https://api.whatsapp.com/send/?phone=5571992502766&text=Ol%C3%A1%2C+gostaria+de+saber+mais+sobre+Fisioterapia+para+Gestantes">Saiba mais <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="service-card-sm">
+          <span class="card-badge card-badge-fisio">Fisioterapia</span>
+          <h3>Massoterapia</h3>
+          <p>Técnicas manuais de massagem terapêutica para alívio de tensões musculares, redução do estresse, melhora da circulação e bem-estar geral.</p>
+          <a class="service-btn" href="https://api.whatsapp.com/send/?phone=5571992502766&text=Ol%C3%A1%2C+gostaria+de+saber+mais+sobre+Massoterapia">Saiba mais <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="service-card-sm">
+          <span class="card-badge card-badge-fisio">Fisioterapia</span>
+          <h3>Terapia Neural</h3>
+          <p>Abordagem que utiliza microinjeções de anestésico em pontos específicos para tratar dores crônicas, disfunções e reequilibrar o sistema nervoso autônomo.</p>
+          <a class="service-btn" href="https://api.whatsapp.com/send/?phone=5571992502766&text=Ol%C3%A1%2C+gostaria+de+saber+mais+sobre+Terapia+Neural">Saiba mais <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="service-card-sm">
+          <span class="card-badge card-badge-fisio">Fisioterapia</span>
+          <h3>Terapias Injetáveis</h3>
+          <p>Procedimentos minimamente invasivos com aplicação de medicamentos e substâncias terapêuticas para tratamento de dores, inflamações e recuperação muscular.</p>
+          <a class="service-btn" href="https://api.whatsapp.com/send/?phone=5571992502766&text=Ol%C3%A1%2C+gostaria+de+saber+mais+sobre+Terapias+Injet%C3%A1veis">Saiba mais <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="category-section">
+      <div class="category-title"><i class="fas fa-star"></i> Estética e Bem-estar</div>
+      <div class="category-subtitle">Cuidados estéticos integrados para realçar sua beleza e autoestima</div>
+      <div class="services-grid-sm">
+        <div class="service-card-sm">
+          <span class="card-badge card-badge-estetica">Estética</span>
+          <h3>Estética Facial e Corporal</h3>
+          <p>Tratamentos estéticos personalizados para rejuvenescimento facial, redução de medidas e cuidados com a pele, realçando sua beleza natural.</p>
+          <a class="service-btn" href="https://api.whatsapp.com/send/?phone=5571992502766&text=Ol%C3%A1%2C+gostaria+de+saber+mais+sobre+Est%C3%A9tica">Saiba mais <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="service-card-sm">
+          <span class="card-badge card-badge-estetica">Estética</span>
+          <h3>Depilação</h3>
+          <p>Depilação com técnicas modernas para resultados duradouros e menos dolorosos, cuidando da sua pele com produtos de alta qualidade e higiene.</p>
+          <a class="service-btn" href="https://api.whatsapp.com/send/?phone=5571992502766&text=Ol%C3%A1%2C+gostaria+de+saber+mais+sobre+Depila%C3%A7%C3%A3o">Saiba mais <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="service-card-sm">
+          <span class="card-badge card-badge-estetica">Estética</span>
+          <h3>Podologia</h3>
+          <p>Cuidados especializados com a saúde dos pés, tratamento de calosidades, unhas encravadas e outras condições que afetam o bem-estar e a mobilidade.</p>
+          <a class="service-btn" href="https://api.whatsapp.com/send/?phone=5571992502766&text=Ol%C3%A1%2C+gostaria+de+saber+mais+sobre+Podologia">Saiba mais <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="service-card-sm">
+          <span class="card-badge card-badge-estetica">Estética</span>
+          <h3>Designer de Sobrancelhas e Micropigmentação</h3>
+          <p>Técnicas de design e micropigmentação para sobrancelhas perfeitas, realçando o olhar com resultados naturais e duradouros.</p>
+          <a class="service-btn" href="https://api.whatsapp.com/send/?phone=5571992502766&text=Ol%C3%A1%2C+gostaria+de+saber+mais+sobre+Designer+de+Sobrancelhas">Saiba mais <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="service-card-sm">
+          <span class="card-badge card-badge-estetica">Estética</span>
+          <h3>Manicure e Nail Designer</h3>
+          <p>Cuidados completos para as unhas das mãos e pés, com tendências em nail art, alongamento e esmaltação para um visual impecável.</p>
+          <a class="service-btn" href="https://api.whatsapp.com/send/?phone=5571992502766&text=Ol%C3%A1%2C+gostaria+de+saber+mais+sobre+Manicure+e+Nail+Designer">Saiba mais <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="service-card-sm">
+          <span class="card-badge card-badge-estetica">Estética</span>
+          <h3>Laserterapia</h3>
+          <p>Tratamento a laser para rejuvenescimento, cicatrização, redução de pelos e manchas, com tecnologia segura e resultados eficazes.</p>
+          <a class="service-btn" href="https://api.whatsapp.com/send/?phone=5571992502766&text=Ol%C3%A1%2C+gostaria+de+saber+mais+sobre+Laserterapia">Saiba mais <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="service-card-sm">
+          <span class="card-badge card-badge-estetica">Estética</span>
+          <h3>Drenagem Linfática</h3>
+          <p>Técnica de massagem suave que estimula o sistema linfático, reduz inchaços, elimina toxinas e combate a celulite de forma eficiente.</p>
+          <a class="service-btn" href="https://api.whatsapp.com/send/?phone=5571992502766&text=Ol%C3%A1%2C+gostaria+de+saber+mais+sobre+Drenagem+Linf%C3%A1tica">Saiba mais <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="service-card-sm">
+          <span class="card-badge card-badge-estetica">Estética</span>
+          <h3>Ventosaterapia</h3>
+          <p>Terapia com ventosas que promove relaxamento muscular, melhora a circulação sanguínea e auxilia no alívio de dores e tensões.</p>
+          <a class="service-btn" href="https://api.whatsapp.com/send/?phone=5571992502766&text=Ol%C3%A1%2C+gostaria+de+saber+mais+sobre+Ventosaterapia">Saiba mais <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="service-card-sm">
+          <span class="card-badge card-badge-estetica">Estética</span>
+          <h3>Radiofrequência</h3>
+          <p>Tecnologia que utiliza ondas eletromagnéticas para estimular colágeno, firmar a pele, reduzir gordura localizada e combater a flacidez.</p>
+          <a class="service-btn" href="https://api.whatsapp.com/send/?phone=5571992502766&text=Ol%C3%A1%2C+gostaria+de+saber+mais+sobre+Radiofrequ%C3%AAncia">Saiba mais <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="service-card-sm">
+          <span class="card-badge card-badge-estetica">Estética</span>
+          <h3>Peelings</h3>
+          <p>Tratamentos de renovação facial com ácidos e substâncias específicas para clarear manchas, suavizar rugas e revitalizar a pele do rosto.</p>
+          <a class="service-btn" href="https://api.whatsapp.com/send/?phone=5571992502766&text=Ol%C3%A1%2C+gostaria+de+saber+mais+sobre+Peelings">Saiba mais <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="service-card-sm">
+          <span class="card-badge card-badge-estetica">Estética</span>
+          <h3>Harmonização Facial</h3>
+          <p>Procedimentos estéticos minimamente invasivos para equilibrar proporções faciais, suavizar marcas de expressão e realçar a beleza com naturalidade.</p>
+          <a class="service-btn" href="https://api.whatsapp.com/send/?phone=5571992502766&text=Ol%C3%A1%2C+gostaria+de+saber+mais+sobre+Harmoniza%C3%A7%C3%A3o+Facial">Saiba mais <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section" style="background:var(--bg-light);">
+  <div class="container">
+    <div class="structure-grid">
+      <div class="structure-text">
+        <h3>Estrutura moderna e pensada para o seu bem-estar</h3>
+        <h4>Ambiente climatizado, acessível e confortável em cada detalhe do seu atendimento</h4>
+        <p>A Clínica Cois foi projetada para que você se sinta à vontade desde o primeiro momento. Contamos com salas de atendimento e exercício, todas climatizadas e equipadas para garantir conforto, privacidade e eficiência durante seu tratamento.</p>
+        <p>O ambiente é acolhedor, silencioso e adaptado para diferentes perfis de pacientes — desde idosos até atletas em reabilitação. Nossa estrutura proporciona uma experiência tranquila e segura em cada etapa da sua recuperação.</p>
+      </div>
+      <div class="structure-carousel">
+        <div>
+          <i class="fas fa-building"></i>
+          <p>Estrutura completa para sua reabilitação</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--bg-light);padding-top:0;">
+  <div class="container">
+    <div class="structure-grid">
+      <div class="structure-carousel">
+        <div>
+          <i class="fas fa-microscope"></i>
+          <p>Avaliação fisioterapêutica com precisão e tecnologia de ponta</p>
+        </div>
+      </div>
+      <div class="structure-text">
+        <h3>Avaliação fisioterapêutica com precisão e tecnologia de ponta</h3>
+        <h4>Diagnósticos completos para tratamentos realmente eficazes</h4>
+        <p>Na Clínica Cois, cada paciente passa por uma avaliação detalhada antes de iniciar o tratamento. Utilizamos o que há de mais moderno em tecnologia diagnóstica para oferecer uma análise precisa das suas condições.</p>
+        <p>Com esses dados em mãos, conseguimos criar um plano terapêutico personalizado, seguro e totalmente alinhado com as suas reais necessidades de reabilitação.</p>
+        <a class="header-btn" href="https://api.whatsapp.com/send/?phone=5571992502766&text=Ol%C3%A1%2C+vim+atrav%C3%A9s+do+site+e+gostaria+de+saber+mais+informa%C3%A7%C3%B5es%21" target="_blank" rel="nofollow noopener" style="display:inline-block;margin-top:20px;">Agende sua avaliação agora</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section pathologies" id="patologias">
+  <div class="container">
+    <div class="section-title">
+      <h2>Principais Patologias tratadas na Clínica Cois</h2>
+    </div>
+    <div style="text-align:center;margin-bottom:30px;">
+      <button class="patho-filter active" data-filter="all" style="padding:8px 20px;margin:4px;border:2px solid var(--blue-dark);border-radius:30px;background:var(--blue-dark);color:#fff;cursor:pointer;font-family:'Poppins',sans-serif;font-size:13px;">Todas</button>
+      <button class="patho-filter" data-filter="joelho" style="padding:8px 20px;margin:4px;border:2px solid var(--blue-dark);border-radius:30px;background:transparent;color:var(--blue-dark);cursor:pointer;font-family:'Poppins',sans-serif;font-size:13px;">Joelho</button>
+      <button class="patho-filter" data-filter="pe-tornozelo" style="padding:8px 20px;margin:4px;border:2px solid var(--blue-dark);border-radius:30px;background:transparent;color:var(--blue-dark);cursor:pointer;font-family:'Poppins',sans-serif;font-size:13px;">Pé/Tornozelo</button>
+      <button class="patho-filter" data-filter="quadril-pelve" style="padding:8px 20px;margin:4px;border:2px solid var(--blue-dark);border-radius:30px;background:transparent;color:var(--blue-dark);cursor:pointer;font-family:'Poppins',sans-serif;font-size:13px;">Quadril/Pelve</button>
+      <button class="patho-filter" data-filter="articular" style="padding:8px 20px;margin:4px;border:2px solid var(--blue-dark);border-radius:30px;background:transparent;color:var(--blue-dark);cursor:pointer;font-family:'Poppins',sans-serif;font-size:13px;">Articular</button>
+    </div>
+    <div class="patho-grid" id="pathoGrid"></div>
+    <div class="patho-footer">
+      <p>Não encontrou sua condição?</p>
+      <a class="header-btn" href="https://api.whatsapp.com/send/?phone=5571992502766&text=Vim+do+site+e+queria+falar+com+um+fisioterapeuta" target="_blank" rel="nofollow noopener">
+        Fale com um fisioterapeuta
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials" id="depoimentos">
+  <div class="container">
+    <div class="section-title">
+      <h2>Depoimentos</h2>
+    </div>
+    <div class="section-subtitle">O que os nossos pacientes dizem?</div>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <div class="testi-text">"Excelente clínica! Fiz minha reabilitação pós-cirúrgica aqui e o resultado superou minhas expectativas. Profissionais muito atenciosos e estrutura maravilhosa. Super recomendo!"</div>
+        <div class="testi-author">
+          <div class="testi-avatar">MR</div>
+          <div>
+            <div class="testi-name">Maria Rita</div>
+            <div class="testi-source">Google</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <div class="testi-text">"Profissionais competentes e muito humanos. O tratamento da dor no joelho foi transformador. Agora consigo voltar a correr sem dor. Gratidão a toda equipe da Cois!"</div>
+        <div class="testi-author">
+          <div class="testi-avatar">CP</div>
+          <div>
+            <div class="testi-name">Carlos Pereira</div>
+            <div class="testi-source">Google</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <div class="testi-text">"Atendimento nota 10! Desde a recepção até os fisioterapeutas, todos muito atenciosos. O ambiente é acolhedor e o tratamento realmente funciona. Me sinto uma nova pessoa!"</div>
+        <div class="testi-author">
+          <div class="testi-avatar">AS</div>
+          <div>
+            <div class="testi-name">Ana Souza</div>
+            <div class="testi-source">Google</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="map-section">
+  <iframe src="https://www.google.com/maps?q=Rua+Conselheiro+Pedro+Luiz+282+Rio+Vermelho+Salvador+Bahia&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-logo">
+        <img src="logo.jpeg" alt="Clínica Cois" style="height:50px;width:auto;margin-bottom:12px;">
+        <p>Excelência em fisioterapia, com tratamentos personalizados, equipe qualificada e estrutura completa para sua recuperação em Salvador.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Links Rápidos</h4>
+        <a href="#inicio">Inicio</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#patologias">Patologias</a>
+        <a href="#depoimentos">Depoimentos</a>
+      </div>
+      <div>
+        <h4>Horário de Serviço</h4>
+        <div class="footer-contact-item">
+          <i class="fas fa-clock"></i>
+          <div>
+            <strong style="color:#fff;font-size:14px;">Segunda à Sexta-feira</strong><br>
+            <span>08:00 até às 19:30</span>
+          </div>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fas fa-clock"></i>
+          <div>
+            <strong style="color:#fff;font-size:14px;">Sábado e Domingo</strong><br>
+            <span>Fechado</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h4>Informações de Contato</h4>
+        <div class="footer-contact-item">
+          <i class="fas fa-phone-alt"></i>
+          <span>(71) 3334-0123</span>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fab fa-whatsapp"></i>
+          <span>(71) 99250-2766</span>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Rua Conselheiro Pedro Luiz, 282, Rio Vermelho, Salvador - Bahia</span>
+        </div>
+      </div>
+    </div>
+    <hr class="footer-divider">
+    <div class="footer-bottom">
+      <span>&copy; 2026 Clínica Cois. Todos os direitos reservados.</span>
+      <span>Desenvolvido por NextGen Web</span>
+    </div>
+  </div>
+</footer>
+
+<a class="whatsapp-float" href="https://api.whatsapp.com/send/?phone=5571992502766&text=Ol%C3%A1%2C+vim+atrav%C3%A9s+do+site+e+gostaria+de+saber+mais+informa%C3%A7%C3%B5es%21" target="_blank" rel="nofollow noopener" aria-label="Contato do WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<script>
+const pathologies = [
+  { name: 'Água no Joelho (Sinovite)', region: 'joelho', symptoms: ['Inchaço visível', 'Redução da mobilidade', 'Desconforto ao dobrar'] },
+  { name: 'Artrose e Artrite', region: 'articular', symptoms: ['Dor e rigidez matinal', 'Estalos nas articulações', 'Limitação de movimento'] },
+  { name: 'Bursite', region: 'quadril-pelve', symptoms: ['Dor ao deitar de lado', 'Sensibilidade lateral do quadril', 'Piora ao subir escadas'] },
+  { name: 'Cisto de Baker', region: 'joelho', symptoms: ['Carocinho atrás do joelho', 'Sensação de pressão', 'Inchaço após esforço'] },
+  { name: 'Condromalácia Patelar', region: 'joelho', symptoms: ['Dor ao agachar', 'Estalos na patela', 'Desconforto ao descer escadas'] },
+  { name: 'Entorse', region: 'pe-tornozelo', symptoms: ['Inchaço imediato', 'Hematoma local', 'Dor ao apoiar'] },
+  { name: 'Esporão de Calcâneo', region: 'pe-tornozelo', symptoms: ['Dor no calcanhar', 'Desconforto ao caminhar', 'Rigidez matinal'] },
+  { name: 'Fascite Plantar', region: 'pe-tornozelo', symptoms: ['Dor ao dar os primeiros passos', 'Piora após ficar em pé', 'Sensibilidade no arco'] },
+  { name: 'Impacto Femoroacetabular', region: 'quadril-pelve', symptoms: ['Dor na virilha', 'Limitação para flexionar', 'Estalos no quadril'] },
+  { name: 'Lesão de Labrum', region: 'quadril-pelve', symptoms: ['Travamentos no quadril', 'Dor ao sentar', 'Perda de mobilidade'] },
+  { name: 'Lesões Ligamentares', region: 'joelho', symptoms: ['Estalo no momento da lesão', 'Instabilidade', 'Inchaço rápido'] },
+  { name: 'Lesões Meniscais', region: 'joelho', symptoms: ['Dor ao girar o joelho', 'Inchaço após esforço', 'Travamento/falseio'] },
+  { name: 'Neuroma de Morton', region: 'pe-tornozelo', symptoms: ['Queimação entre os dedos', 'Formigamentos', 'Piora com calçados apertados'] },
+  { name: 'Pubalgia', region: 'quadril-pelve', symptoms: ['Dor na virilha', 'Desconforto ao chutar', 'Piora em mudança de direção'] },
+  { name: 'Síndrome da Dor Femoropatelar', region: 'joelho', symptoms: ['Dor na frente do joelho', 'Piora ao ficar muito tempo sentado', 'Sensação de pressão'] },
+  { name: 'Síndrome do Piriforme', region: 'quadril-pelve', symptoms: ['Dor no glúteo', 'Irradiação para a perna', 'Piora ao sentar'] },
+  { name: 'Síndrome do Trato Iliotibial', region: 'joelho', symptoms: ['Dor lateral do joelho', 'Piora na corrida', 'Sensação de atrito'] },
+  { name: 'Tendinopatia', region: 'pe-tornozelo', symptoms: ['Dor ao iniciar o movimento', 'Rigidez matinal', 'Espessamento do tendão'] },
+];
+
+const regionLabels = {
+  'joelho': 'Joelho',
+  'articular': 'Articular',
+  'pe-tornozelo': 'Pé/Tornozelo',
+  'quadril-pelve': 'Quadril/Pelve'
+};
+
+const ctaTexts = [
+  'Entender sintomas', 'Saiba como tratamos', 'Ver opções de tratamento',
+  'Plano de reabilitação', 'Plano de retorno', 'Entender sintomas'
+];
+
+function renderPathologies(filter) {
+  const grid = document.getElementById('pathoGrid');
+  const items = filter === 'all' ? pathologies : pathologies.filter(p => p.region === filter);
+  grid.innerHTML = items.map((p, i) => `
+    <div class="patho-card">
+      <span class="pill">${regionLabels[p.region] || 'Patologia'}</span>
+      <h3>${p.name}</h3>
+      <ul>
+        ${p.symptoms.map(s => `<li>${s}</li>`).join('')}
+      </ul>
+      <a class="patho-cta" href="https://api.whatsapp.com/send/?phone=5571992502766&text=Ol%C3%A1%2C+vim+do+site+e+gostaria+de+saber+mais+sobre+os+atendimentos+para+%22${encodeURIComponent(p.name)}%22." target="_blank" rel="nofollow noopener">
+        ${ctaTexts[i % ctaTexts.length]} <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+  `).join('');
+}
+
+document.querySelectorAll('.patho-filter').forEach(btn => {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.patho-filter').forEach(b => {
+      b.style.background = 'transparent';
+      b.style.color = 'var(--blue-primary)';
+    });
+    this.style.background = 'var(--blue-primary)';
+    this.style.color = '#fff';
+    renderPathologies(this.dataset.filter);
+  });
+});
+
+renderPathologies('all');
+</script>
+</body>
+</html>
