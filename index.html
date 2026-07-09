@@ -872,6 +872,12 @@ document.querySelectorAll('.patho-filter').forEach(btn => {
 });
 
 renderPathologies('all');
+
+document.querySelectorAll('.header-nav a').forEach(link => {
+  link.addEventListener('click', () => {
+    document.querySelector('.header-nav').classList.remove('active');
+  });
+});
 </script>
 </body>
 </html>
