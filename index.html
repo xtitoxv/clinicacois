@@ -66,32 +66,41 @@ a { text-decoration: none; color: inherit; }
 /* Hero */
 .hero {
   min-height: 100vh; display: flex; align-items: center;
-  background: linear-gradient(135deg, #003366 0%, #004578 40%, #005A9E 70%, #0078D7 100%);
   position: relative; overflow: hidden; padding-top: 80px;
+  background: #003366;
 }
-.hero::before {
+.hero-bg {
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background-image: url('Arq/familia.png');
+  background-size: cover;
+  background-position: center 30%;
+  background-repeat: no-repeat;
+  z-index: 0;
+}
+.hero-bg::after {
   content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none"><path fill="white" opacity="0.05" d="M761.9,44.1L643.1,27.2L333.8,98L0,3.8V0l1000,0v3.9"/></svg>') bottom/100% auto no-repeat;
+  background: linear-gradient(135deg, rgba(0,51,102,0.88) 0%, rgba(0,69,120,0.65) 50%, rgba(0,90,158,0.35) 100%);
 }
-.hero-content { text-align: center; max-width: 800px; margin: 0 auto; padding: 60px 20px; position: relative; z-index: 1; }
+.hero-content { text-align: center; max-width: 800px; margin: 0 auto; padding: 60px 20px; position: relative; z-index: 2; }
 .hero-content h1 {
-  color: var(--text-white); font-size: 48px; font-weight: 700; margin-bottom: 15px;
-  animation: fadeInDown 1s ease;
+  color: var(--text-white); font-size: 44px; font-weight: 700; margin-bottom: 12px;
+  animation: fadeInDown 1s ease; line-height: 1.2;
 }
 .hero-content h2 {
-  color: var(--text-white); font-size: 22px; font-weight: 300; margin-bottom: 25px;
-  opacity: 0.9; animation: fadeInDown 1s ease 0.2s both;
+  color: var(--text-white); font-size: 20px; font-weight: 300; margin-bottom: 20px;
+  opacity: 0.95; animation: fadeInDown 1s ease 0.2s both; line-height: 1.5;
 }
 .hero-content p {
-  color: var(--text-white); font-size: 18px; line-height: 1.7; margin-bottom: 35px;
-  opacity: 0.85; animation: fadeInDown 1s ease 0.4s both;
+  color: var(--text-white); font-size: 17px; line-height: 1.7; margin-bottom: 30px;
+  opacity: 0.9; animation: fadeInDown 1s ease 0.4s both;
 }
 .hero-btn {
-  display: inline-block; background: var(--text-white); color: var(--blue-dark);
-  padding: 16px 40px; border-radius: 6px; font-size: 16px; font-weight: 600;
+  display: inline-block; background: #25D366; color: var(--text-white);
+  padding: 16px 40px; border-radius: 50px; font-size: 16px; font-weight: 600;
   transition: all 0.3s; animation: fadeInDown 1s ease 0.6s both;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
 }
-.hero-btn:hover { background: #deecf9; transform: translateY(-2px); }
+.hero-btn:hover { background: #1ebe57; transform: translateY(-2px); box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6); }
 
 /* Section common */
 .section { padding: 80px 0; }
@@ -295,14 +304,19 @@ a { text-decoration: none; color: inherit; }
   .patho-grid { grid-template-columns: repeat(2, 1fr); }
   .testi-grid { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
+  .hero-content h1 { font-size: 36px; }
+  .hero-content h2 { font-size: 18px; }
 }
 @media (max-width: 768px) {
   .header-nav { display: none; }
   .mobile-toggle { display: block; }
   .header-nav.active { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: var(--blue-bg); padding: 20px; gap: 15px; border-bottom: 3px solid var(--blue-primary); }
-  .hero-content h1 { font-size: 32px; }
-  .hero-content h2 { font-size: 18px; }
-  .hero-content p { font-size: 15px; }
+  .hero-bg { background-position: center 20%; }
+  .hero { min-height: 90vh; }
+  .hero-content h1 { font-size: 28px; }
+  .hero-content h2 { font-size: 16px; }
+  .hero-content p { font-size: 14px; }
+  .hero-btn { padding: 14px 30px; font-size: 14px; }
   .section-title h2 { font-size: 28px; }
   .patho-grid { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr; }
@@ -333,12 +347,13 @@ a { text-decoration: none; color: inherit; }
 </header>
 
 <section class="hero" id="inicio">
+  <div class="hero-bg"></div>
   <div class="hero-content">
-    <h1>Clínica de Fisioterapia e Estética em Salvador</h1>
-    <h2>Tratamentos personalizados para quem busca mais qualidade de vida</h2>
-    <p>Na Clínica Cois, você encontra uma equipe dedicada e pronta pra cuidar de você com atenção e resultados reais. Seja para reabilitação pós-cirúrgica, alívio de dores, mobilidade ou performance, aqui você é prioridade.</p>
-    <a class="hero-btn" href="https://api.whatsapp.com/send/?phone=5571992502766&text=Ol%C3%A1%2C+vim+atrav%C3%A9s+do+site+e+gostaria+de+saber+mais+informa%C3%A7%C3%B5es%21" target="_blank" rel="nofollow noopener">
-      Agende sua avaliação agora
+    <h1>Cuidado completo para toda a sua família</h1>
+    <h2>Fisioterapia ortopédica, estética e bem-estar em um só lugar</h2>
+    <p>Na Clínica COIS, cuidamos de você e da sua família com excelência, acolhimento e resultados reais. Agende sua avaliação e descubra uma nova forma de cuidar da sua saúde.</p>
+    <a class="hero-btn" href="https://api.whatsapp.com/send/?phone=5571992502766&text=Ol%C3%A1%2C+vim+atrav%C3%A9s+do+site+e+gostaria+de+agendar+uma+avalia%C3%A7%C3%A3o%21" target="_blank" rel="nofollow noopener">
+      Agende sua Avaliação
     </a>
   </div>
 </section>
