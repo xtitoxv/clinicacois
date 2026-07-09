@@ -200,6 +200,38 @@ a { text-decoration: none; color: inherit; }
 .structure-carousel i { font-size: 80px; color: rgba(255,255,255,0.2); }
 .structure-carousel p { color: rgba(255,255,255,0.6); margin-top: 15px; }
 
+/* Convênios */
+.convenios { background: var(--text-white); }
+.convenios-grid {
+  display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px;
+  max-width: 1000px; margin: 0 auto;
+}
+.convenio-item {
+  background: var(--text-white); border: 1px solid #e8ecf1;
+  border-radius: 10px; padding: 20px; aspect-ratio: 1;
+  display: flex; align-items: center; justify-content: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.convenio-item:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.08); }
+.convenio-item img { max-width: 90%; max-height: 90%; object-fit: contain; }
+.convenio-text-logo {
+  font-family: 'Montserrat', sans-serif; font-weight: 700;
+  text-align: center; line-height: 1.2;
+}
+.convenio-text-logo .main { font-size: 16px; color: var(--blue-dark); display: block; }
+.convenio-text-logo .sub { font-size: 11px; color: var(--text-gray); font-weight: 400; display: block; margin-top: 4px; }
+.convenio-cta {
+  text-align: center; margin-top: 40px;
+}
+.convenio-cta p { font-size: 15px; color: var(--text-gray); margin-bottom: 15px; }
+@media (max-width: 768px) {
+  .convenios-grid { grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .convenio-item { padding: 12px; }
+}
+@media (max-width: 480px) {
+  .convenios-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+}
+
 /* Pathologies */
 .pathologies { background: var(--bg-light); }
 .patho-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
@@ -340,6 +372,7 @@ a { text-decoration: none; color: inherit; }
     <a href="#servicos">Serviços</a>
     <a href="#patologias">Patologias</a>
     <a href="#depoimentos">Depoimentos</a>
+    <a href="#convenios">Convênios</a>
     <a class="header-btn" href="https://api.whatsapp.com/send/?phone=5571992502766&text=Ol%C3%A1%2C+vim+atrav%C3%A9s+do+site+e+gostaria+de+saber+mais+informa%C3%A7%C3%B5es%21" target="_blank" rel="nofollow noopener">
       Agendar consulta
     </a>
@@ -611,6 +644,36 @@ a { text-decoration: none; color: inherit; }
         <p>Com esses dados em mãos, conseguimos criar um plano terapêutico personalizado, seguro e totalmente alinhado com as suas reais necessidades de reabilitação.</p>
         <a class="header-btn" href="https://api.whatsapp.com/send/?phone=5571992502766&text=Ol%C3%A1%2C+vim+atrav%C3%A9s+do+site+e+gostaria+de+saber+mais+informa%C3%A7%C3%B5es%21" target="_blank" rel="nofollow noopener" style="display:inline-block;margin-top:20px;">Agende sua avaliação agora</a>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="section convenios" id="convenios">
+  <div class="container">
+    <div class="section-title">
+      <h2>Convênios Atendidos</h2>
+    </div>
+    <div class="section-subtitle">Trabalhamos com os principais convênios para facilitar seu atendimento</div>
+    <div class="convenios-grid">
+      <div class="convenio-item"><img src="Arq/convenios/apub-saude.png" alt="APUB Saúde"></div>
+      <div class="convenio-item"><img src="Arq/convenios/asfeb-saude.png" alt="ASFEB Saúde"></div>
+      <div class="convenio-item"><img src="Arq/convenios/blue.jpg" alt="BLUE Plano de Saúde"></div>
+      <div class="convenio-item"><img src="Arq/convenios/camed.png" alt="Camed Saúde"></div>
+      <div class="convenio-item"><img src="Arq/convenios/casec.png" alt="CASEC Saúde"></div>
+      <div class="convenio-item"><img src="Arq/convenios/cassi.png" alt="CASSI"></div>
+      <div class="convenio-item"><img src="Arq/convenios/nova-saude.png" alt="Nova Saúde"></div>
+      <div class="convenio-item"><img src="Arq/convenios/petrobras.jpg" alt="Petrobras"></div>
+      <div class="convenio-item"><img src="Arq/convenios/porto-seguro.png" alt="Porto Seguro Saúde"></div>
+      <div class="convenio-item"><img src="Arq/convenios/saude-caixa.jpg" alt="Saúde Caixa"></div>
+      <div class="convenio-item"><div class="convenio-text-logo"><span class="main">Banco Central</span><span class="sub">BC Saúde</span></div></div>
+      <div class="convenio-item"><div class="convenio-text-logo"><span class="main">Codevasf</span></div></div>
+      <div class="convenio-item"><div class="convenio-text-logo"><span class="main">Gama Saúde</span></div></div>
+      <div class="convenio-item"><div class="convenio-text-logo"><span class="main">Luminar Saúde</span><span class="sub">Fachesf</span></div></div>
+      <div class="convenio-item"><div class="convenio-text-logo"><span class="main">Vale</span><span class="sub">Saúde</span></div></div>
+    </div>
+    <div class="convenio-cta">
+      <p>Seu convênio não está na lista? Entre em contato conosco!</p>
+      <a class="header-btn" href="https://api.whatsapp.com/send/?phone=5571992502766&text=Ol%C3%A1%2C+gostaria+de+saber+se+voc%C3%AAs+atendem+meu+conv%C3%AAnio" target="_blank" rel="nofollow noopener" style="display:inline-block;">Perguntar sobre convênio</a>
     </div>
   </div>
 </section>
