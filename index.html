@@ -350,6 +350,20 @@ a { text-decoration: none; color: inherit; }
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* Logo pulse glow */
+@keyframes logoGlow {
+  0%, 100% { filter: drop-shadow(0 0 4px rgba(74, 144, 226, 0.3)); }
+  50% { filter: drop-shadow(0 0 12px rgba(74, 144, 226, 0.7)); }
+}
+.logo-cois {
+  animation: logoGlow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  will-change: filter;
+}
+.logo-cois:hover {
+  animation-duration: 1.5s;
+  filter: drop-shadow(0 0 14px rgba(74, 144, 226, 0.84));
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
   .structure-grid { grid-template-columns: 1fr; gap: 40px; }
@@ -376,13 +390,16 @@ a { text-decoration: none; color: inherit; }
   .service-card { flex-direction: column; }
   .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
 }
+@media (prefers-reduced-motion: reduce) {
+  .logo-cois { animation: none; }
+}
 </style>
 </head>
 <body>
 
 <header class="header">
   <div class="header-logo">
-    <img src="logo.jpeg" alt="Clínica Cois" style="height:42px;width:auto;">
+    <img src="logo.jpeg" alt="Clínica Cois" class="logo-cois" style="height:42px;width:auto;">
   </div>
   <button class="mobile-toggle" onclick="document.querySelector('.header-nav').classList.toggle('active')">
     <i class="fas fa-bars"></i>
