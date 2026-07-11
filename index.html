@@ -33,7 +33,7 @@ a { text-decoration: none; color: inherit; }
 /* Header */
 .header {
   position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-  background: rgba(0, 69, 120, 0.92); backdrop-filter: blur(10px);
+  background: var(--text-white); backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border-color);
   padding: 10px 20px;
   display: flex; align-items: center; justify-content: space-between;
@@ -43,15 +43,15 @@ a { text-decoration: none; color: inherit; }
   color: var(--text-white); font-size: 24px; font-weight: 700;
   background: var(--blue-primary); padding: 4px 12px; border-radius: 6px;
 }
-.header-logo span { color: var(--text-white); font-size: 14px; opacity: 0.8; }
+.header-logo span { color: var(--blue-dark); font-size: 14px; opacity: 0.8; }
 .header-nav { display: flex; align-items: center; gap: 20px; }
 .header-nav a {
-  color: var(--text-white); font-size: 15px; font-weight: 400;
+  color: var(--blue-dark); font-size: 15px; font-weight: 500;
   position: relative; padding-bottom: 3px;
 }
 .header-nav a::after {
   content: ''; position: absolute; bottom: 0; left: 0;
-  width: 0; height: 2px; background: var(--blue-light);
+  width: 0; height: 2px; background: var(--blue-primary);
   transition: width 0.3s;
 }
 .header-nav a:hover::after { width: 100%; }
@@ -61,7 +61,7 @@ a { text-decoration: none; color: inherit; }
   transition: background 0.3s;
 }
 .header-btn:hover { background: var(--blue-hover); }
-.mobile-toggle { display: none; background: none; border: none; color: var(--text-white); font-size: 28px; cursor: pointer; }
+.mobile-toggle { display: none; background: none; border: none; color: var(--blue-dark); font-size: 28px; cursor: pointer; }
 
 /* Hero */
 .hero {
@@ -363,7 +363,7 @@ a { text-decoration: none; color: inherit; }
 @media (max-width: 768px) {
   .header-nav { display: none; }
   .mobile-toggle { display: block; }
-  .header-nav.active { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: var(--blue-bg); padding: 20px; gap: 15px; border-bottom: 3px solid var(--blue-primary); }
+  .header-nav.active { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: var(--text-white); padding: 20px; gap: 15px; border-bottom: 3px solid var(--blue-primary); }
   .hero-bg { background-position: center 20%; }
   .hero { min-height: 90vh; }
   .hero-content h1, .about-text h3 { font-size: 28px; }
