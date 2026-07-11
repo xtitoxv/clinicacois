@@ -120,17 +120,38 @@ a { text-decoration: none; color: inherit; }
 }
 
 /* About */
-.about { background: var(--bg-light); }
-.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-.about-image {
-  background: linear-gradient(135deg, var(--blue-dark), var(--blue-primary));
-  border-radius: 12px; padding: 40px; text-align: center; min-height: 400px;
-  display: flex; align-items: center; justify-content: center;
+.about {
+  background: #003366; position: relative; overflow: hidden;
+  padding: 100px 0;
 }
-.about-image i { font-size: 120px; color: rgba(255,255,255,0.2); }
-.about-text h3 { font-size: 28px; color: var(--blue-dark); margin-bottom: 10px; }
-.about-text h4 { font-size: 16px; color: var(--blue-primary); font-weight: 500; margin-bottom: 20px; }
-.about-text p { font-size: 16px; line-height: 1.8; color: #444; margin-bottom: 15px; }
+.about::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background-image: url('Arq/fachada.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0;
+}
+.about::after {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(135deg, rgba(0,51,102,0.92) 0%, rgba(0,69,120,0.75) 50%, rgba(0,90,158,0.45) 100%);
+  z-index: 1;
+}
+.about .container { position: relative; z-index: 2; }
+.about-grid { display: grid; grid-template-columns: 1fr; gap: 40px; align-items: center; max-width: 800px; margin: 0 auto; }
+.about-image { display: none; }
+.about-text h3 {
+  font-size: 44px; font-weight: 700; color: var(--text-white); margin-bottom: 12px;
+  line-height: 1.2;
+}
+.about-text h4 {
+  font-size: 20px; color: var(--text-white); font-weight: 300; margin-bottom: 20px;
+  opacity: 0.95; line-height: 1.5;
+}
+.about-text p {
+  font-size: 17px; line-height: 1.7; color: var(--text-white); margin-bottom: 15px;
+  opacity: 0.9;
+}
 
 /* Services */
 .services { background: var(--bg-light); position: relative; }
@@ -331,13 +352,13 @@ a { text-decoration: none; color: inherit; }
 
 /* Responsive */
 @media (max-width: 1024px) {
-  .about-grid, .structure-grid { grid-template-columns: 1fr; gap: 40px; }
+  .structure-grid { grid-template-columns: 1fr; gap: 40px; }
   .services-grid { grid-template-columns: 1fr; }
   .patho-grid { grid-template-columns: repeat(2, 1fr); }
   .testi-grid { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
-  .hero-content h1 { font-size: 36px; }
-  .hero-content h2 { font-size: 18px; }
+  .hero-content h1, .about-text h3 { font-size: 36px; }
+  .hero-content h2, .about-text h4 { font-size: 18px; }
 }
 @media (max-width: 768px) {
   .header-nav { display: none; }
@@ -345,9 +366,9 @@ a { text-decoration: none; color: inherit; }
   .header-nav.active { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: var(--blue-bg); padding: 20px; gap: 15px; border-bottom: 3px solid var(--blue-primary); }
   .hero-bg { background-position: center 20%; }
   .hero { min-height: 90vh; }
-  .hero-content h1 { font-size: 28px; }
-  .hero-content h2 { font-size: 16px; }
-  .hero-content p { font-size: 14px; }
+  .hero-content h1, .about-text h3 { font-size: 28px; }
+  .hero-content h2, .about-text h4 { font-size: 16px; }
+  .hero-content p, .about-text p { font-size: 14px; }
   .hero-btn { padding: 14px 30px; font-size: 14px; }
   .section-title h2 { font-size: 28px; }
   .patho-grid { grid-template-columns: 1fr; }
