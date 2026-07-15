@@ -214,33 +214,12 @@ a { text-decoration: none; color: inherit; }
 .structure-text h4 { font-size: 16px; color: var(--blue-primary); font-weight: 500; margin-bottom: 20px; }
 .structure-text p { font-size: 16px; line-height: 1.8; color: #444; margin-bottom: 15px; }
 .structure-carousel {
-  position: relative; border-radius: 12px; overflow: hidden; min-height: 320px;
+  background: linear-gradient(135deg, var(--blue-dark), var(--blue-primary), #deecf9);
+  border-radius: 12px; padding: 40px; text-align: center; min-height: 300px;
+  display: flex; align-items: center; justify-content: center;
 }
-.carousel-slides { position: relative; width: 100%; height: 100%; min-height: 320px; }
-.carousel-slide {
-  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-  opacity: 0; transition: opacity 0.6s ease; z-index: 1;
-}
-.carousel-slide.active { opacity: 1; z-index: 2; }
-.carousel-slide img { width: 100%; height: 100%; object-fit: cover; display: block; min-height: 320px; }
-.carousel-dots {
-  position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%);
-  display: flex; gap: 8px; z-index: 10;
-}
-.carousel-dot {
-  width: 10px; height: 10px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.8);
-  background: transparent; cursor: pointer; transition: background 0.3s, transform 0.3s;
-}
-.carousel-dot.active { background: #fff; transform: scale(1.2); }
-.carousel-arrow {
-  position: absolute; top: 50%; transform: translateY(-50%); z-index: 10;
-  background: rgba(0,0,0,0.3); color: #fff; border: none; width: 36px; height: 36px;
-  border-radius: 50%; cursor: pointer; font-size: 16px; display: flex;
-  align-items: center; justify-content: center; transition: background 0.3s;
-}
-.carousel-arrow:hover { background: rgba(0,0,0,0.6); }
-.carousel-arrow.prev { left: 10px; }
-.carousel-arrow.next { right: 10px; }
+.structure-carousel i { font-size: 80px; color: rgba(255,255,255,0.2); }
+.structure-carousel p { color: rgba(255,255,255,0.6); margin-top: 15px; }
 
 /* Convênios */
 .convenios { background: var(--text-white); }
@@ -677,16 +656,10 @@ a { text-decoration: none; color: inherit; }
         <p>A Clínica Cois foi projetada para que você se sinta à vontade desde o primeiro momento. Contamos com salas de atendimento e exercício, todas climatizadas e equipadas para garantir conforto, privacidade e eficiência durante seu tratamento.</p>
         <p>O ambiente é acolhedor, silencioso e adaptado para diferentes perfis de pacientes — desde idosos até atletas em reabilitação. Nossa estrutura proporciona uma experiência tranquila e segura em cada etapa da sua recuperação.</p>
       </div>
-      <div class="structure-carousel" data-carousel="recepcao">
-        <div class="carousel-slides">
-          <div class="carousel-slide active"><img src="Arq/repcep%C3%A7%C3%A3o%20sala.jpeg" alt="Recepção da Clínica Cois"></div>
-          <div class="carousel-slide"><img src="Arq/repcep%C3%A7%C3%A3o.jpeg" alt="Recepção da Clínica Cois"></div>
-        </div>
-        <button class="carousel-arrow prev" aria-label="Anterior"><i class="fas fa-chevron-left"></i></button>
-        <button class="carousel-arrow next" aria-label="Próximo"><i class="fas fa-chevron-right"></i></button>
-        <div class="carousel-dots">
-          <span class="carousel-dot active"></span>
-          <span class="carousel-dot"></span>
+      <div class="structure-carousel">
+        <div>
+          <i class="fas fa-building"></i>
+          <p>Estrutura completa para sua reabilitação</p>
         </div>
       </div>
     </div>
@@ -696,20 +669,10 @@ a { text-decoration: none; color: inherit; }
 <section class="section" style="background:var(--bg-light);padding-top:0;">
   <div class="container">
     <div class="structure-grid">
-      <div class="structure-carousel" data-carousel="avaliacao">
-        <div class="carousel-slides">
-          <div class="carousel-slide active"><img src="Arq/consult%C3%B3rio1.jpeg" alt="Consultório da Clínica Cois"></div>
-          <div class="carousel-slide"><img src="Arq/consult%C3%B3rio2.jpeg" alt="Consultório da Clínica Cois"></div>
-          <div class="carousel-slide"><img src="Arq/consult%C3%B3rio3.jpeg" alt="Consultório da Clínica Cois"></div>
-          <div class="carousel-slide"><img src="Arq/consult%C3%B3rio4.jpeg" alt="Consultório da Clínica Cois"></div>
-        </div>
-        <button class="carousel-arrow prev" aria-label="Anterior"><i class="fas fa-chevron-left"></i></button>
-        <button class="carousel-arrow next" aria-label="Próximo"><i class="fas fa-chevron-right"></i></button>
-        <div class="carousel-dots">
-          <span class="carousel-dot active"></span>
-          <span class="carousel-dot"></span>
-          <span class="carousel-dot"></span>
-          <span class="carousel-dot"></span>
+      <div class="structure-carousel">
+        <div>
+          <i class="fas fa-microscope"></i>
+          <p>Avaliação fisioterapêutica com precisão e tecnologia de ponta</p>
         </div>
       </div>
       <div class="structure-text">
@@ -952,44 +915,6 @@ document.querySelectorAll('.header-nav a').forEach(link => {
   link.addEventListener('click', () => {
     document.querySelector('.header-nav').classList.remove('active');
   });
-});
-
-// Carrosséis
-document.querySelectorAll('[data-carousel]').forEach(container => {
-  const slides = container.querySelectorAll('.carousel-slide');
-  const dots = container.querySelectorAll('.carousel-dot');
-  const prevBtn = container.querySelector('.carousel-arrow.prev');
-  const nextBtn = container.querySelector('.carousel-arrow.next');
-  let current = 0;
-  let timer;
-
-  function goTo(index) {
-    slides[current].classList.remove('active');
-    dots[current].classList.remove('active');
-    current = (index + slides.length) % slides.length;
-    slides[current].classList.add('active');
-    dots[current].classList.add('active');
-  }
-
-  function startAuto() {
-    timer = setInterval(() => goTo(current + 1), 4000);
-  }
-
-  function resetAuto() {
-    clearInterval(timer);
-    startAuto();
-  }
-
-  prevBtn.addEventListener('click', () => { goTo(current - 1); resetAuto(); });
-  nextBtn.addEventListener('click', () => { goTo(current + 1); resetAuto(); });
-  dots.forEach((dot, i) => {
-    dot.addEventListener('click', () => { goTo(i); resetAuto(); });
-  });
-
-  container.addEventListener('mouseenter', () => clearInterval(timer));
-  container.addEventListener('mouseleave', startAuto);
-
-  startAuto();
 });
 </script>
 </body>
