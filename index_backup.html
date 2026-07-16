@@ -33,7 +33,7 @@ a { text-decoration: none; color: inherit; }
 /* Header */
 .header {
   position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-  background: var(--text-white); backdrop-filter: blur(10px);
+  background: rgba(0, 69, 120, 0.92); backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border-color);
   padding: 10px 20px;
   display: flex; align-items: center; justify-content: space-between;
@@ -43,15 +43,15 @@ a { text-decoration: none; color: inherit; }
   color: var(--text-white); font-size: 24px; font-weight: 700;
   background: var(--blue-primary); padding: 4px 12px; border-radius: 6px;
 }
-.header-logo span { color: var(--blue-dark); font-size: 14px; opacity: 0.8; }
+.header-logo span { color: var(--text-white); font-size: 14px; opacity: 0.8; }
 .header-nav { display: flex; align-items: center; gap: 20px; }
 .header-nav a {
-  color: var(--blue-dark); font-size: 15px; font-weight: 500;
+  color: var(--text-white); font-size: 15px; font-weight: 400;
   position: relative; padding-bottom: 3px;
 }
 .header-nav a::after {
   content: ''; position: absolute; bottom: 0; left: 0;
-  width: 0; height: 2px; background: var(--blue-primary);
+  width: 0; height: 2px; background: var(--blue-light);
   transition: width 0.3s;
 }
 .header-nav a:hover::after { width: 100%; }
@@ -61,7 +61,7 @@ a { text-decoration: none; color: inherit; }
   transition: background 0.3s;
 }
 .header-btn:hover { background: var(--blue-hover); }
-.mobile-toggle { display: none; background: none; border: none; color: var(--blue-dark); font-size: 28px; cursor: pointer; }
+.mobile-toggle { display: none; background: none; border: none; color: var(--text-white); font-size: 28px; cursor: pointer; }
 
 /* Hero */
 .hero {
@@ -120,38 +120,17 @@ a { text-decoration: none; color: inherit; }
 }
 
 /* About */
-.about {
-  background: #003366; position: relative; overflow: hidden;
-  padding: 100px 0;
+.about { background: var(--bg-light); }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.about-image {
+  background: linear-gradient(135deg, var(--blue-dark), var(--blue-primary));
+  border-radius: 12px; padding: 40px; text-align: center; min-height: 400px;
+  display: flex; align-items: center; justify-content: center;
 }
-.about::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-  background-image: url('Arq/fachada.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  z-index: 0;
-}
-.about::after {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(135deg, rgba(0,51,102,0.92) 0%, rgba(0,69,120,0.75) 50%, rgba(0,90,158,0.45) 100%);
-  z-index: 1;
-}
-.about .container { position: relative; z-index: 2; }
-.about-grid { display: grid; grid-template-columns: 1fr; gap: 40px; align-items: center; max-width: 800px; margin: 0 auto; }
-.about-image { display: none; }
-.about-text h3 {
-  font-size: 44px; font-weight: 700; color: var(--text-white); margin-bottom: 12px;
-  line-height: 1.2;
-}
-.about-text h4 {
-  font-size: 20px; color: var(--text-white); font-weight: 300; margin-bottom: 20px;
-  opacity: 0.95; line-height: 1.5;
-}
-.about-text p {
-  font-size: 17px; line-height: 1.7; color: var(--text-white); margin-bottom: 15px;
-  opacity: 0.9;
-}
+.about-image i { font-size: 120px; color: rgba(255,255,255,0.2); }
+.about-text h3 { font-size: 28px; color: var(--blue-dark); margin-bottom: 10px; }
+.about-text h4 { font-size: 16px; color: var(--blue-primary); font-weight: 500; margin-bottom: 20px; }
+.about-text p { font-size: 16px; line-height: 1.8; color: #444; margin-bottom: 15px; }
 
 /* Services */
 .services { background: var(--bg-light); position: relative; }
@@ -214,33 +193,12 @@ a { text-decoration: none; color: inherit; }
 .structure-text h4 { font-size: 16px; color: var(--blue-primary); font-weight: 500; margin-bottom: 20px; }
 .structure-text p { font-size: 16px; line-height: 1.8; color: #444; margin-bottom: 15px; }
 .structure-carousel {
-  position: relative; border-radius: 12px; overflow: hidden; min-height: 320px;
+  background: linear-gradient(135deg, var(--blue-dark), var(--blue-primary), #deecf9);
+  border-radius: 12px; padding: 40px; text-align: center; min-height: 300px;
+  display: flex; align-items: center; justify-content: center;
 }
-.carousel-slides { position: relative; width: 100%; height: 100%; min-height: 320px; }
-.carousel-slide {
-  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-  opacity: 0; transition: opacity 0.6s ease; z-index: 1;
-}
-.carousel-slide.active { opacity: 1; z-index: 2; }
-.carousel-slide img { width: 100%; height: 100%; object-fit: cover; display: block; min-height: 320px; }
-.carousel-dots {
-  position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%);
-  display: flex; gap: 8px; z-index: 10;
-}
-.carousel-dot {
-  width: 10px; height: 10px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.8);
-  background: transparent; cursor: pointer; transition: background 0.3s, transform 0.3s;
-}
-.carousel-dot.active { background: #fff; transform: scale(1.2); }
-.carousel-arrow {
-  position: absolute; top: 50%; transform: translateY(-50%); z-index: 10;
-  background: rgba(0,0,0,0.3); color: #fff; border: none; width: 36px; height: 36px;
-  border-radius: 50%; cursor: pointer; font-size: 16px; display: flex;
-  align-items: center; justify-content: center; transition: background 0.3s;
-}
-.carousel-arrow:hover { background: rgba(0,0,0,0.6); }
-.carousel-arrow.prev { left: 10px; }
-.carousel-arrow.next { right: 10px; }
+.structure-carousel i { font-size: 80px; color: rgba(255,255,255,0.2); }
+.structure-carousel p { color: rgba(255,255,255,0.6); margin-top: 15px; }
 
 /* Convênios */
 .convenios { background: var(--text-white); }
@@ -333,26 +291,26 @@ a { text-decoration: none; color: inherit; }
 
 /* Footer */
 .footer {
-  background: var(--text-white); color: var(--text-dark); padding: 60px 0 30px;
+  background: #002b4f; color: rgba(255,255,255,0.8); padding: 60px 0 30px;
 }
 .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.5fr; gap: 40px; }
 .footer-logo h3 {
-  color: var(--blue-dark); font-size: 20px; font-weight: 700; margin-bottom: 10px;
+  color: var(--text-white); font-size: 20px; font-weight: 700; margin-bottom: 10px;
 }
 .footer-logo h3 span {
-  background: var(--blue-primary); color: var(--text-white); padding: 3px 10px; border-radius: 4px;
+  background: var(--blue-primary); padding: 3px 10px; border-radius: 4px;
 }
-.footer-logo p { font-size: 14px; line-height: 1.7; margin-bottom: 20px; color: var(--text-gray); }
-.footer h4 { color: var(--blue-dark); font-size: 16px; font-weight: 600; margin-bottom: 20px; }
+.footer-logo p { font-size: 14px; line-height: 1.7; margin-bottom: 20px; }
+.footer h4 { color: var(--text-white); font-size: 16px; font-weight: 600; margin-bottom: 20px; }
 .footer-links a {
-  display: block; color: var(--blue-dark); font-size: 14px;
+  display: block; color: rgba(255,255,255,0.7); font-size: 14px;
   margin-bottom: 10px; transition: color 0.3s;
 }
-.footer-links a:hover { color: var(--blue-primary); }
-.footer-contact-item { display: flex; gap: 10px; margin-bottom: 12px; font-size: 14px; color: var(--text-dark); }
-.footer-contact-item i { color: var(--blue-primary); width: 18px; margin-top: 3px; }
-.footer-divider { border: none; height: 1px; background: var(--border-color); margin: 30px 0; }
-.footer-bottom { display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: var(--text-gray); }
+.footer-links a:hover { color: var(--blue-light); }
+.footer-contact-item { display: flex; gap: 10px; margin-bottom: 12px; font-size: 14px; }
+.footer-contact-item i { color: var(--blue-light); width: 18px; margin-top: 3px; }
+.footer-divider { border: none; height: 1px; background: rgba(255,255,255,0.1); margin: 30px 0; }
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: rgba(255,255,255,0.5); }
 
 /* WhatsApp floating button */
 .whatsapp-float {
@@ -371,39 +329,25 @@ a { text-decoration: none; color: inherit; }
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Logo pulse glow */
-@keyframes logoGlow {
-  0%, 100% { filter: drop-shadow(0 0 4px rgba(74, 144, 226, 0.3)); }
-  50% { filter: drop-shadow(0 0 12px rgba(74, 144, 226, 0.7)); }
-}
-.logo-cois {
-  animation: logoGlow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  will-change: filter;
-}
-.logo-cois:hover {
-  animation-duration: 1.5s;
-  filter: drop-shadow(0 0 14px rgba(74, 144, 226, 0.84));
-}
-
 /* Responsive */
 @media (max-width: 1024px) {
-  .structure-grid { grid-template-columns: 1fr; gap: 40px; }
+  .about-grid, .structure-grid { grid-template-columns: 1fr; gap: 40px; }
   .services-grid { grid-template-columns: 1fr; }
   .patho-grid { grid-template-columns: repeat(2, 1fr); }
   .testi-grid { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
-  .hero-content h1, .about-text h3 { font-size: 36px; }
-  .hero-content h2, .about-text h4 { font-size: 18px; }
+  .hero-content h1 { font-size: 36px; }
+  .hero-content h2 { font-size: 18px; }
 }
 @media (max-width: 768px) {
   .header-nav { display: none; }
   .mobile-toggle { display: block; }
-  .header-nav.active { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: var(--text-white); padding: 20px; gap: 15px; border-bottom: 3px solid var(--blue-primary); }
+  .header-nav.active { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: var(--blue-bg); padding: 20px; gap: 15px; border-bottom: 3px solid var(--blue-primary); }
   .hero-bg { background-position: center 20%; }
   .hero { min-height: 90vh; }
-  .hero-content h1, .about-text h3 { font-size: 28px; }
-  .hero-content h2, .about-text h4 { font-size: 16px; }
-  .hero-content p, .about-text p { font-size: 14px; }
+  .hero-content h1 { font-size: 28px; }
+  .hero-content h2 { font-size: 16px; }
+  .hero-content p { font-size: 14px; }
   .hero-btn { padding: 14px 30px; font-size: 14px; }
   .section-title h2 { font-size: 28px; }
   .patho-grid { grid-template-columns: 1fr; }
@@ -411,16 +355,13 @@ a { text-decoration: none; color: inherit; }
   .service-card { flex-direction: column; }
   .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
 }
-@media (prefers-reduced-motion: reduce) {
-  .logo-cois { animation: none; }
-}
 </style>
 </head>
 <body>
 
 <header class="header">
   <div class="header-logo">
-    <img src="logo.jpeg" alt="Clínica Cois" class="logo-cois" style="height:42px;width:auto;">
+    <img src="logo.jpeg" alt="Clínica Cois" style="height:42px;width:auto;">
   </div>
   <button class="mobile-toggle" onclick="document.querySelector('.header-nav').classList.toggle('active')">
     <i class="fas fa-bars"></i>
@@ -462,65 +403,6 @@ a { text-decoration: none; color: inherit; }
         <p>Bem-vindo à <strong>Clínica Cois</strong>, um centro de referência em <strong>Fisioterapia</strong> no coração do Rio Vermelho, em Salvador. Temos orgulho em oferecer tratamentos personalizados que respeitam o tempo, a dor e a história de cada paciente.</p>
         <p>Nosso trabalho vai além da recuperação física — acreditamos no cuidado integral, onde técnica e acolhimento caminham juntos. Com uma equipe multidisciplinar altamente qualificada e atualizada, utilizamos métodos modernos e uma estrutura completa para entregar mais do que resultados: entregamos confiança.</p>
         <p>Aqui, você vai encontrar profissionais que escutam, acolhem e caminham lado a lado com você em cada etapa da sua evolução. Estamos prontos pra cuidar do que realmente importa: a sua saúde.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section" style="background:var(--bg-light);">
-  <div class="container">
-    <div class="structure-grid">
-      <div class="structure-text">
-        <h3>Estrutura moderna e pensada para o seu bem-estar</h3>
-        <h4>Ambiente climatizado, acessível e confortável em cada detalhe do seu atendimento</h4>
-        <p>A Clínica Cois foi projetada para que você se sinta à vontade desde o primeiro momento. Contamos com salas de atendimento e exercício, todas climatizadas e equipadas para garantir conforto, privacidade e eficiência durante seu tratamento.</p>
-        <p>O ambiente é acolhedor, silencioso e adaptado para diferentes perfis de pacientes — desde idosos até atletas em reabilitação. Nossa estrutura proporciona uma experiência tranquila e segura em cada etapa da sua recuperação.</p>
-      </div>
-      <div class="structure-carousel" data-carousel="recepcao">
-        <div class="carousel-slides">
-          <div class="carousel-slide active"><img src="Arq/recep.png" alt="Recepção da Clínica Cois"></div>
-          <div class="carousel-slide"><img src="Arq/recepsala.png" alt="Sala de Recepção da Clínica Cois"></div>
-        </div>
-        <button class="carousel-arrow prev" aria-label="Anterior"><i class="fas fa-chevron-left"></i></button>
-        <button class="carousel-arrow next" aria-label="Próximo"><i class="fas fa-chevron-right"></i></button>
-        <div class="carousel-dots">
-          <span class="carousel-dot active"></span>
-          <span class="carousel-dot"></span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section" style="background:var(--bg-light);padding-top:0;">
-  <div class="container">
-    <div class="structure-grid">
-      <div class="structure-carousel" data-carousel="avaliacao">
-        <div class="carousel-slides">
-          <div class="carousel-slide active"><img src="Arq/pilates1.png" alt="Pilates na Clínica Cois"></div>
-          <div class="carousel-slide"><img src="Arq/pilates2.png" alt="Pilates na Clínica Cois"></div>
-          <div class="carousel-slide"><img src="Arq/consult1.png" alt="Consultório da Clínica Cois"></div>
-          <div class="carousel-slide"><img src="Arq/consult2.png" alt="Consultório da Clínica Cois"></div>
-          <div class="carousel-slide"><img src="Arq/consult3.png" alt="Consultório da Clínica Cois"></div>
-          <div class="carousel-slide"><img src="Arq/consult4.png" alt="Consultório da Clínica Cois"></div>
-        </div>
-        <button class="carousel-arrow prev" aria-label="Anterior"><i class="fas fa-chevron-left"></i></button>
-        <button class="carousel-arrow next" aria-label="Próximo"><i class="fas fa-chevron-right"></i></button>
-        <div class="carousel-dots">
-          <span class="carousel-dot active"></span>
-          <span class="carousel-dot"></span>
-          <span class="carousel-dot"></span>
-          <span class="carousel-dot"></span>
-          <span class="carousel-dot"></span>
-          <span class="carousel-dot"></span>
-        </div>
-      </div>
-      <div class="structure-text">
-        <h3>Avaliação fisioterapêutica com precisão e tecnologia de ponta</h3>
-        <h4>Diagnósticos completos para tratamentos realmente eficazes</h4>
-        <p>Na Clínica Cois, cada paciente passa por uma avaliação detalhada antes de iniciar o tratamento. Utilizamos o que há de mais moderno em tecnologia diagnóstica para oferecer uma análise precisa das suas condições.</p>
-        <p>Com esses dados em mãos, conseguimos criar um plano terapêutico personalizado, seguro e totalmente alinhado com as suas reais necessidades de reabilitação.</p>
-        <a class="header-btn" href="https://api.whatsapp.com/send/?phone=5571992502766&text=Ol%C3%A1%2C+vim+atrav%C3%A9s+do+site+e+gostaria+de+saber+mais+informa%C3%A7%C3%B5es%21" target="_blank" rel="nofollow noopener" style="display:inline-block;margin-top:20px;">Agende sua avaliação agora</a>
       </div>
     </div>
   </div>
@@ -727,6 +609,45 @@ a { text-decoration: none; color: inherit; }
   </div>
 </section>
 
+<section class="section" style="background:var(--bg-light);">
+  <div class="container">
+    <div class="structure-grid">
+      <div class="structure-text">
+        <h3>Estrutura moderna e pensada para o seu bem-estar</h3>
+        <h4>Ambiente climatizado, acessível e confortável em cada detalhe do seu atendimento</h4>
+        <p>A Clínica Cois foi projetada para que você se sinta à vontade desde o primeiro momento. Contamos com salas de atendimento e exercício, todas climatizadas e equipadas para garantir conforto, privacidade e eficiência durante seu tratamento.</p>
+        <p>O ambiente é acolhedor, silencioso e adaptado para diferentes perfis de pacientes — desde idosos até atletas em reabilitação. Nossa estrutura proporciona uma experiência tranquila e segura em cada etapa da sua recuperação.</p>
+      </div>
+      <div class="structure-carousel">
+        <div>
+          <i class="fas fa-building"></i>
+          <p>Estrutura completa para sua reabilitação</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--bg-light);padding-top:0;">
+  <div class="container">
+    <div class="structure-grid">
+      <div class="structure-carousel">
+        <div>
+          <i class="fas fa-microscope"></i>
+          <p>Avaliação fisioterapêutica com precisão e tecnologia de ponta</p>
+        </div>
+      </div>
+      <div class="structure-text">
+        <h3>Avaliação fisioterapêutica com precisão e tecnologia de ponta</h3>
+        <h4>Diagnósticos completos para tratamentos realmente eficazes</h4>
+        <p>Na Clínica Cois, cada paciente passa por uma avaliação detalhada antes de iniciar o tratamento. Utilizamos o que há de mais moderno em tecnologia diagnóstica para oferecer uma análise precisa das suas condições.</p>
+        <p>Com esses dados em mãos, conseguimos criar um plano terapêutico personalizado, seguro e totalmente alinhado com as suas reais necessidades de reabilitação.</p>
+        <a class="header-btn" href="https://api.whatsapp.com/send/?phone=5571992502766&text=Ol%C3%A1%2C+vim+atrav%C3%A9s+do+site+e+gostaria+de+saber+mais+informa%C3%A7%C3%B5es%21" target="_blank" rel="nofollow noopener" style="display:inline-block;margin-top:20px;">Agende sua avaliação agora</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="section convenios" id="convenios">
   <div class="container">
     <div class="section-title">
@@ -847,14 +768,14 @@ a { text-decoration: none; color: inherit; }
         <div class="footer-contact-item">
           <i class="fas fa-clock"></i>
           <div>
-            <strong style="color:var(--blue-dark);font-size:14px;">Segunda à Sexta-feira</strong><br>
+            <strong style="color:#fff;font-size:14px;">Segunda à Sexta-feira</strong><br>
             <span>08:00 até às 19:30</span>
           </div>
         </div>
         <div class="footer-contact-item">
           <i class="fas fa-clock"></i>
           <div>
-            <strong style="color:var(--blue-dark);font-size:14px;">Sábado e Domingo</strong><br>
+            <strong style="color:#fff;font-size:14px;">Sábado e Domingo</strong><br>
             <span>Fechado</span>
           </div>
         </div>
@@ -956,44 +877,6 @@ document.querySelectorAll('.header-nav a').forEach(link => {
   link.addEventListener('click', () => {
     document.querySelector('.header-nav').classList.remove('active');
   });
-});
-
-// Carrosséis
-document.querySelectorAll('[data-carousel]').forEach(container => {
-  const slides = container.querySelectorAll('.carousel-slide');
-  const dots = container.querySelectorAll('.carousel-dot');
-  const prevBtn = container.querySelector('.carousel-arrow.prev');
-  const nextBtn = container.querySelector('.carousel-arrow.next');
-  let current = 0;
-  let timer;
-
-  function goTo(index) {
-    slides[current].classList.remove('active');
-    dots[current].classList.remove('active');
-    current = (index + slides.length) % slides.length;
-    slides[current].classList.add('active');
-    dots[current].classList.add('active');
-  }
-
-  function startAuto() {
-    timer = setInterval(() => goTo(current + 1), 4000);
-  }
-
-  function resetAuto() {
-    clearInterval(timer);
-    startAuto();
-  }
-
-  prevBtn.addEventListener('click', () => { goTo(current - 1); resetAuto(); });
-  nextBtn.addEventListener('click', () => { goTo(current + 1); resetAuto(); });
-  dots.forEach((dot, i) => {
-    dot.addEventListener('click', () => { goTo(i); resetAuto(); });
-  });
-
-  container.addEventListener('mouseenter', () => clearInterval(timer));
-  container.addEventListener('mouseleave', startAuto);
-
-  startAuto();
 });
 </script>
 </body>
