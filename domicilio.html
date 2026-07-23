@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atendimento Domiciliar - Clínica Cois | Fisioterapia e Acupuntura em Salvador</title>
+<meta name="description" content="Atendimento domiciliar com fisioterapia, acupuntura e quiropraxia em Salvador. Profissional qualificado com pós-graduação. Agende sua consulta!">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --blue-primary: #0078D7;
+  --blue-dark: #005A9E;
+  --blue-light: #4DABF5;
+  --blue-hover: #006CBE;
+  --blue-bg: #004578;
+  --text-white: #FFFFFF;
+  --text-dark: #333333;
+  --text-gray: #666666;
+  --bg-light: #f0f6fc;
+  --border-color: #cce4f7;
+  --green-whatsapp: #25D366;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Poppins', sans-serif; color: var(--text-dark); overflow-x: hidden; }
+h1, h2, h3, h4 { font-family: 'Poppins', sans-serif; }
+img { max-width: 100%; height: auto; }
+a { text-decoration: none; color: inherit; }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+/* Header */
+.header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: var(--text-white); backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-color);
+  padding: 10px 20px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.header-logo { display: flex; align-items: center; gap: 10px; }
+.header-logo h1 {
+  color: var(--text-white); font-size: 24px; font-weight: 700;
+  background: var(--blue-primary); padding: 4px 12px; border-radius: 6px;
+}
+.header-nav { display: flex; align-items: center; gap: 20px; }
+.header-nav a {
+  color: var(--blue-dark); font-size: 15px; font-weight: 500;
+  position: relative; padding-bottom: 3px;
+}
+.header-nav a::after {
+  content: ''; position: absolute; bottom: 0; left: 0;
+  width: 0; height: 2px; background: var(--blue-primary);
+  transition: width 0.3s;
+}
+.header-nav a:hover::after { width: 100%; }
+.header-btn {
+  background: var(--blue-primary); color: var(--text-white);
+  padding: 10px 24px; border-radius: 6px; font-weight: 500; font-size: 14px;
+  transition: background 0.3s;
+}
+.header-btn:hover { background: var(--blue-hover); }
+.mobile-toggle { display: none; background: none; border: none; color: var(--blue-dark); font-size: 28px; cursor: pointer; }
+
+/* Hero */
+.hero {
+  min-height: 100vh; display: flex; align-items: center;
+  position: relative; overflow: hidden; padding-top: 80px;
+  background: linear-gradient(135deg, #003366 0%, #004578 40%, #005A9E 100%);
+}
+.hero::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background:
+    radial-gradient(circle at 20% 50%, rgba(0,120,215,0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(77,171,245,0.1) 0%, transparent 40%);
+  z-index: 1;
+}
+.hero-content { text-align: center; max-width: 800px; margin: 0 auto; padding: 60px 20px; position: relative; z-index: 2; }
+.hero-badge {
+  display: inline-block; background: rgba(255,255,255,0.15); backdrop-filter: blur(5px);
+  border: 1px solid rgba(255,255,255,0.2); border-radius: 30px;
+  padding: 8px 20px; margin-bottom: 25px;
+  color: rgba(255,255,255,0.9); font-size: 14px; font-weight: 500;
+  animation: fadeInDown 1s ease;
+}
+.hero-badge i { margin-right: 8px; color: var(--green-whatsapp); }
+.hero-content h1 {
+  color: var(--text-white); font-size: 44px; font-weight: 700; margin-bottom: 16px;
+  animation: fadeInDown 1s ease 0.1s both; line-height: 1.2;
+}
+.hero-content h2 {
+  color: var(--text-white); font-size: 20px; font-weight: 300; margin-bottom: 20px;
+  opacity: 0.95; animation: fadeInDown 1s ease 0.25s both; line-height: 1.6;
+}
+.hero-content p {
+  color: var(--text-white); font-size: 17px; line-height: 1.7; margin-bottom: 35px;
+  opacity: 0.9; animation: fadeInDown 1s ease 0.4s both;
+}
+.hero-btn {
+  display: inline-block; background: var(--green-whatsapp); color: var(--text-white);
+  padding: 16px 40px; border-radius: 50px; font-size: 16px; font-weight: 600;
+  transition: all 0.3s; animation: fadeInDown 1s ease 0.6s both;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+}
+.hero-btn:hover { background: #1ebe57; transform: translateY(-2px); box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6); }
+.hero-features {
+  display: flex; justify-content: center; gap: 40px; margin-top: 50px;
+  animation: fadeInDown 1s ease 0.8s both;
+}
+.hero-feature {
+  text-align: center; color: var(--text-white);
+}
+.hero-feature i {
+  font-size: 28px; margin-bottom: 10px; display: block;
+  color: var(--blue-light);
+}
+.hero-feature span { font-size: 14px; font-weight: 500; opacity: 0.9; }
+
+/* Section common */
+.section { padding: 80px 0; }
+.section-title {
+  text-align: center; margin-bottom: 15px;
+}
+.section-title h2 {
+  font-size: 36px; font-weight: 700; color: var(--blue-dark);
+  position: relative; display: inline-block;
+}
+.section-title h2::after {
+  content: ''; display: block; width: 60px; height: 4px;
+  background: var(--blue-primary); margin: 10px auto 0; border-radius: 2px;
+}
+.section-subtitle {
+  text-align: center; font-size: 18px; color: var(--text-gray); margin-bottom: 50px;
+}
+
+/* Professional Profile */
+.profile-section { background: var(--bg-light); }
+.profile-card {
+  display: grid; grid-template-columns: 300px 1fr; gap: 50px;
+  align-items: center; max-width: 900px; margin: 0 auto;
+  background: var(--text-white); border-radius: 16px;
+  padding: 40px; box-shadow: 0 4px 25px rgba(0,0,0,0.06);
+}
+.profile-photo {
+  position: relative;
+}
+.profile-photo img {
+  width: 100%; border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+}
+.profile-photo::after {
+  content: ''; position: absolute; bottom: -10px; left: -10px; right: -10px; height: 20px;
+  background: var(--text-white); border-radius: 0 0 12px 12px; z-index: -1;
+}
+.profile-info h3 {
+  font-size: 26px; color: var(--blue-dark); margin-bottom: 6px; font-weight: 700;
+}
+.profile-crefito {
+  display: inline-block; background: #e8f4fd; color: var(--blue-primary);
+  font-size: 13px; font-weight: 600; padding: 4px 12px; border-radius: 20px;
+  margin-bottom: 16px;
+}
+.profile-info p {
+  font-size: 15px; color: var(--text-gray); line-height: 1.7; margin-bottom: 12px;
+}
+.profile-badges {
+  display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px;
+}
+.profile-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--bg-light); border: 1px solid var(--border-color);
+  padding: 6px 14px; border-radius: 8px; font-size: 13px; color: var(--blue-dark); font-weight: 500;
+}
+.profile-badge i { color: var(--blue-primary); font-size: 14px; }
+
+/* Benefits */
+.benefits { background: linear-gradient(135deg, #003366, var(--blue-dark)); padding: 80px 0; }
+.benefits .section-title h2 { color: var(--text-white); }
+.benefits .section-title h2::after { background: var(--text-white); }
+.benefits .section-subtitle { color: rgba(255,255,255,0.8); }
+.benefits-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px;
+}
+.benefit-card {
+  background: rgba(255,255,255,0.08); backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.12); border-radius: 12px;
+  padding: 30px; text-align: center;
+  transition: transform 0.3s, background 0.3s;
+}
+.benefit-card:hover { transform: translateY(-4px); background: rgba(255,255,255,0.12); }
+.benefit-card i {
+  font-size: 36px; color: var(--blue-light); margin-bottom: 16px; display: block;
+}
+.benefit-card h3 {
+  color: var(--text-white); font-size: 17px; font-weight: 600; margin-bottom: 10px;
+}
+.benefit-card p {
+  color: rgba(255,255,255,0.75); font-size: 14px; line-height: 1.7;
+}
+
+/* Procedures */
+.procedures { background: var(--text-white); }
+.procedures-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+  max-width: 1000px; margin: 0 auto;
+}
+.procedure-card {
+  background: var(--bg-light); border: 1px solid var(--border-color);
+  border-radius: 12px; padding: 24px;
+  transition: all 0.3s;
+  position: relative; overflow: hidden;
+}
+.procedure-card::before {
+  content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%;
+  background: var(--blue-primary); border-radius: 4px 0 0 4px;
+  opacity: 0; transition: opacity 0.3s;
+}
+.procedure-card:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0,0,0,0.08); }
+.procedure-card:hover::before { opacity: 1; }
+.procedure-card .proc-icon {
+  width: 48px; height: 48px; background: var(--text-white);
+  border-radius: 10px; display: flex; align-items: center; justify-content: center;
+  font-size: 22px; color: var(--blue-primary); margin-bottom: 14px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.procedure-card h3 {
+  font-size: 16px; color: var(--blue-dark); margin-bottom: 8px; font-weight: 600;
+}
+.procedure-card p {
+  font-size: 13px; color: var(--text-gray); line-height: 1.6;
+}
+
+/* CTA Section */
+.cta-section {
+  background: var(--bg-light); padding: 60px 0; text-align: center;
+}
+.cta-box {
+  max-width: 700px; margin: 0 auto;
+  background: var(--text-white); border-radius: 16px;
+  padding: 50px 40px; box-shadow: 0 4px 25px rgba(0,0,0,0.06);
+}
+.cta-box h3 {
+  font-size: 28px; color: var(--blue-dark); margin-bottom: 12px;
+}
+.cta-box p {
+  font-size: 16px; color: var(--text-gray); line-height: 1.7; margin-bottom: 30px;
+}
+.cta-btn {
+  display: inline-block; background: var(--green-whatsapp); color: var(--text-white);
+  padding: 16px 40px; border-radius: 50px; font-size: 16px; font-weight: 600;
+  transition: all 0.3s; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+}
+.cta-btn:hover { background: #1ebe57; transform: translateY(-2px); box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6); }
+.cta-btn i { margin-right: 8px; }
+
+/* Footer */
+.footer {
+  background: var(--text-white); color: var(--text-dark); padding: 40px 0 20px;
+  border-top: 1px solid var(--border-color);
+}
+.footer-content {
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 20px;
+}
+.footer-left { display: flex; align-items: center; gap: 12px; }
+.footer-left img { height: 36px; width: auto; }
+.footer-left span { font-size: 14px; color: var(--text-gray); }
+.footer-links { display: flex; gap: 20px; }
+.footer-links a {
+  font-size: 14px; color: var(--blue-dark); font-weight: 500;
+  transition: color 0.3s;
+}
+.footer-links a:hover { color: var(--blue-primary); }
+.footer-bottom {
+  text-align: center; margin-top: 20px; padding-top: 20px;
+  border-top: 1px solid var(--border-color);
+  font-size: 13px; color: var(--text-gray);
+}
+
+/* WhatsApp floating */
+.whatsapp-float {
+  position: fixed; bottom: 24px; right: 24px; z-index: 999;
+  width: 60px; height: 60px; border-radius: 50%;
+  background: var(--green-whatsapp); color: var(--text-white);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 30px; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6); color: var(--text-white); }
+
+/* Animations */
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Logo pulse glow */
+@keyframes logoGlow {
+  0%, 100% { filter: drop-shadow(0 0 4px rgba(74, 144, 226, 0.3)); }
+  50% { filter: drop-shadow(0 0 12px rgba(74, 144, 226, 0.7)); }
+}
+.logo-cois {
+  animation: logoGlow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  will-change: filter;
+}
+.logo-cois:hover {
+  animation-duration: 1.5s;
+  filter: drop-shadow(0 0 14px rgba(74, 144, 226, 0.84));
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .benefits-grid { grid-template-columns: repeat(2, 1fr); }
+  .procedures-grid { grid-template-columns: repeat(2, 1fr); }
+  .hero-content h1 { font-size: 36px; }
+}
+@media (max-width: 768px) {
+  .header-nav { display: none; }
+  .mobile-toggle { display: block; }
+  .header-nav.active {
+    display: flex; flex-direction: column; position: absolute;
+    top: 100%; left: 0; right: 0; background: var(--text-white);
+    padding: 20px; gap: 15px; border-bottom: 3px solid var(--blue-primary);
+  }
+  .hero { min-height: 90vh; }
+  .hero-content h1 { font-size: 28px; }
+  .hero-content h2 { font-size: 16px; }
+  .hero-content p { font-size: 14px; }
+  .hero-btn { padding: 14px 30px; font-size: 14px; }
+  .hero-features { flex-direction: column; gap: 20px; }
+  .section-title h2 { font-size: 28px; }
+  .profile-card { grid-template-columns: 1fr; gap: 30px; padding: 25px; }
+  .profile-photo { max-width: 220px; margin: 0 auto; }
+  .benefits-grid { grid-template-columns: 1fr; }
+  .procedures-grid { grid-template-columns: 1fr; }
+  .cta-box { padding: 30px 20px; }
+  .footer-content { flex-direction: column; text-align: center; }
+  .footer-links { flex-wrap: wrap; justify-content: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .logo-cois { animation: none; }
+  * { animation: none !important; transition: none !important; }
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-logo">
+    <a href="index.html"><img src="logo.jpeg" alt="Clínica Cois" class="logo-cois" style="height:42px;width:auto;"></a>
+  </div>
+  <button class="mobile-toggle" onclick="document.querySelector('.header-nav').classList.toggle('active')">
+    <i class="fas fa-bars"></i>
+  </button>
+  <nav class="header-nav">
+    <a href="index.html">Início</a>
+    <a href="index.html#sobre">Sobre</a>
+    <a href="index.html#servicos">Serviços</a>
+    <a href="domicilio.html" style="color:var(--blue-primary);font-weight:600;">Domicílio</a>
+    <a href="index.html#depoimentos">Depoimentos</a>
+    <a class="header-btn" href="https://api.whatsapp.com/send/?phone=5571991085981&text=Ol%C3%A1%2C+vim+atrav%C3%A9s+do+site+e+gostaria+de+agendar+um+atendimento+domiciliar%21" target="_blank" rel="nofollow noopener">
+      Agendar atendimento
+    </a>
+  </nav>
+</header>
+
+<section class="hero" id="inicio">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <i class="fas fa-home"></i> Atendimento Domiciliar em Salvador
+    </div>
+    <h1>Cuidado profissional no conforto da sua casa</h1>
+    <h2>Fisioterapia, acupuntura e quiropraxia com qualidade e acolhimento — agora no seu lar</h2>
+    <p>Receba tratamentos especializados sem sair de casa. Atendimento personalizado realizado por um fisioterapeuta com ampla experiência e pós-graduação, garantindo o mesmo nível de qualidade e excelência da clínica, agora no conforto do seu ambiente.</p>
+    <a class="hero-btn" href="https://api.whatsapp.com/send/?phone=5571991085981&text=Ol%C3%A1%2C+vim+atrav%C3%A9s+do+site+e+gostaria+de+agendar+um+atendimento+domiciliar%21" target="_blank" rel="nofollow noopener">
+      <i class="fab fa-whatsapp"></i> Agendar pelo WhatsApp
+    </a>
+    <div class="hero-features">
+      <div class="hero-feature">
+        <i class="fas fa-user-md"></i>
+        <span>Profissional qualificado</span>
+      </div>
+      <div class="hero-feature">
+        <i class="fas fa-home"></i>
+        <span>No conforto de casa</span>
+      </div>
+      <div class="hero-feature">
+        <i class="fas fa-clock"></i>
+        <span>Horários flexíveis</span>
+      </div>
+      <div class="hero-feature">
+        <i class="fas fa-heartbeat"></i>
+        <span>Atendimento humanizado</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section profile-section" id="profissional">
+  <div class="container">
+    <div class="section-title">
+      <h2>Seu Profissional</h2>
+    </div>
+    <div class="section-subtitle">Excelência e dedicação em cada atendimento</div>
+    <div class="profile-card">
+      <div class="profile-photo">
+        <img src="Arq/vitor helder jaleco.png" alt="Fisioterapeuta Vitor Helder">
+      </div>
+      <div class="profile-info">
+        <h3>Ft. Vitor Helder Fernandes de Souza</h3>
+        <span class="profile-crefito">Crefito-7 155.425-F</span>
+        <p>Fisioterapeuta com ampla experiência em atendimento domiciliar e hospitalar, especializado em fisioterapia ortopédica, neurológica e gerontológica. Atua no <strong>Hospital Geral do Estado da Bahia</strong> na unidade de <strong>Traumato-Ortopedia</strong>, acumulando vasta experiência no tratamento de pacientes com diferentes necessidades.</p>
+        <p>Com pós-graduação em <strong>Acupuntura</strong> e <strong>Quiropraxia</strong>, oferece um atendimento integrado e personalizado, unindo técnicas modernas e uma abordagem humanizada para cada paciente.</p>
+        <div class="profile-badges">
+          <span class="profile-badge"><i class="fas fa-graduation-cap"></i> Pós em Acupuntura</span>
+          <span class="profile-badge"><i class="fas fa-graduation-cap"></i> Pós em Quiropraxia</span>
+          <span class="profile-badge"><i class="fas fa-hospital"></i> Hospital Geral do Estado</span>
+          <span class="profile-badge"><i class="fas fa-bone"></i> Traumato-Ortopedia</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="benefits" id="beneficios">
+  <div class="container">
+    <div class="section-title">
+      <h2>Vantagens do Atendimento Domiciliar</h2>
+    </div>
+    <div class="section-subtitle">Cuidar da saúde nunca foi tão acessível e confortável</div>
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <i class="fas fa-couch"></i>
+        <h3>Conforto e familiaridade</h3>
+        <p>Realize seu tratamento no ambiente que oferece mais segurança e tranquilidade — a sua casa.</p>
+      </div>
+      <div class="benefit-card">
+        <i class="fas fa-route"></i>
+        <h3>Eliminação do deslocamento</h3>
+        <p>Sem trânsito, sem estresse de locomoção. O profissional vai até você.</p>
+      </div>
+      <div class="benefit-card">
+        <i class="fas fa-calendar-check"></i>
+        <h3>Horários flexíveis</h3>
+        <p>Atendimentos adaptados à sua rotina e necessidades, com agendamento prático.</p>
+      </div>
+      <div class="benefit-card">
+        <i class="fas fa-user-nurse"></i>
+        <h3>Atendimento personalizado</h3>
+        <p>Um profissional dedicado exclusivamente a você durante toda a sessão.</p>
+      </div>
+      <div class="benefit-card">
+        <i class="fas fa-shield-alt"></i>
+        <h3>Segurança e privacidade</h3>
+        <p>Tratamento sigiloso e seguro, respeitando a privacidade do paciente e da família.</p>
+      </div>
+      <div class="benefit-card">
+        <i class="fas fa-hands-helping"></i>
+        <h3>Ideal para idosos e pós-operatórios</h3>
+        <p>Perfeito para pacientes com dificuldade de locomoção ou em fase de recuperação.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section procedures" id="procedimentos">
+  <div class="container">
+    <div class="section-title">
+      <h2>Procedimentos Realizados</h2>
+    </div>
+    <div class="section-subtitle">Ampla gama de tratamentos especializados disponíveis para atendimento domiciliar</div>
+    <div class="procedures-grid">
+      <div class="procedure-card">
+        <div class="proc-icon"><i class="fas fa-hand-sparkles"></i></div>
+        <h3>Acupuntura</h3>
+        <p>Técnica milenar que estimula pontos energéticos do corpo para alívio de dores, redução do estresse e tratamento de condições crônicas.</p>
+      </div>
+      <div class="procedure-card">
+        <div class="proc-icon"><i class="fas fa-bolt"></i></div>
+        <h3>Corrente Russa</h3>
+        <p>Estimulação elétrica muscular de alta frequência para fortalecimento, reabilitação e aumento da força muscular.</p>
+      </div>
+      <div class="procedure-card">
+        <div class="proc-icon"><i class="fas fa-tint"></i></div>
+        <h3>Drenagem Linfática</h3>
+        <p>Técnica suave que estimula o sistema linfático, reduz inchaços, elimina toxinas e combate a celulite de forma eficiente.</p>
+      </div>
+      <div class="procedure-card">
+        <div class="proc-icon"><i class="fas fa-plug"></i></div>
+        <h3>Eletroterapia</h3>
+        <p>Uso de correntes elétricas terapêuticas para alívio da dor, redução de inflamação e promoção de cicatrização tecidual.</p>
+      </div>
+      <div class="procedure-card">
+        <div class="proc-icon"><i class="fas fa-heart"></i></div>
+        <h3>Fisioterapia Gerontológica</h3>
+        <p>Tratamento especializado para a terceira idade, promovendo mobilidade, equilíbrio e qualidade de vida para idosos.</p>
+      </div>
+      <div class="procedure-card">
+        <div class="proc-icon"><i class="fas fa-brain"></i></div>
+        <h3>Fisioterapia Neurológica</h3>
+        <p>Reabilitação de pacientes com acometimentos do sistema nervoso, como AVC, Parkinson, paralisia cerebral e traumas cranianos.</p>
+      </div>
+      <div class="procedure-card">
+        <div class="proc-icon"><i class="fas fa-bone"></i></div>
+        <h3>Fisioterapia Ortopédica</h3>
+        <p>Tratamento de disfunções musculoesqueléticas, pós-operatórios ortopédicos, fraturas e lesões articulares.</p>
+      </div>
+      <div class="procedure-card">
+        <div class="proc-icon"><i class="fas fa-hands"></i></div>
+        <h3>Liberação Miofascial</h3>
+        <p>Técnica manual que atua sobre as restrições da fáscia, aliviando dores, melhorando a mobilidade e o desempenho muscular.</p>
+      </div>
+      <div class="procedure-card">
+        <div class="proc-icon"><i class="fas fa-spa"></i></div>
+        <h3>Massoterapia</h3>
+        <p>Técnicas manuais de massagem terapêutica para alívio de tensões, redução do estresse e melhora da circulação sanguínea.</p>
+      </div>
+      <div class="procedure-card">
+        <div class="proc-icon"><i class="fas fa-circle-notch"></i></div>
+        <h3>Quiropraxia</h3>
+        <p>Ajustes articulares precisos para restaurar a função do sistema nervoso e musculoesquelético, aliviando dores na coluna.</p>
+      </div>
+      <div class="procedure-card">
+        <div class="proc-icon"><i class="fas fa-arrows-alt-v"></i></div>
+        <h3>RPG — Reeducação Postural Global</h3>
+        <p>Método que trata desvios posturais através de alongamentos globais, aliviando dores e realinhando o corpo.</p>
+      </div>
+      <div class="procedure-card">
+        <div class="proc-icon"><i class="fas fa-wave-square"></i></div>
+        <h3>Terapia Neural</h3>
+        <p>Abordagem que utiliza microinjeções de anestésico em pontos específicos para tratar dores crônicas e reequilibrar o sistema nervoso.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="contato">
+  <div class="container">
+    <div class="cta-box">
+      <h3>Agende seu atendimento domiciliar</h3>
+      <p>Entre em contato agora mesmo pelo WhatsApp e agende uma avaliação domiciliar. Cuide da sua saúde no conforto da sua casa, com um profissional qualificado e experiente.</p>
+      <a class="cta-btn" href="https://api.whatsapp.com/send/?phone=5571991085981&text=Ol%C3%A1%2C+vim+atrav%C3%A9s+do+site+e+gostaria+de+agendar+um+atendimento+domiciliar%21" target="_blank" rel="nofollow noopener">
+        <i class="fab fa-whatsapp"></i> Agendar pelo WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-left">
+        <a href="index.html"><img src="logo.jpeg" alt="Clínica Cois"></a>
+        <span>&copy; 2026 Clínica Cois. Todos os direitos reservados.</span>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Página Principal</a>
+        <a href="index.html#sobre">Sobre</a>
+        <a href="index.html#servicos">Serviços</a>
+        <a href="index.html#depoimentos">Depoimentos</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>Desenvolvido por VHFS Web</span>
+    </div>
+  </div>
+</footer>
+
+<a class="whatsapp-float" href="https://api.whatsapp.com/send/?phone=5571991085981&text=Ol%C3%A1%2C+vim+atrav%C3%A9s+do+site+e+gostaria+de+agendar+um+atendimento+domiciliar%21" target="_blank" rel="nofollow noopener" aria-label="Contato do WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<script>
+document.querySelectorAll('.header-nav a').forEach(link => {
+  link.addEventListener('click', () => {
+    document.querySelector('.header-nav').classList.remove('active');
+  });
+});
+</script>
+</body>
+</html>
