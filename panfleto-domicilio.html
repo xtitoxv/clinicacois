@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panfleto - Atendimento Domiciliar Clínica Cois</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+@page {
+  size: A4 portrait;
+  margin: 10mm;
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #e8e8e8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Print controls */
+.print-controls {
+  position: fixed; top: 20px; right: 20px; z-index: 1000;
+  display: flex; gap: 10px;
+}
+.print-btn {
+  background: #0078D7; color: #fff; border: none; padding: 12px 24px;
+  border-radius: 8px; font-family: 'Poppins', sans-serif; font-size: 14px;
+  font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 8px;
+  box-shadow: 0 4px 12px rgba(0,120,215,0.3); transition: all 0.3s;
+}
+.print-btn:hover { background: #005A9E; transform: translateY(-2px); }
+.print-btn.secondary { background: #666; }
+.print-btn.secondary:hover { background: #444; }
+
+/* A4 sheet */
+.a4-sheet {
+  width: 210mm; min-height: 297mm;
+  background: #fff;
+  display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr;
+  gap: 0; padding: 0;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  margin-bottom: 30px;
+  overflow: hidden;
+}
+
+/* Single flyer */
+.flyer {
+  width: 105mm; height: 148.5mm;
+  padding: 5mm 5mm 4mm 5mm;
+  display: flex; flex-direction: column;
+  border: 0.3mm dashed #ccc;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Flyer content */
+.flyer-top {
+  background: linear-gradient(135deg, #003366 0%, #005A9E 100%);
+  border-radius: 3mm;
+  padding: 4mm 4mm 3.5mm 4mm;
+  text-align: center;
+  position: relative;
+  flex-shrink: 0;
+}
+.flyer-top::after {
+  content: ''; position: absolute; bottom: -2mm; left: 10%; right: 10%;
+  height: 1.5mm; background: #25D366; border-radius: 1mm;
+}
+.flyer-logo {
+  height: 9mm; width: auto; margin-bottom: 1.5mm;
+  filter: brightness(10);
+}
+.flyer-badge {
+  display: inline-block;
+  background: rgba(255,255,255,0.15); border: 0.3mm solid rgba(255,255,255,0.3);
+  border-radius: 3mm; padding: 1mm 3mm;
+  font-size: 5.5pt; color: rgba(255,255,255,0.9); font-weight: 500;
+  margin-bottom: 2mm;
+}
+.flyer-badge i { color: #25D366; margin-right: 1mm; }
+.flyer-title {
+  color: #fff; font-size: 11pt; font-weight: 800;
+  line-height: 1.2; margin-bottom: 1mm;
+}
+.flyer-subtitle {
+  color: rgba(255,255,255,0.85); font-size: 6.5pt; font-weight: 300;
+  line-height: 1.3;
+}
+
+/* Services section */
+.flyer-services {
+  flex: 1; padding: 3mm 0 2mm 0;
+  display: flex; flex-direction: column;
+}
+.flyer-services-title {
+  font-size: 6.5pt; font-weight: 700; color: #005A9E;
+  text-transform: uppercase; letter-spacing: 0.3mm;
+  margin-bottom: 1.5mm;
+  display: flex; align-items: center; gap: 1mm;
+}
+.flyer-services-title i { font-size: 5.5pt; color: #0078D7; }
+.services-list {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0.8mm 2mm;
+  flex: 1;
+}
+.service-item {
+  font-size: 5.2pt; color: #444; line-height: 1.3;
+  display: flex; align-items: flex-start; gap: 1mm;
+  padding: 0.4mm 0;
+}
+.service-item .dot {
+  width: 1.2mm; height: 1.2mm; min-width: 1.2mm;
+  background: #0078D7; border-radius: 50%;
+  margin-top: 0.8mm;
+}
+
+/* Professional section */
+.flyer-pro {
+  background: #f0f6fc; border-radius: 2.5mm;
+  padding: 2.5mm 3mm; margin-top: auto;
+  display: flex; gap: 2.5mm; align-items: center;
+}
+.flyer-pro-photo {
+  width: 14mm; height: 14mm; min-width: 14mm;
+  border-radius: 50%; overflow: hidden;
+  border: 0.5mm solid #0078D7;
+  background: #fff;
+}
+.flyer-pro-photo img {
+  width: 100%; height: 100%; object-fit: cover;
+}
+.flyer-pro-info h4 {
+  font-size: 6pt; color: #005A9E; font-weight: 700; line-height: 1.2;
+}
+.flyer-pro-info p {
+  font-size: 4.5pt; color: #666; line-height: 1.3;
+}
+.flyer-pro-info .crefito {
+  font-size: 4.2pt; color: #0078D7; font-weight: 600;
+}
+
+/* Contact section */
+.flyer-contact {
+  background: linear-gradient(135deg, #25D366, #1ebe57);
+  border-radius: 3mm; padding: 3mm;
+  margin-top: 2mm; flex-shrink: 0;
+  display: flex; gap: 3mm; align-items: center;
+}
+.flyer-qr {
+  width: 18mm; height: 18mm; min-width: 18mm;
+  background: #fff; border-radius: 2mm;
+  display: flex; align-items: center; justify-content: center;
+  padding: 1.5mm;
+}
+.flyer-qr img { width: 100%; height: 100%; }
+.flyer-contact-info { flex: 1; }
+.flyer-contact-info .label {
+  font-size: 4.5pt; color: rgba(255,255,255,0.8); font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.2mm; margin-bottom: 0.5mm;
+}
+.flyer-contact-info .phone {
+  font-size: 10pt; color: #fff; font-weight: 800; line-height: 1.2;
+  display: flex; align-items: center; gap: 1.5mm;
+}
+.flyer-contact-info .phone i { font-size: 7pt; }
+.flyer-contact-info .site {
+  font-size: 5pt; color: rgba(255,255,255,0.85); margin-top: 0.5mm;
+  font-weight: 500;
+}
+
+/* Print styles */
+@media print {
+  body { background: none; padding: 0; margin: 0; }
+  .print-controls { display: none !important; }
+  .a4-sheet {
+    box-shadow: none; margin: 0;
+    width: 100%; min-height: auto;
+    page-break-after: always;
+  }
+  .flyer { border: none; }
+  .flyer-top { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .flyer-contact { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .flyer-pro { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+
+/* Screen-only: show cutting guides */
+@media screen {
+  .flyer {
+    border: 1px dashed #ccc;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="print-controls">
+  <button class="print-btn" onclick="window.print()">
+    <i class="fas fa-print"></i> Imprimir Panfletos
+  </button>
+  <button class="print-btn secondary" onclick="downloadPDF()">
+    <i class="fas fa-file-pdf"></i> Salvar PDF
+  </button>
+</div>
+
+<!-- FOLHA 1: 4 panfletos -->
+<div class="a4-sheet" id="sheet1">
+
+  <!-- Panfleto 1 -->
+  <div class="flyer">
+    <div class="flyer-top">
+      <img src="logo.jpeg" alt="Clínica Cois" class="flyer-logo">
+      <div class="flyer-badge"><i class="fas fa-home"></i> Atendimento Domiciliar</div>
+      <div class="flyer-title">Cuidado Profissional<br>No Conforto da Sua Casa</div>
+      <div class="flyer-subtitle">Fisioterapia, Acupuntura e Quiropraxia em Salvador</div>
+    </div>
+    <div class="flyer-services">
+      <div class="flyer-services-title"><i class="fas fa-list-check"></i> Procedimentos</div>
+      <div class="services-list">
+        <div class="service-item"><span class="dot"></span>Acupuntura</div>
+        <div class="service-item"><span class="dot"></span>Corrente Russa</div>
+        <div class="service-item"><span class="dot"></span>Drenagem Linfática</div>
+        <div class="service-item"><span class="dot"></span>Eletroterapia</div>
+        <div class="service-item"><span class="dot"></span>Fisioterapia Gerontológica</div>
+        <div class="service-item"><span class="dot"></span>Fisioterapia Neurológica</div>
+        <div class="service-item"><span class="dot"></span>Fisioterapia Ortopédica</div>
+        <div class="service-item"><span class="dot"></span>Liberação Miofascial</div>
+        <div class="service-item"><span class="dot"></span>Massoterapia</div>
+        <div class="service-item"><span class="dot"></span>Quiropraxia</div>
+        <div class="service-item"><span class="dot"></span>RPG</div>
+        <div class="service-item"><span class="dot"></span>Terapia Neural</div>
+      </div>
+      <div class="flyer-pro">
+        <div class="flyer-pro-photo"><img src="Arq/vitor helder jaleco.png" alt="Ft. Vitor Helder"></div>
+        <div class="flyer-pro-info">
+          <h4>Ft. Vitor Helder F. de Souza</h4>
+          <span class="crefito">Crefito-7 155.425-F</span>
+          <p>Pós-Graduação em Acupuntura e Quiropraxia<br> Hospital Geral do Estado da Bahia — Traumato-Ortopedia</p>
+        </div>
+      </div>
+    </div>
+    <div class="flyer-contact">
+      <div class="flyer-qr">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://clinicacois.com.br/domicilio&bgcolor=FFFFFF&color=003366" alt="QR Code Domicílio">
+      </div>
+      <div class="flyer-contact-info">
+        <div class="label">Agende agora</div>
+        <div class="phone"><i class="fab fa-whatsapp"></i> (71) 99108-5981</div>
+        <div class="site">www.clinicacois.com.br/domicilio</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Panfleto 2 -->
+  <div class="flyer">
+    <div class="flyer-top">
+      <img src="logo.jpeg" alt="Clínica Cois" class="flyer-logo">
+      <div class="flyer-badge"><i class="fas fa-home"></i> Atendimento Domiciliar</div>
+      <div class="flyer-title">Cuidado Profissional<br>No Conforto da Sua Casa</div>
+      <div class="flyer-subtitle">Fisioterapia, Acupuntura e Quiropraxia em Salvador</div>
+    </div>
+    <div class="flyer-services">
+      <div class="flyer-services-title"><i class="fas fa-list-check"></i> Procedimentos</div>
+      <div class="services-list">
+        <div class="service-item"><span class="dot"></span>Acupuntura</div>
+        <div class="service-item"><span class="dot"></span>Corrente Russa</div>
+        <div class="service-item"><span class="dot"></span>Drenagem Linfática</div>
+        <div class="service-item"><span class="dot"></span>Eletroterapia</div>
+        <div class="service-item"><span class="dot"></span>Fisioterapia Gerontológica</div>
+        <div class="service-item"><span class="dot"></span>Fisioterapia Neurológica</div>
+        <div class="service-item"><span class="dot"></span>Fisioterapia Ortopédica</div>
+        <div class="service-item"><span class="dot"></span>Liberação Miofascial</div>
+        <div class="service-item"><span class="dot"></span>Massoterapia</div>
+        <div class="service-item"><span class="dot"></span>Quiropraxia</div>
+        <div class="service-item"><span class="dot"></span>RPG</div>
+        <div class="service-item"><span class="dot"></span>Terapia Neural</div>
+      </div>
+      <div class="flyer-pro">
+        <div class="flyer-pro-photo"><img src="Arq/vitor helder jaleco.png" alt="Ft. Vitor Helder"></div>
+        <div class="flyer-pro-info">
+          <h4>Ft. Vitor Helder F. de Souza</h4>
+          <span class="crefito">Crefito-7 155.425-F</span>
+          <p>Pós-Graduação em Acupuntura e Quiropraxia<br> Hospital Geral do Estado da Bahia — Traumato-Ortopedia</p>
+        </div>
+      </div>
+    </div>
+    <div class="flyer-contact">
+      <div class="flyer-qr">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://clinicacois.com.br/domicilio&bgcolor=FFFFFF&color=003366" alt="QR Code Domicílio">
+      </div>
+      <div class="flyer-contact-info">
+        <div class="label">Agende agora</div>
+        <div class="phone"><i class="fab fa-whatsapp"></i> (71) 99108-5981</div>
+        <div class="site">www.clinicacois.com.br/domicilio</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Panfleto 3 -->
+  <div class="flyer">
+    <div class="flyer-top">
+      <img src="logo.jpeg" alt="Clínica Cois" class="flyer-logo">
+      <div class="flyer-badge"><i class="fas fa-home"></i> Atendimento Domiciliar</div>
+      <div class="flyer-title">Cuidado Profissional<br>No Conforto da Sua Casa</div>
+      <div class="flyer-subtitle">Fisioterapia, Acupuntura e Quiropraxia em Salvador</div>
+    </div>
+    <div class="flyer-services">
+      <div class="flyer-services-title"><i class="fas fa-list-check"></i> Procedimentos</div>
+      <div class="services-list">
+        <div class="service-item"><span class="dot"></span>Acupuntura</div>
+        <div class="service-item"><span class="dot"></span>Corrente Russa</div>
+        <div class="service-item"><span class="dot"></span>Drenagem Linfática</div>
+        <div class="service-item"><span class="dot"></span>Eletroterapia</div>
+        <div class="service-item"><span class="dot"></span>Fisioterapia Gerontológica</div>
+        <div class="service-item"><span class="dot"></span>Fisioterapia Neurológica</div>
+        <div class="service-item"><span class="dot"></span>Fisioterapia Ortopédica</div>
+        <div class="service-item"><span class="dot"></span>Liberação Miofascial</div>
+        <div class="service-item"><span class="dot"></span>Massoterapia</div>
+        <div class="service-item"><span class="dot"></span>Quiropraxia</div>
+        <div class="service-item"><span class="dot"></span>RPG</div>
+        <div class="service-item"><span class="dot"></span>Terapia Neural</div>
+      </div>
+      <div class="flyer-pro">
+        <div class="flyer-pro-photo"><img src="Arq/vitor helder jaleco.png" alt="Ft. Vitor Helder"></div>
+        <div class="flyer-pro-info">
+          <h4>Ft. Vitor Helder F. de Souza</h4>
+          <span class="crefito">Crefito-7 155.425-F</span>
+          <p>Pós-Graduação em Acupuntura e Quiropraxia<br> Hospital Geral do Estado da Bahia — Traumato-Ortopedia</p>
+        </div>
+      </div>
+    </div>
+    <div class="flyer-contact">
+      <div class="flyer-qr">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://clinicacois.com.br/domicilio&bgcolor=FFFFFF&color=003366" alt="QR Code Domicílio">
+      </div>
+      <div class="flyer-contact-info">
+        <div class="label">Agende agora</div>
+        <div class="phone"><i class="fab fa-whatsapp"></i> (71) 99108-5981</div>
+        <div class="site">www.clinicacois.com.br/domicilio</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Panfleto 4 -->
+  <div class="flyer">
+    <div class="flyer-top">
+      <img src="logo.jpeg" alt="Clínica Cois" class="flyer-logo">
+      <div class="flyer-badge"><i class="fas fa-home"></i> Atendimento Domiciliar</div>
+      <div class="flyer-title">Cuidado Profissional<br>No Conforto da Sua Casa</div>
+      <div class="flyer-subtitle">Fisioterapia, Acupuntura e Quiropraxia em Salvador</div>
+    </div>
+    <div class="flyer-services">
+      <div class="flyer-services-title"><i class="fas fa-list-check"></i> Procedimentos</div>
+      <div class="services-list">
+        <div class="service-item"><span class="dot"></span>Acupuntura</div>
+        <div class="service-item"><span class="dot"></span>Corrente Russa</div>
+        <div class="service-item"><span class="dot"></span>Drenagem Linfática</div>
+        <div class="service-item"><span class="dot"></span>Eletroterapia</div>
+        <div class="service-item"><span class="dot"></span>Fisioterapia Gerontológica</div>
+        <div class="service-item"><span class="dot"></span>Fisioterapia Neurológica</div>
+        <div class="service-item"><span class="dot"></span>Fisioterapia Ortopédica</div>
+        <div class="service-item"><span class="dot"></span>Liberação Miofascial</div>
+        <div class="service-item"><span class="dot"></span>Massoterapia</div>
+        <div class="service-item"><span class="dot"></span>Quiropraxia</div>
+        <div class="service-item"><span class="dot"></span>RPG</div>
+        <div class="service-item"><span class="dot"></span>Terapia Neural</div>
+      </div>
+      <div class="flyer-pro">
+        <div class="flyer-pro-photo"><img src="Arq/vitor helder jaleco.png" alt="Ft. Vitor Helder"></div>
+        <div class="flyer-pro-info">
+          <h4>Ft. Vitor Helder F. de Souza</h4>
+          <span class="crefito">Crefito-7 155.425-F</span>
+          <p>Pós-Graduação em Acupuntura e Quiropraxia<br> Hospital Geral do Estado da Bahia — Traumato-Ortopedia</p>
+        </div>
+      </div>
+    </div>
+    <div class="flyer-contact">
+      <div class="flyer-qr">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://clinicacois.com.br/domicilio&bgcolor=FFFFFF&color=003366" alt="QR Code Domicílio">
+      </div>
+      <div class="flyer-contact-info">
+        <div class="label">Agende agora</div>
+        <div class="phone"><i class="fab fa-whatsapp"></i> (71) 99108-5981</div>
+        <div class="site">www.clinicacois.com.br/domicilio</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function downloadPDF() {
+  window.print();
+}
+</script>
+</body>
+</html>
