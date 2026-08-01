@@ -415,9 +415,18 @@ a { text-decoration: none; color: inherit; }
   .logo-cois { animation: none; }
 }
 </style>
-</head>
-<body>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EZ4WYG9LN7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'G-EZ4WYG9LN7');
+</script>
+</head>
+
+<body>
 <header class="header">
   <div class="header-logo">
     <img src="logo.jpeg" alt="Clínica Cois" class="logo-cois" style="height:42px;width:auto;">
@@ -879,7 +888,7 @@ a { text-decoration: none; color: inherit; }
     <hr class="footer-divider">
     <div class="footer-bottom">
       <span>&copy; 2026 Clínica Cois. Todos os direitos reservados.</span>
-      <span>Desenvolvido por VHFS Web</span>
+      <span>Desenvolvido por <a href="http://criasitevh.vercel.app" target="_blank" rel="nofollow noopener" style="display:inline-flex;align-items:center;gap:6px;color:var(--blue-primary);text-decoration:none;font-weight:600;"><img src="Arq/imagens/criasitevhlogo.jpg" alt="CriaSiteVH" style="height:18px;width:auto;border-radius:3px;">CriaSiteVH</a></span>
     </div>
   </div>
 </footer>
