@@ -365,6 +365,79 @@ a { text-decoration: none; color: inherit; }
 }
 .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6); color: var(--text-white); }
 
+/* Marquee - Nossos Serviços */
+.marquee-section {
+  background: var(--blue-dark);
+  border-top: 3px solid var(--blue-light);
+  border-bottom: 3px solid var(--blue-light);
+  padding: 14px 0;
+  position: relative;
+  z-index: 999;
+  margin-top: 60px;
+}
+.marquee-container {
+  position: relative;
+  overflow: hidden;
+}
+.marquee-fade-left,
+.marquee-fade-right {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 80px;
+  z-index: 10;
+}
+.marquee-fade-left {
+  left: 0;
+  background: linear-gradient(to right, var(--blue-dark), transparent);
+}
+.marquee-fade-right {
+  right: 0;
+  background: linear-gradient(to left, var(--blue-dark), transparent);
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marqueeScroll 45s linear infinite;
+}
+.marquee-container:hover .marquee-track {
+  animation-play-state: paused;
+}
+.marquee-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+  padding: 0 32px;
+  border-right: 1px solid rgba(255,255,255,0.15);
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.75);
+  letter-spacing: 0.3px;
+  transition: color 0.3s;
+}
+.marquee-item:last-child {
+  border-right: none;
+}
+.marquee-item:hover {
+  color: #FFFFFF;
+}
+.marquee-item .marquee-icon {
+  font-size: 20px;
+  line-height: 1;
+}
+.marquee-item .marquee-label {
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-size: 12px;
+  font-weight: 600;
+}
+@keyframes marqueeScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
 /* Animations */
 @keyframes fadeInDown {
   from { opacity: 0; transform: translateY(-30px); }
@@ -410,9 +483,19 @@ a { text-decoration: none; color: inherit; }
   .footer-grid { grid-template-columns: 1fr; }
   .service-card { flex-direction: column; }
   .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
+  .marquee-section { padding: 10px 0; margin-top: 52px; }
+  .marquee-item { padding: 0 20px; }
+  .marquee-item .marquee-label { font-size: 11px; letter-spacing: 1px; }
+  .marquee-fade-left, .marquee-fade-right { width: 40px; }
+}
+@media (max-width: 480px) {
+  .marquee-item .marquee-icon { font-size: 16px; }
+  .marquee-item .marquee-label { font-size: 10px; }
+  .marquee-item { padding: 0 16px; gap: 6px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .logo-cois { animation: none; }
+  .marquee-track { animation: none; }
 }
 </style>
 <!-- Google tag (gtag.js) -->
@@ -447,6 +530,64 @@ a { text-decoration: none; color: inherit; }
     </a>
   </nav>
 </header>
+
+<section class="marquee-section">
+  <div class="marquee-container">
+    <div class="marquee-fade-left"></div>
+    <div class="marquee-fade-right"></div>
+    <div class="marquee-track">
+      <span class="marquee-item"><span class="marquee-icon">🦴</span><span class="marquee-label">Pós-operatório</span></span>
+      <span class="marquee-item"><span class="marquee-icon">🧠</span><span class="marquee-label">Quiropraxia</span></span>
+      <span class="marquee-item"><span class="marquee-icon">🎯</span><span class="marquee-label">Acupuntura</span></span>
+      <span class="marquee-item"><span class="marquee-icon">💨</span><span class="marquee-label">Ozonioterapia</span></span>
+      <span class="marquee-item"><span class="marquee-icon">🧘</span><span class="marquee-label">Pilates</span></span>
+      <span class="marquee-item"><span class="marquee-icon">👶</span><span class="marquee-label">Pilates Kids</span></span>
+      <span class="marquee-item"><span class="marquee-icon">🏋️</span><span class="marquee-label">RPG</span></span>
+      <span class="marquee-item"><span class="marquee-icon">💆</span><span class="marquee-label">Massoterapia</span></span>
+      <span class="marquee-item"><span class="marquee-icon">🤰</span><span class="marquee-label">Fisio Gestantes</span></span>
+      <span class="marquee-item"><span class="marquee-icon">⚡</span><span class="marquee-label">Terapia Neural</span></span>
+      <span class="marquee-item"><span class="marquee-icon">💉</span><span class="marquee-label">Terapias Injetáveis</span></span>
+      <span class="marquee-item"><span class="marquee-icon">🌸</span><span class="marquee-label">Estética Facial</span></span>
+      <span class="marquee-item"><span class="marquee-icon">✨</span><span class="marquee-label">Harmonização Facial</span></span>
+      <span class="marquee-item"><span class="marquee-icon">🧖</span><span class="marquee-label">Drenagem Linfática</span></span>
+      <span class="marquee-item"><span class="marquee-icon">🔥</span><span class="marquee-label">Radiofrequência</span></span>
+      <span class="marquee-item"><span class="marquee-icon">💆‍♀️</span><span class="marquee-label">Ventosaterapia</span></span>
+      <span class="marquee-item"><span class="marquee-icon">🩹</span><span class="marquee-label">Peelings</span></span>
+      <span class="marquee-item"><span class="marquee-icon">👁️</span><span class="marquee-label">Sobrancelhas</span></span>
+      <span class="marquee-item"><span class="marquee-icon">💅</span><span class="marquee-label">Manicure</span></span>
+      <span class="marquee-item"><span class="marquee-icon">🦶</span><span class="marquee-label">Podologia</span></span>
+      <span class="marquee-item"><span class="marquee-icon">🔬</span><span class="marquee-label">Biomecânica</span></span>
+      <span class="marquee-item"><span class="marquee-icon">🏃</span><span class="marquee-label">Performance</span></span>
+      <span class="marquee-item"><span class="marquee-icon">👴</span><span class="marquee-label">Gerontologia</span></span>
+      <span class="marquee-item"><span class="marquee-icon">💪</span><span class="marquee-label">Reabilitação</span></span>
+      <!-- Duplicate set for seamless infinite loop -->
+      <span class="marquee-item"><span class="marquee-icon">🦴</span><span class="marquee-label">Pós-operatório</span></span>
+      <span class="marquee-item"><span class="marquee-icon">🧠</span><span class="marquee-label">Quiropraxia</span></span>
+      <span class="marquee-item"><span class="marquee-icon">🎯</span><span class="marquee-label">Acupuntura</span></span>
+      <span class="marquee-item"><span class="marquee-icon">💨</span><span class="marquee-label">Ozonioterapia</span></span>
+      <span class="marquee-item"><span class="marquee-icon">🧘</span><span class="marquee-label">Pilates</span></span>
+      <span class="marquee-item"><span class="marquee-icon">👶</span><span class="marquee-label">Pilates Kids</span></span>
+      <span class="marquee-item"><span class="marquee-icon">🏋️</span><span class="marquee-label">RPG</span></span>
+      <span class="marquee-item"><span class="marquee-icon">💆</span><span class="marquee-label">Massoterapia</span></span>
+      <span class="marquee-item"><span class="marquee-icon">🤰</span><span class="marquee-label">Fisio Gestantes</span></span>
+      <span class="marquee-item"><span class="marquee-icon">⚡</span><span class="marquee-label">Terapia Neural</span></span>
+      <span class="marquee-item"><span class="marquee-icon">💉</span><span class="marquee-label">Terapias Injetáveis</span></span>
+      <span class="marquee-item"><span class="marquee-icon">🌸</span><span class="marquee-label">Estética Facial</span></span>
+      <span class="marquee-item"><span class="marquee-icon">✨</span><span class="marquee-label">Harmonização Facial</span></span>
+      <span class="marquee-item"><span class="marquee-icon">🧖</span><span class="marquee-label">Drenagem Linfática</span></span>
+      <span class="marquee-item"><span class="marquee-icon">🔥</span><span class="marquee-label">Radiofrequência</span></span>
+      <span class="marquee-item"><span class="marquee-icon">💆‍♀️</span><span class="marquee-label">Ventosaterapia</span></span>
+      <span class="marquee-item"><span class="marquee-icon">🩹</span><span class="marquee-label">Peelings</span></span>
+      <span class="marquee-item"><span class="marquee-icon">👁️</span><span class="marquee-label">Sobrancelhas</span></span>
+      <span class="marquee-item"><span class="marquee-icon">💅</span><span class="marquee-label">Manicure</span></span>
+      <span class="marquee-item"><span class="marquee-icon">🦶</span><span class="marquee-label">Podologia</span></span>
+      <span class="marquee-item"><span class="marquee-icon">🔬</span><span class="marquee-label">Biomecânica</span></span>
+      <span class="marquee-item"><span class="marquee-icon">🏃</span><span class="marquee-label">Performance</span></span>
+      <span class="marquee-item"><span class="marquee-icon">👴</span><span class="marquee-label">Gerontologia</span></span>
+      <span class="marquee-item"><span class="marquee-icon">💪</span><span class="marquee-label">Reabilitação</span></span>
+    </div>
+  </div>
+</section>
 
 <section class="hero" id="inicio">
   <div class="hero-bg"></div>
