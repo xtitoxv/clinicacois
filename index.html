@@ -399,7 +399,7 @@ a { text-decoration: none; color: inherit; }
 .marquee-track {
   display: flex;
   width: max-content;
-  animation: marqueeScroll 45s linear infinite;
+  animation: marqueeScroll 25s linear infinite;
 }
 .marquee-container:hover .marquee-track {
   animation-play-state: paused;
@@ -1146,6 +1146,38 @@ document.querySelectorAll('[data-carousel]').forEach(container => {
 
   startAuto();
 });
+
+// Marquee animation via JavaScript (backup + smoother)
+(function() {
+  var track = document.querySelector('.marquee-track');
+  if (!track) return;
+
+  // Clone items for seamless loop
+  var items = track.innerHTML;
+  track.innerHTML = items + items + items;
+
+  var speed = 1.2;
+  var pos = 0;
+  var paused = false;
+  var halfWidth = track.scrollWidth / 3;
+
+  var container = track.parentElement;
+  container.addEventListener('mouseenter', function() { paused = true; });
+  container.addEventListener('mouseleave', function() { paused = false; });
+
+  function animate() {
+    if (!paused) {
+      pos -= speed;
+      if (Math.abs(pos) >= halfWidth) pos = 0;
+      track.style.transform = 'translateX(' + pos + 'px)';
+    }
+    requestAnimationFrame(animate);
+  }
+
+  // Disable CSS animation, use JS instead
+  track.style.animation = 'none';
+  animate();
+})();
 </script>
 </body>
 </html>
