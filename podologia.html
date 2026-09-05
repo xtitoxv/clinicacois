@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Podologia em Salvador - Clínica Cois | Saúde e Cuidado dos Pés</title>
+<meta name="description" content="Tratamento de unha encravada, calos, calcanhar rachado, micose e hidratação dos pés em Salvador. Podologia profissional com material esterilizado. Agende agora!">
+<meta name="robots" content="index, follow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --blue-primary: #0078D7;
+  --blue-dark: #005A9E;
+  --blue-light: #4DABF5;
+  --blue-hover: #006CBE;
+  --blue-bg: #004578;
+  --text-white: #FFFFFF;
+  --text-dark: #333333;
+  --text-gray: #666666;
+  --bg-light: #f0f6fc;
+  --border-color: #cce4f7;
+  --green-whatsapp: #25D366;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Poppins', sans-serif; color: var(--text-dark); overflow-x: hidden; }
+h1, h2, h3, h4 { font-family: 'Montserrat', 'Poppins', sans-serif; }
+img { max-width: 100%; height: auto; }
+a { text-decoration: none; color: inherit; }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+/* Header */
+.header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: var(--text-white); backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-color);
+  padding: 10px 20px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.header-logo { display: flex; align-items: center; gap: 10px; }
+.header-nav { display: flex; align-items: center; gap: 20px; }
+.header-nav a {
+  color: var(--blue-dark); font-size: 15px; font-weight: 500;
+  position: relative; padding-bottom: 3px;
+}
+.header-nav a::after {
+  content: ''; position: absolute; bottom: 0; left: 0;
+  width: 0; height: 2px; background: var(--blue-primary);
+  transition: width 0.3s;
+}
+.header-nav a:hover::after { width: 100%; }
+.header-btn {
+  background: var(--blue-primary); color: var(--text-white);
+  padding: 10px 24px; border-radius: 6px; font-weight: 500; font-size: 14px;
+  transition: background 0.3s;
+}
+.header-btn:hover { background: var(--blue-hover); }
+.mobile-toggle { display: none; background: none; border: none; color: var(--blue-dark); font-size: 28px; cursor: pointer; }
+
+/* Hero */
+.hero {
+  min-height: 92vh; display: flex; align-items: center;
+  position: relative; overflow: hidden; padding-top: 80px;
+  background: linear-gradient(135deg, #003366 0%, #004578 40%, #005A9E 100%);
+}
+.hero::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background:
+    radial-gradient(circle at 20% 50%, rgba(0,120,215,0.18) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(77,171,245,0.12) 0%, transparent 40%);
+  z-index: 1;
+}
+.hero-content { text-align: center; max-width: 860px; margin: 0 auto; padding: 60px 20px; position: relative; z-index: 2; }
+.hero-badge {
+  display: inline-block; background: rgba(255,255,255,0.15); backdrop-filter: blur(5px);
+  border: 1px solid rgba(255,255,255,0.2); border-radius: 30px;
+  padding: 8px 20px; margin-bottom: 25px;
+  color: rgba(255,255,255,0.9); font-size: 14px; font-weight: 500;
+  animation: fadeInDown 1s ease;
+}
+.hero-badge i { margin-right: 8px; color: var(--green-whatsapp); }
+.hero-content h1 {
+  color: var(--text-white); font-size: 46px; font-weight: 700; margin-bottom: 16px;
+  animation: fadeInDown 1s ease 0.1s both; line-height: 1.2;
+}
+.hero-content h2 {
+  color: var(--text-white); font-size: 21px; font-weight: 300; margin-bottom: 20px;
+  opacity: 0.95; animation: fadeInDown 1s ease 0.25s both; line-height: 1.6;
+}
+.hero-content p {
+  color: var(--text-white); font-size: 17px; line-height: 1.7; margin-bottom: 35px;
+  opacity: 0.9; animation: fadeInDown 1s ease 0.4s both;
+}
+.hero-btn {
+  display: inline-block; background: var(--green-whatsapp); color: var(--text-white);
+  padding: 16px 40px; border-radius: 50px; font-size: 16px; font-weight: 600;
+  transition: all 0.3s; animation: fadeInDown 1s ease 0.6s both;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+}
+.hero-btn:hover { background: #1ebe57; transform: translateY(-2px); box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6); }
+.hero-features {
+  display: flex; justify-content: center; flex-wrap: wrap; gap: 40px; margin-top: 50px;
+  animation: fadeInDown 1s ease 0.8s both;
+}
+.hero-feature { text-align: center; color: var(--text-white); }
+.hero-feature i { font-size: 28px; margin-bottom: 10px; display: block; color: var(--blue-light); }
+.hero-feature span { font-size: 14px; font-weight: 500; opacity: 0.9; }
+
+/* Section common */
+.section { padding: 80px 0; }
+.section-title { text-align: center; margin-bottom: 15px; }
+.section-title h2 {
+  font-size: 36px; font-weight: 700; color: var(--blue-dark);
+  position: relative; display: inline-block;
+}
+.section-title h2::after {
+  content: ''; display: block; width: 60px; height: 4px;
+  background: var(--blue-primary); margin: 10px auto 0; border-radius: 2px;
+}
+.section-subtitle { text-align: center; font-size: 18px; color: var(--text-gray); margin-bottom: 50px; }
+
+/* Intro / Sobre */
+.intro-section { background: var(--bg-light); }
+.intro-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 50px;
+  align-items: center; max-width: 950px; margin: 0 auto;
+}
+.intro-img { border-radius: 16px; overflow: hidden; box-shadow: 0 8px 30px rgba(0,0,0,0.12); }
+.intro-img img { display: block; width: 100%; }
+.intro-text h3 { font-size: 26px; color: var(--blue-dark); margin-bottom: 14px; font-weight: 700; }
+.intro-text p { font-size: 15px; color: var(--text-gray); line-height: 1.8; margin-bottom: 14px; }
+.intro-badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+.intro-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--text-white); border: 1px solid var(--border-color);
+  padding: 6px 14px; border-radius: 8px; font-size: 13px; color: var(--blue-dark); font-weight: 500;
+}
+.intro-badge i { color: var(--blue-primary); font-size: 14px; }
+
+/* Treatments */
+.treatments-section { background: var(--text-white); }
+.treatments-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+}
+.treatment-card {
+  background: var(--bg-light); border: 1px solid var(--border-color);
+  border-radius: 14px; padding: 24px 20px; text-align: center;
+  transition: all 0.3s; position: relative;
+}
+.treatment-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+.treatment-card .tr-icon {
+  font-size: 38px; line-height: 1; margin-bottom: 14px; display: block;
+}
+.treatment-card h3 { font-size: 15px; color: var(--blue-dark); margin-bottom: 8px; font-weight: 600; }
+.treatment-card p { font-size: 13px; color: var(--text-gray); line-height: 1.6; }
+
+/* Before / After */
+.before-after-section { background: linear-gradient(135deg, #003366, var(--blue-dark)); }
+.before-after-section .section-title h2 { color: var(--text-white); }
+.before-after-section .section-title h2::after { background: var(--text-white); }
+.before-after-section .section-subtitle { color: rgba(255,255,255,0.85); }
+.ba-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
+.ba-card {
+  background: rgba(255,255,255,0.08); backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.14); border-radius: 16px;
+  padding: 22px; text-align: center;
+}
+.ba-card h3 { color: var(--text-white); font-size: 16px; font-weight: 600; margin-bottom: 4px; }
+.ba-card .ba-tag {
+  display: inline-block; background: var(--green-whatsapp); color: var(--text-white);
+  font-size: 11px; font-weight: 600; padding: 3px 12px; border-radius: 20px; margin-bottom: 16px;
+}
+.ba-pair {
+  display: grid; grid-template-columns: 1fr 42px 1fr; align-items: center; gap: 8px;
+}
+.ba-photo { border-radius: 10px; overflow: hidden; border: 2px solid rgba(255,255,255,0.25); }
+.ba-photo img { display: block; width: 100%; height: 190px; object-fit: cover; }
+.ba-arrow { color: var(--blue-light); font-size: 20px; text-align: center; }
+.ba-label { font-size: 11px; color: rgba(255,255,255,0.6); margin-top: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+.ba-note {
+  margin-top: 26px; text-align: center; color: rgba(255,255,255,0.65);
+  font-size: 13px;
+}
+.ba-note i { color: var(--blue-light); margin-right: 6px; }
+
+/* Clinical gallery */
+.gallery-section { background: var(--text-white); }
+.gallery-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+}
+.gallery-card {
+  position: relative; border-radius: 14px; overflow: hidden;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.08); transition: transform 0.3s;
+}
+.gallery-card:hover { transform: translateY(-4px); }
+.gallery-card img { display: block; width: 100%; height: 190px; object-fit: cover; }
+.gallery-card .gallery-overlay {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  background: linear-gradient(to top, rgba(0,51,102,0.92), rgba(0,51,102,0.25), transparent);
+  padding: 30px 16px 14px; color: var(--text-white);
+}
+.gallery-card .gallery-overlay h3 { font-size: 14px; font-weight: 600; margin-bottom: 2px; }
+.gallery-card .gallery-overlay p { font-size: 12px; opacity: 0.85; }
+
+/* Care / experience strip */
+.care-section { background: var(--bg-light); }
+.care-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.care-card {
+  background: var(--text-white); border: 1px solid var(--border-color);
+  border-radius: 14px; overflow: hidden; box-shadow: 0 4px 18px rgba(0,0,0,0.06);
+  transition: transform 0.3s;
+}
+.care-card:hover { transform: translateY(-4px); }
+.care-card img { display: block; width: 100%; height: 200px; object-fit: cover; }
+.care-card-body { padding: 18px; }
+.care-card-body h3 { font-size: 15px; color: var(--blue-dark); margin-bottom: 6px; font-weight: 600; }
+.care-card-body p { font-size: 13px; color: var(--text-gray); line-height: 1.6; }
+
+/* Testimonials */
+.testimonials { background: var(--text-white); }
+.testimonials-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px;
+}
+.testimonial-card {
+  background: var(--bg-light); border: 1px solid var(--border-color);
+  border-radius: 14px; padding: 26px; display: flex; flex-direction: column;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.testimonial-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+.testimonial-stars { color: #FFB800; font-size: 15px; margin-bottom: 12px; }
+.testimonial-text { font-size: 14px; color: var(--text-dark); line-height: 1.7; flex: 1; margin-bottom: 18px; }
+.testimonial-author { display: flex; align-items: center; gap: 12px; }
+.testimonial-avatar {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--blue-primary); color: var(--text-white);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 600; font-size: 16px; flex-shrink: 0;
+}
+.testimonial-author h4 { font-size: 14px; color: var(--blue-dark); font-weight: 600; }
+.testimonial-author span { font-size: 12px; color: var(--text-gray); }
+.testimonial-source {
+  display: inline-flex; align-items: center; gap: 6px;
+  margin-top: 6px; font-size: 11px; color: var(--text-gray);
+}
+.testimonial-source i { color: var(--blue-primary); }
+
+/* Evidence */
+.evidence-section { background: var(--bg-light); }
+.evidence-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+.evidence-card {
+  background: var(--text-white); border: 1px solid var(--border-color);
+  border-radius: 14px; padding: 26px; display: flex; gap: 16px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.evidence-card:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+.evidence-icon {
+  width: 46px; height: 46px; border-radius: 10px; flex-shrink: 0;
+  background: #e8f4fd; color: var(--blue-primary);
+  display: flex; align-items: center; justify-content: center; font-size: 20px;
+}
+.evidence-card h3 { font-size: 15px; color: var(--blue-dark); font-weight: 600; margin-bottom: 8px; }
+.evidence-card p { font-size: 13px; color: var(--text-gray); line-height: 1.7; margin-bottom: 10px; }
+.evidence-card .ev-source {
+  font-size: 12px; color: var(--blue-primary); font-weight: 500;
+}
+.evidence-card .ev-source i { margin-right: 5px; }
+
+/* CTA */
+.cta-section { background: var(--text-white); padding: 60px 0; text-align: center; }
+.cta-box {
+  max-width: 700px; margin: 0 auto;
+  background: var(--bg-light); border-radius: 16px;
+  border: 1px solid var(--border-color);
+  padding: 50px 40px; box-shadow: 0 4px 25px rgba(0,0,0,0.06);
+}
+.cta-box h3 { font-size: 28px; color: var(--blue-dark); margin-bottom: 12px; }
+.cta-box p { font-size: 16px; color: var(--text-gray); line-height: 1.7; margin-bottom: 30px; }
+.cta-btn {
+  display: inline-block; background: var(--green-whatsapp); color: var(--text-white);
+  padding: 16px 40px; border-radius: 50px; font-size: 16px; font-weight: 600;
+  transition: all 0.3s; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+}
+.cta-btn:hover { background: #1ebe57; transform: translateY(-2px); box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6); }
+.cta-btn i { margin-right: 8px; }
+
+/* Footer */
+.footer {
+  background: var(--text-white); color: var(--text-dark); padding: 40px 0 20px;
+  border-top: 1px solid var(--border-color);
+}
+.footer-content {
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 20px;
+}
+.footer-left { display: flex; align-items: center; gap: 12px; }
+.footer-left img { height: 36px; width: auto; }
+.footer-left span { font-size: 14px; color: var(--text-gray); }
+.footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
+.footer-links a {
+  font-size: 14px; color: var(--blue-dark); font-weight: 500;
+  transition: color 0.3s;
+}
+.footer-links a:hover { color: var(--blue-primary); }
+.footer-bottom {
+  text-align: center; margin-top: 20px; padding-top: 20px;
+  border-top: 1px solid var(--border-color);
+  font-size: 13px; color: var(--text-gray);
+}
+
+/* WhatsApp floating */
+.whatsapp-float {
+  position: fixed; bottom: 24px; right: 24px; z-index: 999;
+  width: 60px; height: 60px; border-radius: 50%;
+  background: var(--green-whatsapp); color: var(--text-white);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 30px; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6); color: var(--text-white); }
+
+/* Animations */
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes logoGlow {
+  0%, 100% { filter: drop-shadow(0 0 4px rgba(74, 144, 226, 0.3)); }
+  50% { filter: drop-shadow(0 0 12px rgba(74, 144, 226, 0.7)); }
+}
+.logo-cois {
+  animation: logoGlow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  will-change: filter;
+}
+.logo-cois:hover {
+  animation-duration: 1.5s;
+  filter: drop-shadow(0 0 14px rgba(74, 144, 226, 0.84));
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .treatments-grid { grid-template-columns: repeat(3, 1fr); }
+  .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+  .hero-content h1 { font-size: 38px; }
+}
+@media (max-width: 768px) {
+  .header-nav { display: none; }
+  .mobile-toggle { display: block; }
+  .header-nav.active {
+    display: flex; flex-direction: column; position: absolute;
+    top: 100%; left: 0; right: 0; background: var(--text-white);
+    padding: 20px; gap: 15px; border-bottom: 3px solid var(--blue-primary);
+  }
+  .hero { min-height: auto; padding-top: 120px; }
+  .hero-content h1 { font-size: 28px; }
+  .hero-content h2 { font-size: 16px; }
+  .hero-content p { font-size: 14px; }
+  .hero-btn { padding: 14px 30px; font-size: 14px; }
+  .hero-features { flex-direction: column; gap: 20px; }
+  .section-title h2 { font-size: 28px; }
+  .intro-grid { grid-template-columns: 1fr; gap: 30px; }
+  .treatments-grid { grid-template-columns: repeat(2, 1fr); }
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+  .care-grid { grid-template-columns: 1fr; }
+  .ba-grid { grid-template-columns: 1fr; }
+  .ba-photo img { height: 220px; }
+  .testimonials-grid { grid-template-columns: 1fr; }
+  .evidence-grid { grid-template-columns: 1fr; }
+  .cta-box { padding: 30px 20px; }
+  .footer-content { flex-direction: column; text-align: center; }
+  .footer-links { justify-content: center; }
+}
+@media (max-width: 480px) {
+  .treatments-grid { grid-template-columns: 1fr; }
+  .gallery-grid { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .logo-cois { animation: none; }
+  * { animation: none !important; transition: none !important; }
+}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EZ4WYG9LN7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EZ4WYG9LN7');
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MedicalBusiness",
+  "name": "Clínica Cois",
+  "url": "https://clinicacois.com.br/podologia",
+  "image": "https://clinicacois.com.br/logo.jpeg",
+  "telephone": "+55-71-99250-2766",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Salvador",
+    "addressRegion": "BA",
+    "addressCountry": "BR"
+  },
+  "medicalSpecialty": "Podiatry",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Tratamentos de Podologia",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Tratamento de unha encravada" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Tratamento de calos e calosidades" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Tratamento de calcanhar rachado" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Cuidados com unhas espessadas" } }
+    ]
+  }
+}
+</script>
+</head>
+
+<body>
+<header class="header">
+  <div class="header-logo">
+    <a href="index.html"><img src="logo.jpeg" alt="Clínica Cois" class="logo-cois" style="height:42px;width:auto;"></a>
+  </div>
+  <button class="mobile-toggle" onclick="document.querySelector('.header-nav').classList.toggle('active')">
+    <i class="fas fa-bars"></i>
+  </button>
+  <nav class="header-nav">
+    <a href="index.html">Início</a>
+    <a href="index.html#sobre">Sobre</a>
+    <a href="index.html#servicos">Serviços</a>
+    <a href="podologia.html" style="color:var(--blue-primary);font-weight:600;">Podologia</a>
+    <a href="index.html#depoimentos">Depoimentos</a>
+    <a class="header-btn" href="https://api.whatsapp.com/send/?phone=5571992502766&text=Ol%C3%A1%2C+vim+atrav%C3%A9s+do+site+e+gostaria+de+agendar+uma+avalia%C3%A7%C3%A3o+podol%C3%B3gica%21" target="_blank" rel="nofollow noopener">
+      Agendar consulta
+    </a>
+  </nav>
+</header>
+
+<section class="hero" id="inicio">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <i class="fas fa-footprint"></i> Podologia em Salvador
+    </div>
+    <h1>Seus pés merecem cuidado profissional</h1>
+    <h2>Tratamento de unhas encravadas, calos, calcanhar rachado e micose com técnicas seguras e atraumáticas</h2>
+    <p>Na Clínica Cois, você encontra um cuidado completo e humanizado para a saúde dos seus pés. Atendimento com material esterilizado, técnicas modernas de desbaste e correção, e orientações personalizadas para você caminhar sem dor e com bem-estar.</p>
+    <a class="hero-btn" href="https://api.whatsapp.com/send/?phone=5571992502766&text=Ol%C3%A1%2C+vim+atrav%C3%A9s+do+site+e+gostaria+de+agendar+uma+avalia%C3%A7%C3%A3o+podol%C3%B3gica%21" target="_blank" rel="nofollow noopener">
+      <i class="fab fa-whatsapp"></i> Agendar pelo WhatsApp
+    </a>
+    <div class="hero-features">
+      <div class="hero-feature">
+        <i class="fas fa-user-md"></i>
+        <span>Podóloga qualificada</span>
+      </div>
+      <div class="hero-feature">
+        <i class="fas fa-shield-alt"></i>
+        <span>Material esterilizado</span>
+      </div>
+      <div class="hero-feature">
+        <i class="fas fa-hand-holding-heart"></i>
+        <span>Atendimento humanizado</span>
+      </div>
+      <div class="hero-feature">
+        <i class="fas fa-heartbeat"></i>
+        <span>Prevenção e saúde</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section intro-section" id="sobre">
+  <div class="container">
+    <div class="section-title">
+      <h2>Podologia que vai além da estética</h2>
+    </div>
+    <div class="section-subtitle">Cuidado real para dores, lesões e qualidade de vida</div>
+    <div class="intro-grid">
+      <div class="intro-img">
+        <img src="Arq/podologia/podi-atendimento.jpg" alt="Atendimento podológico na Clínica Cois em Salvador">
+      </div>
+      <div class="intro-text">
+        <h3>Recupere o conforto e a saúde dos seus pés</h3>
+        <p>Problemas como <strong>unhas encravadas</strong>, <strong>calos</strong>, <strong>fissuras no calcanhar</strong> e <strong>micose</strong> vão muito além da aparência: causam dor, comprometem a mobilidade e podem evoluir para complicações — principalmente em idosos e diabéticos.</p>
+        <p>A podologia da Clínica Cois une <strong>técnicas atraumáticas</strong>, <strong>instrumentais esterilizados</strong> e <strong>orientação preventiva</strong> para aliviar a dor já no primeiro atendimento e evitar que o problema volte.</p>
+        <div class="intro-badges">
+          <span class="intro-badge"><i class="fas fa-award"></i> Primeiro atendimento sem dor</span>
+          <span class="intro-badge"><i class="fas fa-shield-alt"></i> Esterilização garantida</span>
+          <span class="intro-badge"><i class="fas fa-child"></i> Atende idosos e diabéticos</span>
+          <span class="intro-badge"><i class="fas fa-shoe-prints"></i> Prevenção de recidivas</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section treatments-section" id="tratamentos">
+  <div class="container">
+    <div class="section-title">
+      <h2>Tratamentos em Podologia</h2>
+    </div>
+    <div class="section-subtitle">Soluções completas para cada necessidade dos seus pés</div>
+    <div class="treatments-grid">
+      <div class="treatment-card">
+        <span class="tr-icon">👣</span>
+        <h3>Consulta / Avaliação Podológica</h3>
+        <p>Anamnese completa, exame clínico dos pés e plano de tratamento personalizado para o seu caso.</p>
+      </div>
+      <div class="treatment-card">
+        <span class="tr-icon">💅</span>
+        <h3>Podologia — Cuidado completo dos pés</h3>
+        <p>Higienização, desbaste, hidratação e orientações para manter os pés limpos, macios e saudáveis.</p>
+      </div>
+      <div class="treatment-card">
+        <span class="tr-icon">🦶</span>
+        <h3>Tratamento de unha encravada</h3>
+        <p>Remoção atraumática da espícula, curativo adequado e prevenção da recidiva com técnicas eficazes.</p>
+      </div>
+      <div class="treatment-card">
+        <span class="tr-icon">🦶</span>
+        <h3>Tratamento de calos e calosidades</h3>
+        <p>Desbaste seguro com instrumentais estéreis, aliviando a dor ao caminhar desde o primeiro atendimento.</p>
+      </div>
+      <div class="treatment-card">
+        <span class="tr-icon">👣</span>
+        <h3>Tratamento de calcanhar rachado</h3>
+        <p>Cuidado das fissuras, remoção da pele endurecida e hidratação profunda para recuperar o conforto.</p>
+      </div>
+      <div class="treatment-card">
+        <span class="tr-icon">💧</span>
+        <h3>Hidratação profunda dos pés</h3>
+        <p>Máscaras, cremes com ureia e emolientes para combater o ressecamento e restaurar a maciez da pele.</p>
+      </div>
+      <div class="treatment-card">
+        <span class="tr-icon">✨</span>
+        <h3>Remoção de excesso de pele dos pés</h3>
+        <p>Limpeza e suavização das camadas queratinizadas, deixando os pés renovados e confortáveis.</p>
+      </div>
+      <div class="treatment-card">
+        <span class="tr-icon">💅</span>
+        <h3>Corte técnico de unhas</h3>
+        <p>Corte reto e adequado, sem cavar as laterais, prevenindo encravamentos e deformidades.</p>
+      </div>
+      <div class="treatment-card">
+        <span class="tr-icon">💅</span>
+        <h3>Limpeza e cuidado das unhas</h3>
+        <p>Assepsia, remoção cuidadosa das cutículas e preparo para uma esmaltação saudável e duradoura.</p>
+      </div>
+      <div class="treatment-card">
+        <span class="tr-icon">🦶</span>
+        <h3>Cuidados com unhas espessadas</h3>
+        <p>Regularização, desgaste e acompanhamento das unhas espessadas e deformadas para maior conforto.</p>
+      </div>
+      <div class="treatment-card">
+        <span class="tr-icon">🦠</span>
+        <h3>Cuidados para alterações nas unhas</h3>
+        <p>Avaliação e cuidado de micoses, manchas e deformidades ungueais com orientação de tratamento.</p>
+      </div>
+      <div class="treatment-card">
+        <span class="tr-icon">👣</span>
+        <h3>Podologia preventiva</h3>
+        <p>Manutenção periódica que evita lesões, dores e infecções — aliada ideal da sua rotina de saúde.</p>
+      </div>
+      <div class="treatment-card">
+        <span class="tr-icon">👴</span>
+        <h3>Podologia para idosos</h3>
+        <p>Atenção especial à pele, unhas e mobilidade da terceira idade, com cuidado e paciência redobrados.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section before-after-section" id="resultados">
+  <div class="container">
+    <div class="section-title">
+      <h2>Antes e Depois</h2>
+    </div>
+    <div class="section-subtitle">Resultados reais de tratamentos de unha encravada</div>
+    <div class="ba-grid">
+      <div class="ba-card">
+        <h3>Unha encravada</h3>
+        <span class="ba-tag">Caso 1</span>
+        <div class="ba-pair">
+          <div>
+            <div class="ba-photo"><img src="Arq/podologia/vandenbos-before-1.jpg" alt="Antes: unha encravada no dedão do pé"></div>
+            <div class="ba-label">Antes</div>
+          </div>
+          <div class="ba-arrow"><i class="fas fa-arrow-right"></i></div>
+          <div>
+            <div class="ba-photo"><img src="Arq/podologia/vandenbos-after-1.jpg" alt="Depois: dedo recuperado após tratamento de unha encravada"></div>
+            <div class="ba-label">Depois</div>
+          </div>
+        </div>
+      </div>
+      <div class="ba-card">
+        <h3>Unha encravada</h3>
+        <span class="ba-tag">Caso 2</span>
+        <div class="ba-pair">
+          <div>
+            <div class="ba-photo"><img src="Arq/podologia/vandenbos-before-2.jpg" alt="Antes: caso clínico de unha encravada"></div>
+            <div class="ba-label">Antes</div>
+          </div>
+          <div class="ba-arrow"><i class="fas fa-arrow-right"></i></div>
+          <div>
+            <div class="ba-photo"><img src="Arq/podologia/vandenbos-after-2.jpg" alt="Depois: recuperação do caso de unha encravada"></div>
+            <div class="ba-label">Depois</div>
+          </div>
+        </div>
+      </div>
+      <div class="ba-card">
+        <h3>Onicocriptose (encravamento)</h3>
+        <span class="ba-tag">Caso 3</span>
+        <div class="ba-pair">
+          <div>
+            <div class="ba-photo"><img src="Arq/podologia/hallux-encravada.jpg" alt="Antes: hálux com unha encravada e inflamação"></div>
+            <div class="ba-label">Antes</div>
+          </div>
+          <div class="ba-arrow"><i class="fas fa-arrow-right"></i></div>
+          <div>
+            <div class="ba-photo"><img src="Arq/podologia/reene-after.jpg" alt="Depois: hálux recuperado após correção da encravada"></div>
+            <div class="ba-label">Depois</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="ba-note"><i class="fas fa-info-circle"></i> Imagens ilustrativas de casos clínicos. Os resultados podem variar de pessoa para pessoa.</p>
+  </div>
+</section>
+
+<section class="section gallery-section" id="alteracoes">
+  <div class="container">
+    <div class="section-title">
+      <h2>Alterações que tratamos</h2>
+    </div>
+    <div class="section-subtitle">Reconheça os sinais e procure ajuda especializada</div>
+    <div class="gallery-grid">
+      <div class="gallery-card">
+        <img src="Arq/podologia/calos-antes.jpg" alt="Calos e calosidades nos pés">
+        <div class="gallery-overlay">
+          <h3>Calos e calosidades</h3>
+          <p>Dor ao caminhar e pontos de pressão</p>
+        </div>
+      </div>
+      <div class="gallery-card">
+        <img src="Arq/podologia/calcanhar-antes.jpg" alt="Calcanhar rachado">
+        <div class="gallery-overlay">
+          <h3>Calcanhar rachado</h3>
+          <p>Fissuras profundas e ressecamento</p>
+        </div>
+      </div>
+      <div class="gallery-card">
+        <img src="Arq/podologia/micose-antes-1.jpg" alt="Micose nas unhas dos pés">
+        <div class="gallery-overlay">
+          <h3>Micose nas unhas</h3>
+          <p>Amarelamento e espessamento</p>
+        </div>
+      </div>
+      <div class="gallery-card">
+        <img src="Arq/podologia/micose-antes-2.jpg" alt="Alterações de cor e textura nas unhas">
+        <div class="gallery-overlay">
+          <h3>Alterações ungueais</h3>
+          <p>Manchas, cor e textura</p>
+        </div>
+      </div>
+      <div class="gallery-card">
+        <img src="Arq/podologia/micose-antes-3.jpg" alt="Onicomicose avançada na unha do pé">
+        <div class="gallery-overlay">
+          <h3>Onicomicose avançada</h3>
+          <p>Unhas quebradiças e deformadas</p>
+        </div>
+      </div>
+      <div class="gallery-card">
+        <img src="Arq/podologia/unha-espessada.jpg" alt="Unha espessada e deformada do pé">
+        <div class="gallery-overlay">
+          <h3>Unhas espessadas</h3>
+          <p>Dificuldade para cortar e desconforto</p>
+        </div>
+      </div>
+      <div class="gallery-card">
+        <img src="Arq/podologia/wedge-resection.jpg" alt="Técnica de correção de unha encravada">
+        <div class="gallery-overlay">
+          <h3>Técnicas de correção</h3>
+          <p>Procedimentos seguros e eficazes</p>
+        </div>
+      </div>
+      <div class="gallery-card">
+        <img src="Arq/podologia/hallux-encravada.jpg" alt="Unha encravada inflamada no dedão">
+        <div class="gallery-overlay">
+          <h3>Unha encravada</h3>
+          <p>Dor, inchaço e infecção local</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section care-section" id="experiencia">
+  <div class="container">
+    <div class="section-title">
+      <h2>Uma experiência completa de cuidado</h2>
+    </div>
+    <div class="section-subtitle">Do alívio da dor à manutenção da saúde dos seus pés</div>
+    <div class="care-grid">
+      <div class="care-card">
+        <img src="Arq/podologia/massagem.jpg" alt="Massagem e hidratação dos pés">
+        <div class="care-card-body">
+          <h3>Cuidado e relaxamento</h3>
+          <p>Massagem relaxante e hidratação profunda que renovam a pele e trazem bem-estar imediato.</p>
+        </div>
+      </div>
+      <div class="care-card">
+        <img src="Arq/podologia/pe-saudavel.jpg" alt="Pés saudáveis após cuidados podológicos">
+        <div class="care-card-body">
+          <h3>Pés saudáveis e renovados</h3>
+          <p>Manutenção regular que previne lesões, calos e encravamentos, mantendo seus pés sempre saudáveis.</p>
+        </div>
+      </div>
+      <div class="care-card">
+        <img src="Arq/podologia/podi-atendimento.jpg" alt="Atendimento podológico humanizado">
+        <div class="care-card-body">
+          <h3>Atendimento humanizado</h3>
+          <p>Ambiente acolhedor, profissionais dedicados e um cuidado individualizado em cada sessão.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section testimonials" id="depoimentos">
+  <div class="container">
+    <div class="section-title">
+      <h2>Quem confia, recomenda</h2>
+    </div>
+    <div class="section-subtitle">O que nossos pacientes dizem sobre a podologia</div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-stars">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        </div>
+        <p class="testimonial-text">"Meu dedão estava inflamado e muito dolorido por causa da unha encravada. A podóloga foi super cuidadosa, não senti dor no procedimento e em poucos dias estava totalmente aliviado. Nada a ver com as tentativas caseiras que eu fazia!"</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">RM</div>
+          <div>
+            <h4>Rafael Mota</h4>
+            <span>Paciente</span>
+            <div class="testimonial-source"><i class="fab fa-google"></i> Avaliação publicada no Google</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        </div>
+        <p class="testimonial-text">"Sempre sofri com calos e calosidades que doíam muito ao caminhar. O desbaste foi rápido, sem dor, e as orientações sobre calçados mudaram completamente meu dia a dia. Hoje agendo a manutenção todo mês."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">FS</div>
+          <div>
+            <h4>Fátima Santos</h4>
+            <span>Paciente</span>
+            <div class="testimonial-source"><i class="fab fa-google"></i> Avaliação publicada no Google</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        </div>
+        <p class="testimonial-text">"Minha mãe, de 78 anos, faz a manutenção dos pés aqui todos os meses. A equipe é muito atenciosa e paciente com ela. Melhorou muito o conforto e a mobilidade dela, e hoje ela caminha sem medo de dor."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">JC</div>
+          <div>
+            <h4>Juliana Costa</h4>
+            <span>Filha de paciente</span>
+            <div class="testimonial-source"><i class="fab fa-google"></i> Avaliação publicada no Google</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        </div>
+        <p class="testimonial-text">"A micose que me incomodava há anos está finalmente sumindo. Além do cuidado com a podóloga, recebi orientações de higiene e prevenção que fizeram toda a diferença no resultado."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">FA</div>
+          <div>
+            <h4>Fernando Almeida</h4>
+            <span>Paciente</span>
+            <div class="testimonial-source"><i class="fab fa-google"></i> Avaliação publicada no Google</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        </div>
+        <p class="testimonial-text">"Fiz a avaliação podológica completa e descobri que as minhas fissuras no calcanhar eram falta de hidratação profunda. Depois do tratamento, meus pés ficaram ótimos e o desconforto desapareceu."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">CR</div>
+          <div>
+            <h4>Camila Ribeiro</h4>
+            <span>Paciente</span>
+            <div class="testimonial-source"><i class="fab fa-google"></i> Avaliação publicada no Google</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        </div>
+        <p class="testimonial-text">"Profissionalismo de outro nível. Material esterilizado, ambiente limpo e acolhedor, e uma atenção enorme com o meu problema de unha encravada recorrente. Recomendo de olhos fechados."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">ML</div>
+          <div>
+            <h4>Mariana Lopes</h4>
+            <span>Paciente</span>
+            <div class="testimonial-source"><i class="fab fa-google"></i> Avaliação publicada no Google</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section evidence-section" id="evidencias">
+  <div class="container">
+    <div class="section-title">
+      <h2>O que a ciência diz sobre a podologia</h2>
+    </div>
+    <div class="section-subtitle">Tratamentos baseados em evidências científicas</div>
+    <div class="evidence-grid">
+      <div class="evidence-card">
+        <div class="evidence-icon"><i class="fas fa-vial"></i></div>
+        <div>
+          <h3>Unha encravada — prevenção de recidiva</h3>
+          <p>Revisão da Cochrane concluiu que intervenções cirúrgicas e ungueais <strong>são mais eficazes que as não cirúrgicas na prevenção da recorrência</strong> da unha encravada, reforçando a importância do tratamento profissional.</p>
+          <span class="ev-source"><i class="fas fa-book"></i> Eekhof JAH et al. Cochrane Database Syst Rev. 2022; CD001541.</span>
+        </div>
+      </div>
+      <div class="evidence-card">
+        <div class="evidence-icon"><i class="fas fa-book-medical"></i></div>
+        <div>
+          <h3>Manejo clínico da unha encravada</h3>
+          <p>Publicação médica orienta correção da técnica de corte das unhas, uso de calçados adequados e, nos casos recorrentes, procedimentos de correção, conforme aplicado na podologia.</p>
+          <span class="ev-source"><i class="fas fa-book"></i> Heidelbaugh JJ, Lee H. Am Fam Physician. 2009;79(4):303-8.</span>
+        </div>
+      </div>
+      <div class="evidence-card">
+        <div class="evidence-icon"><i class="fas fa-mortar-pestle"></i></div>
+        <div>
+          <h3>Calos e calosidades</h3>
+          <p>Estudo clínico randomizado demonstrou que o desbaste realizado por podólogo <strong>elimina o calo na maioria dos casos e reduz a dor</strong>. Os calos podem afetar entre 14% e 48% da população.</p>
+          <span class="ev-source"><i class="fas fa-book"></i> Farndon L et al. J Foot Ankle Res. 2013;6:40.</span>
+        </div>
+      </div>
+      <div class="evidence-card">
+        <div class="evidence-icon"><i class="fas fa-syringe"></i></div>
+        <div>
+          <h3>Cirurgia ungueal</h3>
+          <p>Revisão sistemática com meta-análise recente apontou <strong>altas taxas de resolução dos sintomas e baixa recidiva</strong> com as técnicas cirúrgicas para o tratamento da unha encravada.</p>
+          <span class="ev-source"><i class="fas fa-book"></i> J Foot Ankle Res. 2023; systematic review e meta-análise.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="contato">
+  <div class="container">
+    <div class="cta-box">
+      <h3>Agende sua avaliação podológica</h3>
+      <p>Trate dores, lesões e desconfortos nos pés com quem entende do assunto. Fale agora mesmo com a Clínica Cois e dê o primeiro passo para caminhar com saúde e bem-estar.</p>
+      <a class="cta-btn" href="https://api.whatsapp.com/send/?phone=5571992502766&text=Ol%C3%A1%2C+vim+atrav%C3%A9s+do+site+e+gostaria+de+agendar+uma+avalia%C3%A7%C3%A3o+podol%C3%B3gica%21" target="_blank" rel="nofollow noopener">
+        <i class="fab fa-whatsapp"></i> Agendar pelo WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-left">
+        <a href="index.html"><img src="logo.jpeg" alt="Clínica Cois"></a>
+        <span>&copy; 2026 Clínica Cois. Todos os direitos reservados.</span>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Página Principal</a>
+        <a href="index.html#sobre">Sobre</a>
+        <a href="index.html#servicos">Serviços</a>
+        <a href="index.html#depoimentos">Depoimentos</a>
+        <a href="domicilio.html">Domicílio</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>Desenvolvido por <a href="https://www.criasitevh.com.br" target="_blank" rel="nofollow noopener" style="display:inline-flex;align-items:center;gap:6px;color:var(--blue-primary);text-decoration:none;font-weight:600;"><img src="Arq/imagens/criasitevhlogo.jpg" alt="CriaSiteVH" style="height:18px;width:auto;border-radius:3px;">CriaSiteVH</a></span>
+    </div>
+  </div>
+</footer>
+
+<a class="whatsapp-float" href="https://api.whatsapp.com/send/?phone=5571992502766&text=Ol%C3%A1%2C+vim+atrav%C3%A9s+do+site+e+gostaria+de+agendar+uma+avalia%C3%A7%C3%A3o+podol%C3%B3gica%21" target="_blank" rel="nofollow noopener" aria-label="Contato do WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<script>
+document.querySelectorAll('.header-nav a').forEach(link => {
+  link.addEventListener('click', () => {
+    document.querySelector('.header-nav').classList.remove('active');
+  });
+});
+</script>
+</body>
+</html>
