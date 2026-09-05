@@ -162,7 +162,7 @@ a { text-decoration: none; color: inherit; }
 .before-after-section .section-title h2 { color: var(--text-white); }
 .before-after-section .section-title h2::after { background: var(--text-white); }
 .before-after-section .section-subtitle { color: rgba(255,255,255,0.85); }
-.ba-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
+.ba-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; }
 .ba-card {
   background: rgba(255,255,255,0.08); backdrop-filter: blur(10px);
   border: 1px solid rgba(255,255,255,0.14); border-radius: 16px;
@@ -180,6 +180,7 @@ a { text-decoration: none; color: inherit; }
 .ba-photo img { display: block; width: 100%; height: 190px; object-fit: cover; }
 .ba-arrow { color: var(--blue-light); font-size: 20px; text-align: center; }
 .ba-label { font-size: 11px; color: rgba(255,255,255,0.6); margin-top: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+.ba-credit { font-size: 11px; color: rgba(255,255,255,0.55); margin-top: 14px; line-height: 1.5; }
 .ba-note {
   margin-top: 26px; text-align: center; color: rgba(255,255,255,0.65);
   font-size: 13px;
@@ -553,10 +554,15 @@ a { text-decoration: none; color: inherit; }
         <h3>Cuidados com unhas espessadas</h3>
         <p>Regularização, desgaste e acompanhamento das unhas espessadas e deformadas para maior conforto.</p>
       </div>
-      <div class="treatment-card">
-        <span class="tr-icon">🦠</span>
+<div class="treatment-card">
+        <span class="tr-icon">🦶</span>
         <h3>Cuidados para alterações nas unhas</h3>
         <p>Avaliação e cuidado de micoses, manchas e deformidades ungueais com orientação de tratamento.</p>
+      </div>
+      <div class="treatment-card">
+        <span class="tr-icon">🧼</span>
+        <h3>Tratamento de frieira (micose entre os dedos)</h3>
+        <p>Tratamento da frieira e da micose interdigital com limpeza, secagem, descamação e orientações para evitar a volta do problema.</p>
       </div>
       <div class="treatment-card">
         <span class="tr-icon">👣</span>
@@ -624,8 +630,24 @@ a { text-decoration: none; color: inherit; }
           </div>
         </div>
       </div>
+      <div class="ba-card">
+        <h3>Frieira (micose interdigital)</h3>
+        <span class="ba-tag">Caso 4</span>
+        <div class="ba-pair">
+          <div>
+            <div class="ba-photo"><img src="Arq/podologia/frieira-antes.jpg" alt="Antes: frieira, descamação e micose entre os dedos dos pés"></div>
+            <div class="ba-label">Antes*</div>
+          </div>
+          <div class="ba-arrow"><i class="fas fa-arrow-right"></i></div>
+          <div>
+            <div class="ba-photo"><img src="Arq/podologia/pe-saudavel.jpg" alt="Depois: pele dos pés saudável e macia após o tratamento da frieira"></div>
+            <div class="ba-label">Depois*</div>
+          </div>
+        </div>
+        <p class="ba-credit">Foto clínica: Tang21237, via Wikimedia Commons — CC BY-SA 4.0</p>
+      </div>
     </div>
-    <p class="ba-note"><i class="fas fa-info-circle"></i> Imagens ilustrativas de casos clínicos. Os resultados podem variar de pessoa para pessoa.</p>
+    <p class="ba-note"><i class="fas fa-info-circle"></i> Imagens ilustrativas de casos clínicos. (*) O "depois" da frieira é representativo de pele saudável após o tratamento. Os resultados podem variar de pessoa para pessoa.</p>
   </div>
 </section>
 
