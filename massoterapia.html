@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Massoterapia em Salvador - Clínica Cois | Massagens Terapêuticas</title>
+<meta name="description" content="Massagem relaxante, drenagem linfática, reflexologia podal, pedras quentes, massagem desportiva, redutora, liberação miofascial, shiatsu e tuina em Salvador. Agende sua sessão na Clínica Cois!">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://clinicacois.com.br/massoterapia">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --blue-primary: #0078D7;
+  --blue-dark: #005A9E;
+  --blue-light: #4DABF5;
+  --blue-hover: #006CBE;
+  --blue-bg: #004578;
+  --text-white: #FFFFFF;
+  --text-dark: #333333;
+  --text-gray: #666666;
+  --bg-light: #f0f6fc;
+  --border-color: #cce4f7;
+  --green-whatsapp: #25D366;
+  --gold: #f59e0b;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Poppins', sans-serif; color: var(--text-dark); overflow-x: hidden; }
+h1, h2, h3, h4 { font-family: 'Montserrat', 'Poppins', sans-serif; }
+img { max-width: 100%; height: auto; }
+a { text-decoration: none; color: inherit; }
+.container { max-width: 1140px; margin: 0 auto; padding: 0 20px; }
+
+/* Header */
+.header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: var(--text-white); backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-color);
+  padding: 10px 20px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.header-logo { display: flex; align-items: center; gap: 10px; }
+.header-logo img { display: block; }
+.header-nav { display: flex; align-items: center; gap: 18px; }
+.header-nav a {
+  color: var(--blue-dark); font-size: 15px; font-weight: 500;
+  position: relative; padding-bottom: 3px; white-space: nowrap;
+}
+.header-nav a::after {
+  content: ''; position: absolute; bottom: 0; left: 0;
+  width: 0; height: 2px; background: var(--blue-primary);
+  transition: width 0.3s;
+}
+.header-nav a:hover::after { width: 100%; }
+.header-nav a.active { color: var(--blue-primary); font-weight: 600; }
+.header-nav a.active::after { width: 100%; }
+.header-btn {
+  background: var(--blue-primary); color: var(--text-white);
+  padding: 10px 22px; border-radius: 6px; font-weight: 500; font-size: 14px;
+  transition: background 0.3s;
+}
+.header-btn:hover { background: var(--blue-hover); }
+.mobile-toggle { display: none; background: none; border: none; color: var(--blue-dark); font-size: 28px; cursor: pointer; }
+
+/* Scarcity top bar */
+.top-bar {
+  background: linear-gradient(90deg, #b91c1c, #ef4444);
+  color: #fff; text-align: center;
+  font-size: 13px; font-weight: 600; padding: 9px 14px;
+  letter-spacing: 0.3px;
+}
+.top-bar .top-clock { display: inline-block; min-width: 74px; font-weight: 700; margin-left: 6px; }
+
+/* Hero */
+.hero {
+  min-height: 92vh; display: flex; align-items: center;
+  position: relative; overflow: hidden; padding-top: 140px; padding-bottom: 60px;
+  background: linear-gradient(135deg, #00284d 0%, #003366 40%, #005A9E 100%);
+}
+.hero::before {
+  content: ''; position: absolute; inset: 0; z-index: 0;
+  background-image:
+    radial-gradient(circle at 12% 22%, rgba(77,171,245,0.22) 0, transparent 38%),
+    radial-gradient(circle at 88% 70%, rgba(255,255,255,0.08) 0, transparent 42%),
+    radial-gradient(circle at 70% 12%, rgba(37,211,102,0.10) 0, transparent 35%);
+}
+.hero-grid {
+  position: relative; z-index: 2;
+  display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 50px; align-items: center;
+}
+.hero-badge {
+  display: inline-block; background: rgba(255,255,255,0.14); backdrop-filter: blur(5px);
+  border: 1px solid rgba(255,255,255,0.25); border-radius: 30px;
+  padding: 8px 20px; margin-bottom: 22px;
+  color: #fff; font-size: 14px; font-weight: 500;
+  animation: fadeInDown 1s ease;
+}
+.hero-badge i { margin-right: 8px; color: var(--green-whatsapp); }
+.hero h1 {
+  color: var(--text-white); font-size: 46px; font-weight: 800; margin-bottom: 16px;
+  line-height: 1.15; animation: fadeInDown 1s ease 0.1s both;
+}
+.hero h1 .hl { color: #7cc0ff; }
+.hero h2 {
+  color: var(--text-white); font-size: 20px; font-weight: 300; margin-bottom: 18px;
+  line-height: 1.6; animation: fadeInDown 1s ease 0.25s both; opacity: 0.95;
+}
+.hero h2 strong { color: #fff; font-weight: 600; }
+.hero p {
+  color: rgba(255,255,255,0.9); font-size: 15px; line-height: 1.75; margin-bottom: 30px;
+  animation: fadeInDown 1s ease 0.4s both;
+}
+.hero-cta { display: flex; flex-wrap: wrap; gap: 14px; animation: fadeInDown 1s ease 0.5s both; }
+.hero-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--green-whatsapp); color: var(--text-white);
+  padding: 16px 34px; border-radius: 50px; font-size: 16px; font-weight: 600;
+  transition: all 0.3s; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.45);
+}
+.hero-btn:hover { background: #1ebe57; transform: translateY(-2px); box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6); }
+.hero-btn.btn-wa { background: var(--blue-primary); box-shadow: 0 4px 15px rgba(0,120,215,0.45); }
+.hero-btn.btn-wa:hover { background: var(--blue-hover); box-shadow: 0 6px 25px rgba(0,120,215,0.6); }
+.hero-scarcity-note {
+  margin-top: 22px; display: flex; align-items: center; gap: 10px;
+  color: rgba(255,255,255,0.9); font-size: 13px; font-weight: 500;
+  animation: fadeInDown 1s ease 0.6s both;
+}
+.hero-scarcity-note .pulse-dot {
+  width: 10px; height: 10px; border-radius: 50%; background: #f87171;
+  box-shadow: 0 0 0 0 rgba(248,113,113,0.7); animation: pulse 1.6s infinite;
+}
+.hero-features {
+  display: flex; flex-wrap: wrap; gap: 26px; margin-top: 30px;
+  animation: fadeInDown 1s ease 0.7s both;
+}
+.hero-feature { display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.95); font-size: 13.5px; font-weight: 500; }
+.hero-feature i { color: var(--blue-light); font-size: 18px; }
+
+.hero-card {
+  background: rgba(255,255,255,0.08); backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.18); border-radius: 22px;
+  padding: 34px 30px; color: #fff; box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+  animation: fadeInRight 1s ease 0.3s both;
+}
+.hero-card-title { font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 6px; display: flex; align-items: center; gap: 10px; }
+.hero-card-title i { color: var(--gold); }
+.hero-card-sub { font-size: 13px; color: rgba(255,255,255,0.75); margin-bottom: 22px; }
+.lead-form { display: flex; flex-direction: column; gap: 12px; }
+.lead-form label { font-size: 12px; color: rgba(255,255,255,0.8); font-weight: 500; display: flex; align-items: center; gap: 6px; }
+.lead-form label i { color: var(--blue-light); }
+.lead-form input, .lead-form select {
+  width: 100%; padding: 13px 14px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.25);
+  background: rgba(255,255,255,0.12); color: #fff; font-family: 'Poppins', sans-serif; font-size: 14px;
+  outline: none; transition: border 0.3s, background 0.3s;
+}
+.lead-form input::placeholder { color: rgba(255,255,255,0.55); }
+.lead-form select { color: #fff; }
+.lead-form select option { color: #333; }
+.lead-form input:focus, .lead-form select:focus { border-color: var(--blue-light); background: rgba(255,255,255,0.18); }
+.lead-submit {
+  width: 100%; background: var(--green-whatsapp); color: #fff; border: none; cursor: pointer;
+  padding: 15px; border-radius: 12px; font-family: 'Poppins', sans-serif;
+  font-size: 15px; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 10px;
+  transition: all 0.3s; box-shadow: 0 6px 20px rgba(37,211,102,0.4); margin-top: 4px;
+}
+.lead-submit:hover { background: #1ebe57; transform: translateY(-2px); }
+.hero-card-note { text-align: center; font-size: 11.5px; color: rgba(255,255,255,0.7); margin-top: 12px; }
+.hero-card-note i { color: var(--blue-light); margin-right: 4px; }
+
+/* Section common */
+.section { padding: 84px 0; }
+.section-title { text-align: center; margin-bottom: 14px; }
+.section-title h2 {
+  font-size: 36px; font-weight: 700; color: var(--blue-dark);
+  position: relative; display: inline-block;
+}
+.section-title h2::after {
+  content: ''; display: block; width: 60px; height: 4px;
+  background: var(--blue-primary); margin: 10px auto 0; border-radius: 2px;
+}
+.section-subtitle { text-align: center; font-size: 17px; color: var(--text-gray); margin-bottom: 50px; }
+
+/* About / intro */
+.intro-section { background: var(--bg-light); }
+.intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+.intro-media { position: relative; }
+.intro-media img { border-radius: 18px; box-shadow: 0 12px 40px rgba(0,0,0,0.12); display: block; width: 100%; }
+.intro-float-badge {
+  position: absolute; bottom: -18px; left: 24px;
+  background: var(--text-white); border: 1px solid var(--border-color);
+  border-radius: 14px; padding: 14px 20px; box-shadow: 0 8px 28px rgba(0,0,0,0.10);
+  display: flex; align-items: center; gap: 12px;
+}
+.intro-float-badge i { font-size: 26px; color: var(--blue-primary); }
+.intro-float-badge .n { font-size: 20px; font-weight: 700; color: var(--blue-dark); line-height: 1.1; }
+.intro-float-badge .l { font-size: 12px; color: var(--text-gray); }
+.intro-text h3 { font-size: 27px; color: var(--blue-dark); margin-bottom: 14px; font-weight: 700; }
+.intro-text p { font-size: 15px; color: var(--text-gray); line-height: 1.8; margin-bottom: 14px; }
+.intro-text p strong { color: var(--blue-dark); }
+.intro-checks { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 18px; }
+.intro-check { display: flex; align-items: center; gap: 9px; font-size: 13.5px; color: var(--text-dark); font-weight: 500; }
+.intro-check i { color: var(--green-whatsapp); font-size: 15px; }
+.intro-cta { margin-top: 24px; }
+
+/* Techniques */
+.tech-section { background: var(--text-white); }
+.tech-filter { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-bottom: 40px; }
+.tech-filter-btn {
+  padding: 9px 20px; border-radius: 30px; border: 2px solid var(--blue-dark);
+  background: transparent; color: var(--blue-primary); cursor: pointer;
+  font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 500; transition: all 0.3s;
+}
+.tech-filter-btn.active, .tech-filter-btn:hover { background: var(--blue-dark); color: #fff; }
+.tech-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.tech-card {
+  background: var(--text-white); border: 1px solid var(--border-color);
+  border-radius: 18px; padding: 30px 24px; position: relative; overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.tech-card:hover { transform: translateY(-5px); box-shadow: 0 12px 34px rgba(0,120,215,0.14); }
+.tech-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+  background: linear-gradient(90deg, var(--blue-primary), var(--blue-light));
+}
+.tech-card.popular::before { background: linear-gradient(90deg, var(--gold), #fbbf24); }
+.tech-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+.tech-icon {
+  width: 60px; height: 60px; border-radius: 16px; flex-shrink: 0;
+  background: var(--bg-light); color: var(--blue-primary);
+  display: flex; align-items: center; justify-content: center; font-size: 26px;
+}
+.tech-tag {
+  font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px;
+  padding: 4px 12px; border-radius: 20px;
+}
+.tech-tag.pop { background: #fef3c7; color: #b45309; }
+.tech-tag.low { background: #e0f2fe; color: #0369a1; }
+.tech-tag.fav { background: #fce7f3; color: #be185d; }
+.tech-tag.hit { background: #dcfce7; color: #15803d; }
+.tech-card h3 { font-size: 18px; color: var(--blue-dark); margin-bottom: 8px; font-weight: 700; }
+.tech-card .tech-desc { font-size: 13.5px; color: var(--text-gray); line-height: 1.7; margin-bottom: 12px; }
+.tech-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+.tech-meta span {
+  font-size: 11.5px; color: var(--blue-dark); background: var(--bg-light);
+  padding: 4px 10px; border-radius: 20px; font-weight: 500;
+}
+.tech-meta span i { margin-right: 5px; color: var(--blue-primary); }
+.tech-benefits { margin-bottom: 16px; }
+.tech-benefits .tb-title { font-size: 12.5px; font-weight: 600; color: var(--blue-dark); margin-bottom: 7px; }
+.tech-benefits li { list-style: none; font-size: 13px; color: var(--text-gray); padding: 2.5px 0 2.5px 20px; position: relative; line-height: 1.5; }
+.tech-benefits li::before {
+  content: '\f00c'; font-family: 'Font Awesome 6 Free'; font-weight: 900;
+  position: absolute; left: 0; color: var(--green-whatsapp); font-size: 11px; top: 5px;
+}
+.tech-btn {
+  display: inline-flex; align-items: center; gap: 8px; width: 100%; justify-content: center;
+  background: var(--bg-light); color: var(--blue-primary); border: 1px solid var(--border-color);
+  padding: 11px; border-radius: 10px; font-size: 13.5px; font-weight: 600;
+  transition: all 0.3s;
+}
+.tech-btn:hover { background: var(--blue-primary); color: #fff; border-color: var(--blue-primary); }
+
+/* Steps */
+.steps-section { background: var(--bg-light); }
+.steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+.step-card { text-align: center; position: relative; }
+.step-num {
+  width: 62px; height: 62px; margin: 0 auto 16px; border-radius: 50%;
+  background: var(--blue-primary); color: #fff; font-size: 24px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 22px rgba(0,120,215,0.3);
+  position: relative; z-index: 2;
+}
+.step-card::after {
+  content: ''; position: absolute; top: 31px; left: calc(50% + 34px); right: calc(-50% + 34px);
+  height: 2px; background: var(--border-color); z-index: 1;
+}
+.step-card:last-child::after { display: none; }
+.step-card h3 { font-size: 16px; color: var(--blue-dark); margin-bottom: 8px; font-weight: 600; }
+.step-card p { font-size: 13.5px; color: var(--text-gray); line-height: 1.7; }
+.step-card .step-link { display: block; margin-top: 10px; color: var(--blue-primary); font-size: 13px; font-weight: 500; }
+
+/* Offer / scarcity */
+.offer-section { background: linear-gradient(135deg, #00284d, #003366 55%, #005A9E); position: relative; overflow: hidden; }
+.offer-section::before {
+  content: ''; position: absolute; inset: 0;
+  background-image: radial-gradient(circle at 85% 20%, rgba(245,158,11,0.15) 0, transparent 40%);
+}
+.offer-section .section-title h2 { color: #fff; }
+.offer-section .section-title h2::after { background: var(--gold); }
+.offer-section .section-subtitle { color: rgba(255,255,255,0.8); }
+.offer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; position: relative; z-index: 2; }
+.offer-card {
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.16);
+  border-radius: 22px; padding: 38px 32px; backdrop-filter: blur(10px);
+}
+.offer-card .oc-tag {
+  display: inline-block; background: var(--gold); color: #7c2d12;
+  font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px;
+  padding: 5px 14px; border-radius: 20px; margin-bottom: 16px;
+}
+.offer-card h3 { color: #fff; font-size: 24px; margin-bottom: 10px; font-weight: 700; }
+.offer-card > p { color: rgba(255,255,255,0.85); font-size: 14px; line-height: 1.75; margin-bottom: 22px; }
+.offer-list { list-style: none; margin-bottom: 24px; }
+.offer-list li {
+  color: rgba(255,255,255,0.92); font-size: 13.5px; padding: 6px 0 6px 26px; position: relative; line-height: 1.5;
+}
+.offer-list li::before {
+  content: '\f00c'; font-family: 'Font Awesome 6 Free'; font-weight: 900;
+  position: absolute; left: 0; color: var(--green-whatsapp);
+}
+.offer-cta {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--green-whatsapp); color: #fff; font-weight: 700;
+  padding: 15px 32px; border-radius: 50px; font-size: 15px; transition: all 0.3s;
+  box-shadow: 0 6px 22px rgba(37,211,102,0.4);
+}
+.offer-cta:hover { background: #1ebe57; transform: translateY(-2px); }
+.countdown-box { text-align: center; padding: 34px 26px; }
+.countdown-title { color: #fff; font-size: 17px; font-weight: 600; margin-bottom: 20px; }
+.countdown-title i { color: var(--gold); margin-right: 8px; }
+.cd-grid { display: flex; justify-content: center; gap: 14px; }
+.cd-box {
+  background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 14px; padding: 18px 22px; min-width: 84px;
+}
+.cd-box .cd-n { font-size: 34px; font-weight: 700; color: #fff; line-height: 1; }
+.cd-box .cd-l { font-size: 11px; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 1px; margin-top: 6px; }
+.countdown-note { margin-top: 20px; color: rgba(255,255,255,0.7); font-size: 12.5px; }
+.countdown-note i { color: var(--blue-light); margin-right: 5px; }
+
+/* Trust / gallery */
+.trust-section { background: var(--text-white); }
+.trust-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.trust-card {
+  background: var(--bg-light); border: 1px solid var(--border-color);
+  border-radius: 14px; padding: 26px 20px; text-align: center; transition: transform 0.3s;
+}
+.trust-card:hover { transform: translateY(-4px); }
+.trust-card i { font-size: 30px; color: var(--blue-primary); margin-bottom: 12px; display: inline-block; }
+.trust-card h3 { font-size: 15px; color: var(--blue-dark); margin-bottom: 6px; font-weight: 600; }
+.trust-card p { font-size: 12.5px; color: var(--text-gray); line-height: 1.6; }
+
+/* Gallery */
+.gallery-section { background: var(--bg-light); }
+.gal-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.gal-card {
+  position: relative; border-radius: 16px; overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1); transition: transform 0.3s;
+}
+.gal-card:hover { transform: translateY(-4px); }
+.gal-card img { display: block; width: 100%; height: 240px; object-fit: cover; }
+.gal-overlay {
+  position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,51,102,0.94), rgba(0,51,102,0.3) 60%, transparent);
+  display: flex; flex-direction: column; justify-content: flex-end; padding: 20px; color: #fff;
+}
+.gal-overlay h3 { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
+.gal-overlay p { font-size: 12.5px; opacity: 0.85; margin-bottom: 12px; }
+.gal-overlay .gal-cta {
+  align-self: flex-start; background: var(--green-whatsapp); color: #fff;
+  font-size: 12.5px; font-weight: 600; padding: 8px 16px; border-radius: 30px; transition: transform 0.3s;
+}
+.gal-overlay .gal-cta:hover { transform: scale(1.05); }
+.gal-note { text-align: center; margin-top: 26px; font-size: 13px; color: var(--text-gray); }
+.gal-note i { color: var(--blue-primary); margin-right: 5px; }
+
+/* Testimonials */
+.testimonials { background: linear-gradient(135deg, #003366, var(--blue-dark), var(--blue-primary)); }
+.testimonials .section-title h2, .testimonials .section-title h2::after { color: #fff; background: #fff; }
+.testimonials .section-subtitle { color: rgba(255,255,255,0.8); }
+.testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.testi-card {
+  background: rgba(255,255,255,0.08); backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.15); border-radius: 14px; padding: 26px;
+}
+.testi-stars { color: var(--gold); margin-bottom: 12px; font-size: 14px; }
+.testi-text { color: rgba(255,255,255,0.92); font-size: 13.5px; line-height: 1.7; margin-bottom: 18px; font-style: italic; }
+.testi-author { display: flex; align-items: center; gap: 12px; }
+.testi-avatar {
+  width: 44px; height: 44px; border-radius: 50%; background: var(--blue-light); color: #003366;
+  font-weight: 700; display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0;
+}
+.testi-name { color: #fff; font-weight: 600; font-size: 13.5px; }
+.testi-source { color: rgba(255,255,255,0.55); font-size: 12px; }
+
+/* FAQ */
+.faq-section { background: var(--bg-light); }
+.faq-list { max-width: 780px; margin: 0 auto; }
+.faq-item {
+  background: var(--text-white); border: 1px solid var(--border-color);
+  border-radius: 12px; margin-bottom: 12px; overflow: hidden; transition: box-shadow 0.3s;
+}
+.faq-item.open { box-shadow: 0 8px 24px rgba(0,120,215,0.12); }
+.faq-q {
+  display: flex; justify-content: space-between; align-items: center; gap: 16px;
+  padding: 18px 22px; cursor: pointer; font-size: 15px; color: var(--blue-dark); font-weight: 600;
+}
+.faq-q i { color: var(--blue-primary); transition: transform 0.3s; font-size: 15px; }
+.faq-item.open .faq-q i { transform: rotate(180deg); }
+.faq-a { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+.faq-a p { padding: 0 22px 20px; font-size: 14px; color: var(--text-gray); line-height: 1.75; }
+
+/* Final CTA */
+.cta-section { background: var(--text-white); padding: 70px 0; text-align: center; }
+.cta-box {
+  max-width: 720px; margin: 0 auto; background: var(--bg-light);
+  border: 1px solid var(--border-color); border-radius: 20px; padding: 50px 40px;
+  box-shadow: 0 6px 28px rgba(0,0,0,0.06);
+}
+.cta-box h3 { font-size: 28px; color: var(--blue-dark); margin-bottom: 10px; }
+.cta-box .cta-sub { color: var(--text-gray); font-size: 15px; margin-bottom: 8px; }
+.cta-box .cta-scarcity { color: #b91c1c; font-size: 13.5px; font-weight: 600; margin-bottom: 26px; }
+.cta-box .cta-scarcity i { margin-right: 6px; }
+.cta-btn {
+  display: inline-flex; align-items: center; gap: 10px; background: var(--green-whatsapp); color: #fff;
+  padding: 17px 42px; border-radius: 50px; font-size: 16px; font-weight: 700;
+  transition: all 0.3s; box-shadow: 0 6px 22px rgba(37,211,102,0.4);
+}
+.cta-btn:hover { background: #1ebe57; transform: translateY(-2px); }
+.cta-alts { margin-top: 20px; display: flex; justify-content: center; flex-wrap: wrap; gap: 22px; font-size: 13px; color: var(--text-gray); }
+.cta-alts span i { color: var(--blue-primary); margin-right: 6px; }
+
+/* Footer */
+.footer { background: var(--text-white); color: var(--text-dark); padding: 40px 0 20px; border-top: 1px solid var(--border-color); }
+.footer-content { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+.footer-left { display: flex; align-items: center; gap: 12px; }
+.footer-left img { height: 36px; width: auto; }
+.footer-left span { font-size: 14px; color: var(--text-gray); }
+.footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
+.footer-links a { font-size: 14px; color: var(--blue-dark); font-weight: 500; transition: color 0.3s; }
+.footer-links a:hover { color: var(--blue-primary); }
+.footer-bottom { text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border-color); font-size: 13px; color: var(--text-gray); }
+
+/* WhatsApp floating */
+.whatsapp-float {
+  position: fixed; bottom: 24px; right: 24px; z-index: 999;
+  width: 60px; height: 60px; border-radius: 50%;
+  background: var(--green-whatsapp); color: var(--text-white);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 30px; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6); color: var(--text-white); }
+
+/* Animations */
+@keyframes fadeInDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeInRight { from { opacity: 0; transform: translateX(40px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(248,113,113,0.7); }
+  70% { box-shadow: 0 0 0 12px rgba(248,113,113,0); }
+  100% { box-shadow: 0 0 0 0 rgba(248,113,113,0); }
+}
+@keyframes logoGlow {
+  0%, 100% { filter: drop-shadow(0 0 4px rgba(74, 144, 226, 0.3)); }
+  50% { filter: drop-shadow(0 0 12px rgba(74, 144, 226, 0.7)); }
+}
+.logo-cois { animation: logoGlow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite; will-change: filter; }
+.logo-cois:hover { animation-duration: 1.5s; filter: drop-shadow(0 0 14px rgba(74,144,226,0.84)); }
+
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .hero { padding-top: 180px; }
+  .hero h1 { font-size: 38px; }
+  .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+  .tech-grid { grid-template-columns: repeat(2, 1fr); }
+  .steps-grid { grid-template-columns: repeat(2, 1fr); }
+  .step-card::after { display: none; }
+  .trust-grid { grid-template-columns: repeat(2, 1fr); }
+  .offer-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  .header-nav { display: none; }
+  .mobile-toggle { display: block; }
+  .header-nav.active {
+    display: flex; flex-direction: column; position: absolute;
+    top: 100%; left: 0; right: 0; background: var(--text-white);
+    padding: 20px; gap: 14px; border-bottom: 3px solid var(--blue-primary);
+    align-items: flex-start;
+  }
+  .top-bar { padding: 10px; font-size: 12px; }
+  .hero { min-height: auto; padding-top: 190px; }
+  .hero h1 { font-size: 30px; }
+  .hero h2 { font-size: 16px; }
+  .hero p { font-size: 14px; }
+  .hero-cta { flex-direction: column; }
+  .hero-btn { justify-content: center; padding: 14px 26px; font-size: 14px; }
+  .hero-features { flex-direction: column; gap: 12px; }
+  .section-title h2 { font-size: 27px; }
+  .intro-grid { grid-template-columns: 1fr; gap: 44px; }
+  .tech-grid { grid-template-columns: 1fr; }
+  .tech-filter-btn { padding: 8px 16px; font-size: 12px; }
+  .steps-grid { grid-template-columns: 1fr; }
+  .testi-grid { grid-template-columns: 1fr; }
+  .gal-grid { grid-template-columns: 1fr; }
+  .trust-grid { grid-template-columns: 1fr 1fr; }
+  .cd-box { min-width: 68px; padding: 14px 12px; }
+  .cd-box .cd-n { font-size: 26px; }
+  .cta-box { padding: 30px 20px; }
+  .cta-box h3 { font-size: 23px; }
+  .footer-content { flex-direction: column; text-align: center; }
+  .footer-links { justify-content: center; }
+}
+@media (max-width: 480px) {
+  .trust-grid { grid-template-columns: 1fr; }
+  .cd-grid { gap: 8px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .logo-cois, .pulse-dot { animation: none; }
+  * { animation: none !important; transition: none !important; }
+  .reveal { opacity: 1; transform: none; }
+}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MedicalBusiness",
+  "name": "Clínica Cois - Massoterapia",
+  "url": "https://clinicacois.com.br/massoterapia",
+  "image": "https://clinicacois.com.br/logo.jpeg",
+  "telephone": "+55-71-99108-5981",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Rua Conselheiro Pedro Luiz, 282, Rio Vermelho",
+    "addressLocality": "Salvador",
+    "addressRegion": "BA",
+    "addressCountry": "BR"
+  },
+  "priceRange": "$$",
+  "medicalSpecialty": "Massage",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Serviços de Massoterapia",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Massagem Relaxante" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Drenagem Linfática" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Reflexologia Podal" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Massagem com Pedras Quentes" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Massagem Desportiva" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Massagem Redutora e Modeladora" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Liberação Miofascial" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Shiatsu" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Tuina" } }
+    ]
+  }
+}
+</script>
+</head>
+<body>
+
+<div class="top-bar">
+  <i class="fas fa-fire"></i> ESTAMOS COM VAGAS LIMITADAS NESTA SEMANA — Garanta a sua sessão e ganhe <strong>-20% na avaliação</strong> | O tempo para aproveitar esta condição está acabando: <span class="top-clock" id="topClock">--:--:--</span>
+</div>
+
+<header class="header">
+  <div class="header-logo">
+    <a href="index.html"><img src="logo.jpeg" alt="Clínica Cois" class="logo-cois" style="height:42px;width:auto;"></a>
+  </div>
+  <button class="mobile-toggle" onclick="document.querySelector('.header-nav').classList.toggle('active')">
+    <i class="fas fa-bars"></i>
+  </button>
+  <nav class="header-nav">
+    <a href="index.html">Início</a>
+    <a href="#sobre">Sobre</a>
+    <a href="#tecnicas">Técnicas</a>
+    <a href="#beneficios">Benefícios</a>
+    <a href="#depoimentos">Depoimentos</a>
+    <a href="#faq">Dúvidas</a>
+    <a href="podologia.html">Podologia</a>
+    <a href="massoterapia.html" class="active" style="color:var(--blue-primary);font-weight:600;">Massoterapia</a>
+    <a href="domicilio.html" style="color:#25D366;font-weight:600;">Domicílio</a>
+    <a class="header-btn" href="#agendar" onclick="scrollToAgendar(event)">Agendar sessão</a>
+  </nav>
+</header>
+
+<section class="hero" id="inicio">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-badge">
+          <i class="fas fa-hand-holding-heart"></i> Massoterapia em Salvador — Clínica Cois
+        </div>
+        <h1>Transforme tensões e estresse em <span class="hl">relaxamento e bem-estar</span> com as mãos certas</h1>
+        <h2>9 técnicas de massagem terapêutica em um só lugar, com <strong>profissionais qualificados</strong>, ambiente climatizado e <strong>atendimento 100% humanizado</strong> no Rio Vermelho.</h2>
+        <p>Sessões personalizadas para aliviar dores, reduzir o estresse, melhorar a circulação, dar mais disposição e potencializar a sua qualidade de vida — desde a primeira sessão.</p>
+        <div class="hero-cta">
+          <a class="hero-btn" href="#agendar" onclick="scrollToAgendar(event)"><i class="fab fa-whatsapp"></i> Agendar minha sessão</a>
+          <a class="hero-btn btn-wa" href="#tecnicas"><i class="fas fa-list-check"></i> Ver técnicas</a>
+        </div>
+        <div class="hero-scarcity-note">
+          <span class="pulse-dot"></span> Restam poucos horários nesta semana — reserva confirmada só via WhatsApp
+        </div>
+        <div class="hero-features">
+          <div class="hero-feature"><i class="fas fa-user-md"></i> Massoterapeutas qualificados</div>
+          <div class="hero-feature"><i class="fas fa-wind"></i> Sala climatizada e privativa</div>
+          <div class="hero-feature"><i class="fas fa-disinfect"></i> Higienização e protocolo rigoroso</div>
+          <div class="hero-feature"><i class="fas fa-calendar-check"></i> Atendimento marcado, sem espera</div>
+        </div>
+      </div>
+      <div class="hero-card" id="agendar">
+        <div class="hero-card-title"><i class="fas fa-bolt"></i> Garanta sua vaga agora</div>
+        <div class="hero-card-sub">Preencha e receba a confirmação do seu horário no WhatsApp.</div>
+        <form class="lead-form" onsubmit="sendLead(event)">
+          <input type="text" name="nome" placeholder="Seu nome" required>
+          <input type="tel" name="telefone" placeholder="Seu WhatsApp (DDD + número)" required>
+          <select name="tecnica" required>
+            <option value="" disabled selected>Escolha a técnica desejada</option>
+            <option>Massagem Relaxante</option>
+            <option>Drenagem Linfática</option>
+            <option>Reflexologia Podal</option>
+            <option>Massagem com Pedras Quentes</option>
+            <option>Massagem Desportiva</option>
+            <option>Massagem Redutora e Modeladora</option>
+            <option>Liberação Miofascial</option>
+            <option>Shiatsu</option>
+            <option>Tuina</option>
+            <option>Ainda não sei / Quero orientação</option>
+          </select>
+          <button type="submit" class="lead-submit"><i class="fab fa-whatsapp"></i> Quero garantir minha vaga</button>
+        </form>
+        <div class="hero-card-note"><i class="fas fa-lock"></i> Seus dados ficam seguros. Sem spam.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section intro-section" id="sobre">
+  <div class="container">
+    <div class="intro-grid">
+      <div class="intro-media reveal">
+        <img src="Arq/imagens/area_estetica.jpeg" alt="Espaço de massoterapia da Clínica Cois em Salvador">
+        <div class="intro-float-badge">
+          <i class="fas fa-spa"></i>
+          <div>
+            <div class="n">9 técnicas</div>
+            <div class="l">de massoterapia disponíveis</div>
+          </div>
+        </div>
+      </div>
+      <div class="intro-text reveal">
+        <h3>Massoterapia que trata o corpo e acalma a mente</h3>
+        <p>A <strong>massoterapia</strong> é uma das formas mais antigas e eficazes de cuidado com a saúde. Na <strong>Clínica Cois</strong>, unimos técnica, ciência e acolhimento para oferecer sessões que vão muito além do alívio imediato: <strong>reduzimos o estresse, melhoramos o sono, aliviamos dores musculares e devolvemos disposição</strong> ao seu dia a dia.</p>
+        <p>Cada sessão é <strong>100% personalizada</strong>: antes de começar, você conversa com o profissional, identifica suas necessidades e recebe a técnica mais adequada ao seu objetivo — seja relaxamento profundo, alívio de tensão, recuperação pós-treino ou cuidados estéticos.</p>
+        <div class="intro-checks">
+          <span class="intro-check"><i class="fas fa-check-circle"></i> Avaliação individualizada</span>
+          <span class="intro-check"><i class="fas fa-check-circle"></i> Profissionais qualificados</span>
+          <span class="intro-check"><i class="fas fa-check-circle"></i> Ambiente climatizado</span>
+          <span class="intro-check"><i class="fas fa-check-circle"></i> Resultados desde a 1ª sessão</span>
+        </div>
+        <div class="intro-cta">
+          <a class="hero-btn btn-wa" href="#agendar" onclick="scrollToAgendar(event)" style="display:inline-flex;padding:14px 30px;font-size:15px;"><i class="fab fa-whatsapp"></i> Agendar agora</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section tech-section" id="tecnicas">
+  <div class="container">
+    <div class="section-title">
+      <h2>9 Técnicas de Massoterapia</h2>
+    </div>
+    <div class="section-subtitle">Escolha a ideal para você ou deixe que a nossa equipe te oriente</div>
+
+    <div class="tech-filter">
+      <button class="tech-filter-btn active" data-filter="todas">Todas</button>
+      <button class="tech-filter-btn" data-filter="relaxamento">Relaxamento</button>
+      <button class="tech-filter-btn" data-filter="estetica">Estética & Saúde</button>
+      <button class="tech-filter-btn" data-filter="dor">Dores & Desportiva</button>
+      <button class="tech-filter-btn" data-filter="oriental">Oriental</button>
+    </div>
+
+    <div class="tech-grid">
+
+      <div class="tech-card reveal" data-cat="relaxamento">
+        <div class="tech-top">
+          <div class="tech-icon"><i class="fas fa-heart"></i></div>
+          <span class="tech-tag fav">Mais procurada</span>
+        </div>
+        <h3>Massagem Relaxante</h3>
+        <p class="tech-desc">A técnica clássica de deslizamentos, amassamentos e movimentos suaves que ativam a circulação e liberam o "modo descanso" do corpo. Ideal para desligar a mente, soltar a tensão do dia a dia e dormir melhor.</p>
+        <div class="tech-meta">
+          <span><i class="fas fa-clock"></i> 50 a 60 min</span>
+          <span><i class="fas fa-users"></i> Todas as idades</span>
+        </div>
+        <ul class="tech-benefits">
+          <span class="tb-title">Benefícios:</span>
+          <li>Reduz estresse, ansiedade e tensão muscular</li>
+          <li>Melhora a qualidade do sono</li>
+          <li>Estimula a circulação sanguínea e linfática</li>
+          <li>Sensação imediata de leveza e bem-estar</li>
+        </ul>
+        <a class="tech-btn" href="#agendar" onclick="openLead('Massagem Relaxante', event)"><i class="fab fa-whatsapp"></i> Agendar esta técnica</a>
+      </div>
+
+      <div class="tech-card reveal" data-cat="estetica">
+        <div class="tech-top">
+          <div class="tech-icon"><i class="fas fa-water"></i></div>
+          <span class="tech-tag hit">Pós-cirúrgica</span>
+        </div>
+        <h3>Drenagem Linfática</h3>
+        <p class="tech-desc">Massagem suave e ritmada que estimula o sistema linfático a transportar toxinas e excesso de líquido. A grande aliada do pós-operatório, da redução de inchaços e do combate à retenção de líquidos.</p>
+        <div class="tech-meta">
+          <span><i class="fas fa-clock"></i> 50 a 70 min</span>
+          <span><i class="fas fa-star"></i> Indicada no pós-op</span>
+        </div>
+        <ul class="tech-benefits">
+          <span class="tb-title">Benefícios:</span>
+          <li>Reduz inchaço e retenção de líquidos</li>
+          <li>Acelera a recuperação pós-cirúrgica</li>
+          <li>Fortalece a imunidade</li>
+          <li>Melhora o aspecto da celulite</li>
+        </ul>
+        <a class="tech-btn" href="#agendar" onclick="openLead('Drenagem Linfática', event)"><i class="fab fa-whatsapp"></i> Agendar esta técnica</a>
+      </div>
+
+      <div class="tech-card reveal" data-cat="relaxamento">
+        <div class="tech-top">
+          <div class="tech-icon"><i class="fas fa-shoe-prints"></i></div>
+          <span class="tech-tag hit">Relaxante</span>
+        </div>
+        <h3>Reflexologia Podal</h3>
+        <p class="tech-desc">Técnica milenar que atua em pontos reflexos dos pés conectados a órgãos e sistemas do corpo. Uma pressão estrategicamente aplicada que promove relaxamento profundo e reequilíbrio do organismo.</p>
+        <div class="tech-meta">
+          <span><i class="fas fa-clock"></i> 45 a 60 min</span>
+          <span><i class="fas fa-users"></i> Todas as idades</span>
+        </div>
+        <ul class="tech-benefits">
+          <span class="tb-title">Benefícios:</span>
+          <li>Promove relaxamento profundo</li>
+          <li>Alivia tensões em áreas específicas</li>
+          <li>Melhora o sono e o humor</li>
+          <li>Estimula o funcionamento dos órgãos</li>
+        </ul>
+        <a class="tech-btn" href="#agendar" onclick="openLead('Reflexologia Podal', event)"><i class="fab fa-whatsapp"></i> Agendar esta técnica</a>
+      </div>
+
+      <div class="tech-card reveal" data-cat="relaxamento">
+        <div class="tech-top">
+          <div class="tech-icon"><i class="fas fa-fire"></i></div>
+          <span class="tech-tag pop">Spa em casa</span>
+        </div>
+        <h3>Massagem com Pedras Quentes</h3>
+        <p class="tech-desc">Pedras de basalto aquecidas são posicionadas em pontos estratégicos e combinadas a manobras de massagem. O calor penetra na musculatura, relaxando o corpo em um nível de bem-estar difícil de descrever.</p>
+        <div class="tech-meta">
+          <span><i class="fas fa-clock"></i> 60 a 90 min</span>
+          <span><i class="fas fa-temperature-high"></i> Calor terapêutico</span>
+        </div>
+        <ul class="tech-benefits">
+          <span class="tb-title">Benefícios:</span>
+          <li>Relaxamento profundo da musculatura</li>
+          <li>Alivia dores e rigidez muscular</li>
+          <li>Melhora a circulação sanguínea</li>
+          <li>Experiência sensorial de spa</li>
+        </ul>
+        <a class="tech-btn" href="#agendar" onclick="openLead('Massagem com Pedras Quentes', event)"><i class="fab fa-whatsapp"></i> Agendar esta técnica</a>
+      </div>
+
+      <div class="tech-card reveal" data-cat="dor">
+        <div class="tech-top">
+          <div class="tech-icon"><i class="fas fa-dumbbell"></i></div>
+          <span class="tech-tag hit">Atletas</span>
+        </div>
+        <h3>Massagem Desportiva</h3>
+        <p class="tech-desc">Técnica voltada para quem treina, corre ou compete. Trabalha a musculatura para prevenir lesões, acelerar a recuperação pós-treino, aliviar tensões localizadas e melhorar o rendimento físico.</p>
+        <div class="tech-meta">
+          <span><i class="fas fa-clock"></i> 50 a 60 min</span>
+          <span><i class="fas fa-running"></i> Pré ou pós-treino</span>
+        </div>
+        <ul class="tech-benefits">
+          <span class="tb-title">Benefícios:</span>
+          <li>Previne lesões musculares</li>
+          <li>Acelera a recuperação muscular</li>
+          <li>Alivia cãibras e fadiga</li>
+          <li>Melhora a performance esportiva</li>
+        </ul>
+        <a class="tech-btn" href="#agendar" onclick="openLead('Massagem Desportiva', event)"><i class="fab fa-whatsapp"></i> Agendar esta técnica</a>
+      </div>
+
+      <div class="tech-card reveal" data-cat="estetica">
+        <div class="tech-top">
+          <div class="tech-icon"><i class="fas fa-weight-scale"></i></div>
+          <span class="tech-tag pop">Mais pedida</span>
+        </div>
+        <h3>Massagem Redutora e Modeladora</h3>
+        <p class="tech-desc">Manobras firmes e específicas que combatem a gordura localizada, o inchaço e a flacidez, melhorando a aparência da pele e o contorno corporal. Perfeita para complementar dieta e atividade física.</p>
+        <div class="tech-meta">
+          <span><i class="fas fa-clock"></i> 50 a 70 min</span>
+          <span><i class="fas fa-fill-drip"></i> Contorno corporal</span>
+        </div>
+        <ul class="tech-benefits">
+          <span class="tb-title">Benefícios:</span>
+          <li>Reduz medidas e gordura localizada</li>
+          <li>Combate a celulite e o inchaço</li>
+          <li>Melhora a firmeza e elasticidade da pele</li>
+          <li>Realça o contorno corporal</li>
+        </ul>
+        <a class="tech-btn" href="#agendar" onclick="openLead('Massagem Redutora e Modeladora', event)"><i class="fab fa-whatsapp"></i> Agendar esta técnica</a>
+      </div>
+
+      <div class="tech-card reveal" data-cat="dor">
+        <div class="tech-top">
+          <div class="tech-icon"><i class="fas fa-ribbon"></i></div>
+          <span class="tech-tag hit">Dores crônicas</span>
+        </div>
+        <h3>Liberação Miofascial</h3>
+        <p class="tech-desc">Cuidado terapêutico focado no tecido fascial, aquela "rede" que envolve a musculatura. Alivia pontos-gatilho, dores crônicas e a rigidez causada por má postura, estresse ou sobrecarga física.</p>
+        <div class="tech-meta">
+          <span><i class="fas fa-clock"></i> 45 a 60 min</span>
+          <span><i class="fas fa-bone"></i> Alívio de dores</span>
+        </div>
+        <ul class="tech-benefits">
+          <span class="tb-title">Benefícios:</span>
+          <li>Alivia dores crônicas e tensionais</li>
+          <li>Libera pontos-gatilho</li>
+          <li>Melhora a postura e a mobilidade</li>
+          <li>Reduz a rigidez muscular</li>
+        </ul>
+        <a class="tech-btn" href="#agendar" onclick="openLead('Liberação Miofascial', event)"><i class="fab fa-whatsapp"></i> Agendar esta técnica</a>
+      </div>
+
+      <div class="tech-card reveal" data-cat="oriental">
+        <div class="tech-top">
+          <div class="tech-icon"><i class="fas fa-yin-yang"></i></div>
+          <span class="tech-tag fav">Oriental</span>
+        </div>
+        <h3>Shiatsu</h3>
+        <p class="tech-desc">Terapia japonesa baseada na pressão dos dedos, palmas e cotovelos sobre meridianos de energia do corpo. Equilibra corpo e mente, aliviando tensões e restaurando a energia vital (Ki).</p>
+        <div class="tech-meta">
+          <span><i class="fas fa-clock"></i> 50 a 60 min</span>
+          <span><i class="fas fa-person-falling"></i> Equilíbrio energético</span>
+        </div>
+        <ul class="tech-benefits">
+          <span class="tb-title">Benefícios:</span>
+          <li>Equilibra corpo e mente</li>
+          <li>Alivia dores e tensões profundas</li>
+          <li>Restaura a energia e vitalidade</li>
+          <li>Reduz o estresse e a fadiga</li>
+        </ul>
+        <a class="tech-btn" href="#agendar" onclick="openLead('Shiatsu', event)"><i class="fab fa-whatsapp"></i> Agendar esta técnica</a>
+      </div>
+
+      <div class="tech-card reveal" data-cat="oriental">
+        <div class="tech-top">
+          <div class="tech-icon"><i class="fas fa-hands"></i></div>
+          <span class="tech-tag hit">Terapêutica</span>
+        </div>
+        <h3>Tuina</h3>
+        <p class="tech-desc">Massoterapia chinesa milenar que combina pressões, alongamentos e movimentos rítmicos sobre os meridianos. Excelente para tratar dores musculares, lesões e desequilíbrios energéticos de forma profunda.</p>
+        <div class="tech-meta">
+          <span><i class="fas fa-clock"></i> 50 a 60 min</span>
+          <span><i class="fas fa-hand-fist"></i> Pressão profunda</span>
+        </div>
+        <ul class="tech-benefits">
+          <span class="tb-title">Benefícios:</span>
+          <li>Trata dores musculares e articulares</li>
+          <li>Melhora a circulação de energia (Qi)</li>
+          <li>Auxilia na recuperação de lesões</li>
+          <li>Reduz o estresse e reequilibra o corpo</li>
+        </ul>
+        <a class="tech-btn" href="#agendar" onclick="openLead('Tuina', event)"><i class="fab fa-whatsapp"></i> Agendar esta técnica</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="section steps-section" id="beneficios">
+  <div class="container">
+    <div class="section-title">
+      <h2>Como funciona sua sessão</h2>
+    </div>
+    <div class="section-subtitle">Simples, rápido e pensado para o seu conforto</div>
+    <div class="steps-grid">
+      <div class="step-card reveal">
+        <div class="step-num">1</div>
+        <h3>Converse conosco</h3>
+        <p>Você entra em contato pelo WhatsApp, conta seu objetivo e garante seu horário sem burocracia.</p>
+        <a class="step-link" href="#agendar" onclick="scrollToAgendar(event)"><i class="fas fa-arrow-right"></i> Reservar horário</a>
+      </div>
+      <div class="step-card reveal">
+        <div class="step-num">2</div>
+        <h3>Avaliação individual</h3>
+        <p>No atendimento, o profissional entende suas necessidades e indica a técnica ideal para você.</p>
+      </div>
+      <div class="step-card reveal">
+        <div class="step-num">3</div>
+        <h3>Relaxe e aproveite</h3>
+        <p>Ambiente climatizado, música suave e mãos experientes cuidando de você durante toda a sessão.</p>
+      </div>
+      <div class="step-card reveal">
+        <div class="step-num">4</div>
+        <h3>Orientações finais</h3>
+        <p>Você recebe dicas de cuidados e o plano de sessões ideal para manter o resultado por mais tempo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section offer-section" id="oferta">
+  <div class="container">
+    <div class="section-title">
+      <h2>Oferta de boas-vindas</h2>
+    </div>
+    <div class="section-subtitle">Condição exclusiva para quem agenda pela página de massoterapia</div>
+    <div class="offer-grid">
+      <div class="offer-card reveal">
+        <span class="oc-tag"><i class="fas fa-bolt"></i> Condição limitada nesta semana</span>
+        <h3>-20% na avaliação inicial</h3>
+        <p>Quem agenda a primeira sessão agora recebe desconto na avaliação + cupom de brinde para a próxima sessão. Condição exclusiva para reservas feitas esta semana.</p>
+        <ul class="offer-list">
+          <li>Avaliação personalizada da técnica ideal</li>
+          <li>Atendimento em sala privativa e climatizada</li>
+          <li>Orientações de autocuidado na sua rotina</li>
+          <li>Sem taxa de cancelamento antecipado</li>
+          <li>Cupom de benefício para a 2ª sessão</li>
+        </ul>
+        <a class="offer-cta" href="#agendar" onclick="scrollToAgendar(event)"><i class="fab fa-whatsapp"></i> Quero o desconto</a>
+      </div>
+      <div class="countdown-box reveal">
+        <div class="countdown-title"><i class="fas fa-hourglass-half"></i> A oferta expira em:</div>
+        <div class="cd-grid">
+          <div class="cd-box"><div class="cd-n" id="cdDays">00</div><div class="cd-l">Dias</div></div>
+          <div class="cd-box"><div class="cd-n" id="cdHours">00</div><div class="cd-l">Horas</div></div>
+          <div class="cd-box"><div class="cd-n" id="cdMins">00</div><div class="cd-l">Min</div></div>
+          <div class="cd-box"><div class="cd-n" id="cdSecs">00</div><div class="cd-l">Seg</div></div>
+        </div>
+        <div class="countdown-note"><i class="fas fa-info-circle"></i> Após o fim da contagem, a condição de avaliação com -20% será encerrada.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section trust-section">
+  <div class="container">
+    <div class="section-title">
+      <h2>Por que escolher a Clínica Cois?</h2>
+    </div>
+    <div class="section-subtitle">Cuidado que você sente e confia</div>
+    <div class="trust-grid">
+      <div class="trust-card reveal">
+        <i class="fas fa-user-graduate"></i>
+        <h3>Profissionais qualificados</h3>
+        <p>Massoterapeutas com formação, experiência e constante atualização em todas as técnicas.</p>
+      </div>
+      <div class="trust-card reveal">
+        <i class="fas fa-soap"></i>
+        <h3>Higiene de primeira</h3>
+        <p>Protocolos rigorosos de limpeza, toalhas e materiais descartáveis para sua total segurança.</p>
+      </div>
+      <div class="trust-card reveal">
+        <i class="fas fa-wind"></i>
+        <h3>Ambiente acolhedor</h3>
+        <p>Sala climatizada, privativa e sonorizada para uma experiência imersiva de relaxamento.</p>
+      </div>
+      <div class="trust-card reveal">
+        <i class="fas fa-hand-holding-heart"></i>
+        <h3>Tratamento personalizado</h3>
+        <p>Nenhuma sessão é igual à outra: tudo é adaptado ao seu corpo, objetivo e momento.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section gallery-section">
+  <div class="container">
+    <div class="section-title">
+      <h2>O ambiente pensado para o seu relaxamento</h2>
+    </div>
+    <div class="section-subtitle">Conheça um pouco do espaço preparado para receber você</div>
+    <div class="gal-grid">
+      <div class="gal-card reveal">
+        <img src="Arq/imagens/area_estetica.jpeg" alt="Sala de massoterapia Clínica Cois">
+        <div class="gal-overlay">
+          <h3>Sala de atendimento</h3>
+          <p>Privativa, climatizada e preparada para seu conforto.</p>
+          <a class="gal-cta" href="#agendar" onclick="scrollToAgendar(event)">Agendar visita</a>
+        </div>
+      </div>
+      <div class="gal-card reveal">
+        <img src="Arq/recep.png" alt="Recepção da Clínica Cois em Salvador">
+        <div class="gal-overlay">
+          <h3>Recepção acolhedora</h3>
+          <p>Você é recebido com atenção desde o primeiro momento.</p>
+          <a class="gal-cta" href="#agendar" onclick="scrollToAgendar(event)">Agendar sessão</a>
+        </div>
+      </div>
+      <div class="gal-card reveal">
+        <img src="Arq/equipe.jpeg" alt="Equipe da Clínica Cois">
+        <div class="gal-overlay">
+          <h3>Equipe dedicada</h3>
+          <p>Profissionais apaixonados pelo que fazem, cuidando de você.</p>
+          <a class="gal-cta" href="#agendar" onclick="scrollToAgendar(event)">Conhecer equipe</a>
+        </div>
+      </div>
+    </div>
+    <p class="gal-note"><i class="fas fa-camera"></i> Fotos do espaço da Clínica Cois. Agende sua sessão e viva essa experiência.</p>
+  </div>
+</section>
+
+<section class="section testimonials" id="depoimentos">
+  <div class="container">
+    <div class="section-title">
+      <h2>Quem já viveu, recomenda</h2>
+    </div>
+    <div class="section-subtitle">Relatos reais de quem cuida da saúde com massoterapia na Clínica Cois</div>
+    <div class="testi-grid">
+      <div class="testi-card reveal">
+        <div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <p class="testi-text">"Eu vivia com dores nas costas por causa da rotina de trabalho. Fiz as sessões de massagem relaxante e liberação miofascial e a mudança foi surreal. Durmo melhor e me sinto leve novamente!"</p>
+        <div class="testi-author">
+          <div class="testi-avatar">PC</div>
+          <div>
+            <div class="testi-name">Patrícia Costa</div>
+            <div class="testi-source">Paciente de massoterapia</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <p class="testi-text">"Depois do meu pós-operatório, a drenagem linfática aqui foi essencial. Profissionais muito cuidadosos, ambiente impecável e o inchaço sumiu mais rápido do que eu esperava."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">JR</div>
+          <div>
+            <div class="testi-name">Juliana Reis</div>
+            <div class="testi-source">Paciente de drenagem linfática</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <p class="testi-text">"Treino pesado toda semana e a massagem desportiva virou parte do meu treino. Menos lesões, recuperação muito mais rápida e disposição em dobro. Recomendo de olhos fechados!"</p>
+        <div class="testi-author">
+          <div class="testi-avatar">BM</div>
+          <div>
+            <div class="testi-name">Bruno Menezes</div>
+            <div class="testi-source">Paciente de massagem desportiva</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section faq-section" id="faq">
+  <div class="container">
+    <div class="section-title">
+      <h2>Perguntas frequentes</h2>
+    </div>
+    <div class="section-subtitle">Tire suas dúvidas antes de agendar</div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">Qual técnica escolher? <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-a"><p>Não precisa decidir sozinha(o)! No agendamento, você conta seu objetivo e o profissional recomenda a técnica ideal. Na avaliação inicial gratuita da sua sessão, tudo é orientado para o seu caso.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Preciso levar algum material? <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-a"><p>Não. Fornecemos toalhas, lençóis descartáveis e todo o material necessário. Basta chegar confortável e pronto(a) para relaxar.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Quanto tempo dura uma sessão? <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-a"><p>A maioria das técnicas dura entre 50 e 60 minutos. Técnicas como pedras quentes podem chegar a 90 minutos. Tudo é combinado no momento do agendamento.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">A massoterapia tem contraindicações? <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-a"><p>Em alguns casos (febre, infecções, trombose, gestação de risco, entre outros), algumas técnicas podem não ser recomendadas. Por isso fazemos a avaliação individual antes de qualquer sessão, garantindo sua segurança.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Com que frequência devo fazer? <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-a"><p>Depende do objetivo: relaxamento pode ser quinzenal ou mensal; já drenagem, redutora, desportiva e tratamento de dores costumam ter um plano de 6 a 10 sessões para melhor resultado. O profissional define o melhor plano para você.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Aceitam convênios ou planos? <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-a"><p>Atendemos diversos convênios na Clínica Cois. Para saber se o seu plano cobre a massoterapia, é só falar conosco pelo WhatsApp e confirmamos na hora.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="contato">
+  <div class="container">
+    <div class="cta-box reveal">
+      <h3>Relaxar o corpo e a mente é um presente que você pode se dar hoje</h3>
+      <p class="cta-sub">Agende sua sessão de massoterapia na Clínica Cois e sinta a diferença de um cuidado feito por quem ama o que faz.</p>
+      <p class="cta-scarcity"><i class="fas fa-exclamation-triangle"></i> Vagas desta semana são limitadas e estão acabando.</p>
+      <a class="cta-btn" href="#agendar" onclick="scrollToAgendar(event)"><i class="fab fa-whatsapp"></i> Agendar pelo WhatsApp</a>
+      <div class="cta-alts">
+        <span><i class="fas fa-phone-alt"></i> (71) 3334-0123</span>
+        <span><i class="fas fa-map-marker-alt"></i> Rio Vermelho, Salvador - BA</span>
+        <span><i class="fas fa-clock"></i> Seg à Sex 08h às 19h30</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-left">
+        <a href="index.html"><img src="logo.jpeg" alt="Clínica Cois"></a>
+        <span>&copy; 2026 Clínica Cois. Todos os direitos reservados.</span>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Página Principal</a>
+        <a href="massoterapia.html">Massoterapia</a>
+        <a href="podologia.html">Podologia</a>
+        <a href="domicilio.html">Domicílio</a>
+        <a href="#depoimentos">Depoimentos</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>Desenvolvido por <a href="https://www.criasitevh.com.br" target="_blank" rel="nofollow noopener" style="display:inline-flex;align-items:center;gap:6px;color:var(--blue-primary);text-decoration:none;font-weight:600;"><img src="Arq/imagens/criasitevhlogo.jpg" alt="CriaSiteVH" style="height:18px;width:auto;border-radius:3px;">CriaSiteVH</a></span>
+    </div>
+  </div>
+</footer>
+
+<a class="whatsapp-float" href="https://api.whatsapp.com/send/?phone=5571991085981&text=Ol%C3%A1%2C+vim+da+p%C3%A1gina+de+Massoterapia+e+gostaria+de+agendar+uma+sess%C3%A3o%21" target="_blank" rel="nofollow noopener" aria-label="Contato do WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<script>
+const THECONST = {
+  waNumber: '5571991085981'
+};
+
+function sendLead(e) {
+  e.preventDefault();
+  const f = e.target;
+  const nome = encodeURIComponent(f.nome.value.trim());
+  const tel = encodeURIComponent(f.telefone.value.trim());
+  const tec = encodeURIComponent(f.tecnica.value);
+  const msg = `Ol%C3%A1%2C+vim+da+p%C3%A1gina+de+Massoterapia+e+gostaria+de+agendar+uma+sess%C3%A3o%21%0A%0A%E2%9C%8D%EF%B8%8F+Nome%3A+${nome}%0A%F0%9F%93%B1+WhatsApp%3A+${tel}%0A%F0%9F%92%86+T%C3%A9cnica+de+interesse%3A+${tec}`;
+  window.open(`https://api.whatsapp.com/send/?phone=${THECONST.waNumber}&text=${msg}`, '_blank', 'nofollow noopener');
+  return false;
+}
+
+function scrollToAgendar(e) {
+  e.preventDefault();
+  const el = document.getElementById('agendar');
+  if (el) {
+    const y = el.getBoundingClientRect().top + window.pageYOffset - 120;
+    window.scrollTo({ top: y, behavior: 'smooth' });
+    const input = el.querySelector('input');
+    if (input) setTimeout(() => input.focus(), 700);
+  }
+}
+
+function openLead(tech, e) {
+  e.preventDefault();
+  scrollToAgendar(e);
+  const el = document.getElementById('agendar');
+  if (el) {
+    const select = el.querySelector('select[name="tecnica"]');
+    const opt = Array.from(select.options).find(o => o.text.trim() === tech);
+    if (opt) select.value = opt.value;
+  }
+}
+
+function setCountdown() {
+  const end = new Date();
+  end.setDate(end.getDate() + 6);
+  end.setHours(23, 59, 59, 0);
+  function tick() {
+    const now = new Date();
+    let diff = end - now;
+    if (diff < 0) return;
+    let d = Math.floor(diff / 86400000);
+    let h = Math.floor((diff % 86400000) / 3600000);
+    let m = Math.floor((diff % 3600000) / 60000);
+    let s = Math.floor((diff % 60000) / 1000);
+    const pad = n => String(n).padStart(2, '0');
+    document.getElementById('cdDays').textContent = pad(d);
+    document.getElementById('cdHours').textContent = pad(h);
+    document.getElementById('cdMins').textContent = pad(m);
+    document.getElementById('cdSecs').textContent = pad(s);
+    document.getElementById('topClock').textContent = `${pad(h)}:${pad(m)}:${pad(s)}`;
+  }
+  tick();
+  setInterval(tick, 1000);
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  setCountdown();
+
+  document.querySelectorAll('.header-nav a').forEach(link => {
+    link.addEventListener('click', () => {
+      document.querySelector('.header-nav').classList.remove('active');
+    });
+  });
+
+  document.querySelectorAll('.tech-filter-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.tech-filter-btn').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      const cat = this.dataset.filter;
+      document.querySelectorAll('.tech-card').forEach(card => {
+        const show = cat === 'todas' || card.dataset.cat === cat;
+        card.style.display = show ? '' : 'none';
+      });
+    });
+  });
+
+  document.querySelectorAll('.faq-item .faq-q').forEach(q => {
+    q.addEventListener('click', function() {
+      const item = this.parentElement;
+      const a = item.querySelector('.faq-a');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(i => {
+        i.classList.remove('open');
+        i.querySelector('.faq-a').style.maxHeight = 0;
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        a.style.maxHeight = a.scrollHeight + 'px';
+      }
+    });
+  });
+
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(en => {
+      if (en.isIntersecting) {
+        en.target.classList.add('visible');
+        io.unobserve(en.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+});
+</script>
+</body>
+</html>
