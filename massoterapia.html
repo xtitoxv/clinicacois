@@ -65,15 +65,6 @@ a { text-decoration: none; color: inherit; }
 .header-btn:hover { background: var(--blue-hover); }
 .mobile-toggle { display: none; background: none; border: none; color: var(--blue-dark); font-size: 28px; cursor: pointer; }
 
-/* Scarcity top bar */
-.top-bar {
-  background: linear-gradient(90deg, #b91c1c, #ef4444);
-  color: #fff; text-align: center;
-  font-size: 13px; font-weight: 600; padding: 9px 14px;
-  letter-spacing: 0.3px;
-}
-.top-bar .top-clock { display: inline-block; min-width: 74px; font-weight: 700; margin-left: 6px; }
-
 /* Hero */
 .hero {
   min-height: 92vh; display: flex; align-items: center;
@@ -123,15 +114,6 @@ a { text-decoration: none; color: inherit; }
 .hero-btn:hover { background: #1ebe57; transform: translateY(-2px); box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6); }
 .hero-btn.btn-wa { background: var(--blue-primary); box-shadow: 0 4px 15px rgba(0,120,215,0.45); }
 .hero-btn.btn-wa:hover { background: var(--blue-hover); box-shadow: 0 6px 25px rgba(0,120,215,0.6); }
-.hero-scarcity-note {
-  margin-top: 22px; display: flex; align-items: center; gap: 10px;
-  color: rgba(255,255,255,0.9); font-size: 13px; font-weight: 500;
-  animation: fadeInDown 1s ease 0.6s both;
-}
-.hero-scarcity-note .pulse-dot {
-  width: 10px; height: 10px; border-radius: 50%; background: #f87171;
-  box-shadow: 0 0 0 0 rgba(248,113,113,0.7); animation: pulse 1.6s infinite;
-}
 .hero-features {
   display: flex; flex-wrap: wrap; gap: 26px; margin-top: 30px;
   animation: fadeInDown 1s ease 0.7s both;
@@ -283,7 +265,7 @@ a { text-decoration: none; color: inherit; }
 .step-card p { font-size: 13.5px; color: var(--text-gray); line-height: 1.7; }
 .step-card .step-link { display: block; margin-top: 10px; color: var(--blue-primary); font-size: 13px; font-weight: 500; }
 
-/* Offer / scarcity */
+/* Offer */
 .offer-section { background: linear-gradient(135deg, #00284d, #003366 55%, #005A9E); position: relative; overflow: hidden; }
 .offer-section::before {
   content: ''; position: absolute; inset: 0;
@@ -319,18 +301,6 @@ a { text-decoration: none; color: inherit; }
   box-shadow: 0 6px 22px rgba(37,211,102,0.4);
 }
 .offer-cta:hover { background: #1ebe57; transform: translateY(-2px); }
-.countdown-box { text-align: center; padding: 34px 26px; }
-.countdown-title { color: #fff; font-size: 17px; font-weight: 600; margin-bottom: 20px; }
-.countdown-title i { color: var(--gold); margin-right: 8px; }
-.cd-grid { display: flex; justify-content: center; gap: 14px; }
-.cd-box {
-  background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
-  border-radius: 14px; padding: 18px 22px; min-width: 84px;
-}
-.cd-box .cd-n { font-size: 34px; font-weight: 700; color: #fff; line-height: 1; }
-.cd-box .cd-l { font-size: 11px; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 1px; margin-top: 6px; }
-.countdown-note { margin-top: 20px; color: rgba(255,255,255,0.7); font-size: 12.5px; }
-.countdown-note i { color: var(--blue-light); margin-right: 5px; }
 
 /* Trust / gallery */
 .trust-section { background: var(--text-white); }
@@ -412,8 +382,6 @@ a { text-decoration: none; color: inherit; }
 }
 .cta-box h3 { font-size: 28px; color: var(--blue-dark); margin-bottom: 10px; }
 .cta-box .cta-sub { color: var(--text-gray); font-size: 15px; margin-bottom: 8px; }
-.cta-box .cta-scarcity { color: #b91c1c; font-size: 13.5px; font-weight: 600; margin-bottom: 26px; }
-.cta-box .cta-scarcity i { margin-right: 6px; }
 .cta-btn {
   display: inline-flex; align-items: center; gap: 10px; background: var(--green-whatsapp); color: #fff;
   padding: 17px 42px; border-radius: 50px; font-size: 16px; font-weight: 700;
@@ -483,7 +451,6 @@ a { text-decoration: none; color: inherit; }
     padding: 20px; gap: 14px; border-bottom: 3px solid var(--blue-primary);
     align-items: flex-start;
   }
-  .top-bar { padding: 10px; font-size: 12px; }
   .hero { min-height: auto; padding-top: 190px; }
   .hero h1 { font-size: 30px; }
   .hero h2 { font-size: 16px; }
@@ -499,8 +466,6 @@ a { text-decoration: none; color: inherit; }
   .testi-grid { grid-template-columns: 1fr; }
   .gal-grid { grid-template-columns: 1fr; }
   .trust-grid { grid-template-columns: 1fr 1fr; }
-  .cd-box { min-width: 68px; padding: 14px 12px; }
-  .cd-box .cd-n { font-size: 26px; }
   .cta-box { padding: 30px 20px; }
   .cta-box h3 { font-size: 23px; }
   .footer-content { flex-direction: column; text-align: center; }
@@ -508,10 +473,9 @@ a { text-decoration: none; color: inherit; }
 }
 @media (max-width: 480px) {
   .trust-grid { grid-template-columns: 1fr; }
-  .cd-grid { gap: 8px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .logo-cois, .pulse-dot { animation: none; }
+  .logo-cois { animation: none; }
   * { animation: none !important; transition: none !important; }
   .reveal { opacity: 1; transform: none; }
 }
@@ -553,10 +517,6 @@ a { text-decoration: none; color: inherit; }
 </head>
 <body>
 
-<div class="top-bar">
-  <i class="fas fa-fire"></i> ESTAMOS COM VAGAS LIMITADAS NESTA SEMANA — Garanta a sua sessão e ganhe <strong>-20% na avaliação</strong> | O tempo para aproveitar esta condição está acabando: <span class="top-clock" id="topClock">--:--:--</span>
-</div>
-
 <header class="header">
   <div class="header-logo">
     <a href="index.html"><img src="logo.jpeg" alt="Clínica Cois" class="logo-cois" style="height:42px;width:auto;"></a>
@@ -592,9 +552,6 @@ a { text-decoration: none; color: inherit; }
           <a class="hero-btn" href="#agendar" onclick="scrollToAgendar(event)"><i class="fab fa-whatsapp"></i> Agendar minha sessão</a>
           <a class="hero-btn btn-wa" href="#tecnicas"><i class="fas fa-list-check"></i> Ver técnicas</a>
         </div>
-        <div class="hero-scarcity-note">
-          <span class="pulse-dot"></span> Restam poucos horários nesta semana — reserva confirmada só via WhatsApp
-        </div>
         <div class="hero-features">
           <div class="hero-feature"><i class="fas fa-user-md"></i> Massoterapeutas qualificados</div>
           <div class="hero-feature"><i class="fas fa-wind"></i> Sala climatizada e privativa</div>
@@ -603,7 +560,7 @@ a { text-decoration: none; color: inherit; }
         </div>
       </div>
       <div class="hero-card" id="agendar">
-        <div class="hero-card-title"><i class="fas fa-bolt"></i> Garanta sua vaga agora</div>
+        <div class="hero-card-title"><i class="fas fa-calendar-check"></i> Agende seu horário</div>
         <div class="hero-card-sub">Preencha e receba a confirmação do seu horário no WhatsApp.</div>
         <form class="lead-form" onsubmit="sendLead(event)">
           <input type="text" name="nome" placeholder="Seu nome" required>
@@ -621,7 +578,7 @@ a { text-decoration: none; color: inherit; }
             <option>Tuina</option>
             <option>Ainda não sei / Quero orientação</option>
           </select>
-          <button type="submit" class="lead-submit"><i class="fab fa-whatsapp"></i> Quero garantir minha vaga</button>
+          <button type="submit" class="lead-submit"><i class="fab fa-whatsapp"></i> Quero agendar minha sessão</button>
         </form>
         <div class="hero-card-note"><i class="fas fa-lock"></i> Seus dados ficam seguros. Sem spam.</div>
       </div>
@@ -907,12 +864,12 @@ a { text-decoration: none; color: inherit; }
     <div class="section-title">
       <h2>Oferta de boas-vindas</h2>
     </div>
-    <div class="section-subtitle">Condição exclusiva para quem agenda pela página de massoterapia</div>
+    <div class="section-subtitle">Condição de boas-vindas para quem agenda pela página de massoterapia</div>
     <div class="offer-grid">
       <div class="offer-card reveal">
-        <span class="oc-tag"><i class="fas fa-bolt"></i> Condição limitada nesta semana</span>
+        <span class="oc-tag"><i class="fas fa-gift"></i> Condição de boas-vindas</span>
         <h3>-20% na avaliação inicial</h3>
-        <p>Quem agenda a primeira sessão agora recebe desconto na avaliação + cupom de brinde para a próxima sessão. Condição exclusiva para reservas feitas esta semana.</p>
+        <p>Quem agenda a primeira sessão recebe desconto na avaliação + cupom de brinde para a próxima sessão. A condição é válida a qualquer momento, sem prazo de expiração.</p>
         <ul class="offer-list">
           <li>Avaliação personalizada da técnica ideal</li>
           <li>Atendimento em sala privativa e climatizada</li>
@@ -922,15 +879,9 @@ a { text-decoration: none; color: inherit; }
         </ul>
         <a class="offer-cta" href="#agendar" onclick="scrollToAgendar(event)"><i class="fab fa-whatsapp"></i> Quero o desconto</a>
       </div>
-      <div class="countdown-box reveal">
-        <div class="countdown-title"><i class="fas fa-hourglass-half"></i> A oferta expira em:</div>
-        <div class="cd-grid">
-          <div class="cd-box"><div class="cd-n" id="cdDays">00</div><div class="cd-l">Dias</div></div>
-          <div class="cd-box"><div class="cd-n" id="cdHours">00</div><div class="cd-l">Horas</div></div>
-          <div class="cd-box"><div class="cd-n" id="cdMins">00</div><div class="cd-l">Min</div></div>
-          <div class="cd-box"><div class="cd-n" id="cdSecs">00</div><div class="cd-l">Seg</div></div>
-        </div>
-        <div class="countdown-note"><i class="fas fa-info-circle"></i> Após o fim da contagem, a condição de avaliação com -20% será encerrada.</div>
+      <div class="offer-card reveal" style="border:none;background:transparent;box-shadow:none;text-align:center;">
+        <i class="fas fa-heart" style="font-size:44px;color:var(--gold);margin-bottom:14px;display:inline-block;"></i>
+        <p style="color:rgba(255,255,255,0.9);font-size:15px;line-height:1.8;">Sem pressa e sem prazo. Quando você se sentir pronto(a), é só agendar — o desconto de boas-vindas continua disponível.</p>
       </div>
     </div>
   </div>
@@ -1087,7 +1038,6 @@ a { text-decoration: none; color: inherit; }
     <div class="cta-box reveal">
       <h3>Relaxar o corpo e a mente é um presente que você pode se dar hoje</h3>
       <p class="cta-sub">Agende sua sessão de massoterapia na Clínica Cois e sinta a diferença de um cuidado feito por quem ama o que faz.</p>
-      <p class="cta-scarcity"><i class="fas fa-exclamation-triangle"></i> Vagas desta semana são limitadas e estão acabando.</p>
       <a class="cta-btn" href="#agendar" onclick="scrollToAgendar(event)"><i class="fab fa-whatsapp"></i> Agendar pelo WhatsApp</a>
       <div class="cta-alts">
         <span><i class="fas fa-phone-alt"></i> (71) 3334-0123</span>
@@ -1161,32 +1111,7 @@ function openLead(tech, e) {
   }
 }
 
-function setCountdown() {
-  const end = new Date();
-  end.setDate(end.getDate() + 6);
-  end.setHours(23, 59, 59, 0);
-  function tick() {
-    const now = new Date();
-    let diff = end - now;
-    if (diff < 0) return;
-    let d = Math.floor(diff / 86400000);
-    let h = Math.floor((diff % 86400000) / 3600000);
-    let m = Math.floor((diff % 3600000) / 60000);
-    let s = Math.floor((diff % 60000) / 1000);
-    const pad = n => String(n).padStart(2, '0');
-    document.getElementById('cdDays').textContent = pad(d);
-    document.getElementById('cdHours').textContent = pad(h);
-    document.getElementById('cdMins').textContent = pad(m);
-    document.getElementById('cdSecs').textContent = pad(s);
-    document.getElementById('topClock').textContent = `${pad(h)}:${pad(m)}:${pad(s)}`;
-  }
-  tick();
-  setInterval(tick, 1000);
-}
-
 document.addEventListener('DOMContentLoaded', function() {
-  setCountdown();
-
   document.querySelectorAll('.header-nav a').forEach(link => {
     link.addEventListener('click', () => {
       document.querySelector('.header-nav').classList.remove('active');
