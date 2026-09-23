@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agendamento Online - Podologia | Clínica Cois</title>
+<meta name="description" content="Agende sua avaliação podológica na Clínica Cois em Salvador: escolha o tratamento, o dia e o horário disponível, envie fotos das regiões a tratar e receba a confirmação no WhatsApp. Valor a partir de R$ 140.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://clinicacois.com.br/agendamento-podologia">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --blue-primary: #0078D7;
+  --blue-dark: #005A9E;
+  --blue-light: #4DABF5;
+  --blue-bg: #004578;
+  --text-white: #FFFFFF;
+  --text-dark: #333333;
+  --text-gray: #666666;
+  --bg-light: #f0f6fc;
+  --border-color: #cce4f7;
+  --green-whatsapp: #25D366;
+  --gold: #f59e0b;
+  --red: #dc2626;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Poppins', sans-serif; color: var(--text-dark); background: var(--bg-light); }
+h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; }
+img { max-width: 100%; height: auto; }
+a { text-decoration: none; color: inherit; }
+.container { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+
+/* Header */
+.site-header {
+  background: var(--text-white); border-bottom: 1px solid var(--border-color);
+  padding: 14px 0; position: sticky; top: 0; z-index: 100;
+}
+.site-header .container { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.site-header .brand { display: flex; align-items: center; gap: 12px; }
+.site-header .brand img { height: 40px; width: auto; }
+.site-header .back-link { color: var(--blue-dark); font-weight: 500; font-size: 14px; }
+.site-header .back-link i { margin-right: 6px; color: var(--blue-primary); }
+.site-header .phone { font-size: 14px; color: var(--text-gray); }
+.site-header .phone i { color: var(--green-whatsapp); margin-right: 6px; }
+
+/* Hero */
+.page-hero { background: linear-gradient(135deg, #00284d 0%, #003366 45%, #005A9E 100%); color: #fff; padding: 48px 0 60px; }
+.page-hero h1 { font-size: 32px; font-weight: 800; margin-bottom: 10px; }
+.page-hero h1 span { color: #7cc0ff; }
+.page-hero p { font-size: 15px; color: rgba(255,255,255,0.85); line-height: 1.7; max-width: 640px; }
+.price-banner {
+  display: inline-flex; align-items: center; gap: 9px; background: var(--gold); color: #7c2d12;
+  font-weight: 700; font-size: 14px; padding: 8px 18px; border-radius: 30px; margin-top: 16px;
+}
+.price-banner i { font-size: 15px; }
+.how-strip { display: flex; gap: 26px; flex-wrap: wrap; margin-top: 24px; }
+.how-step { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.9); }
+.how-step .num {
+  width: 30px; height: 30px; border-radius: 50%; background: var(--gold); color: #7c2d12;
+  display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; flex-shrink: 0;
+}
+
+/* Booking card */
+.booking-card {
+  background: var(--text-white); border: 1px solid var(--border-color); border-radius: 18px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.08); margin-top: -34px; overflow: hidden;
+}
+.booking-step { display: none; padding: 34px 32px; }
+.booking-step.active { display: block; animation: fadeUp 0.35s ease; }
+.step-head { display: flex; align-items: center; gap: 12px; margin-bottom: 22px; }
+.step-head .ball {
+  width: 38px; height: 38px; border-radius: 50%; background: var(--blue-primary); color: #fff;
+  display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 17px; flex-shrink: 0;
+}
+.step-head h2 { font-size: 20px; color: var(--blue-dark); }
+.step-head p { font-size: 13px; color: var(--text-gray); }
+
+/* Services */
+.svc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 14px; }
+.svc-item {
+  border: 2px solid var(--border-color); border-radius: 14px; padding: 16px 16px 12px;
+  background: var(--text-white); cursor: pointer; transition: all 0.25s; text-align: left;
+  font-family: 'Poppins', sans-serif; position: relative;
+}
+.svc-item:hover { border-color: var(--blue-light); transform: translateY(-2px); }
+.svc-item.selected { border-color: var(--blue-primary); background: var(--bg-light); box-shadow: 0 6px 18px rgba(0,120,215,0.15); }
+.svc-item.selected::after {
+  content: '\f00c'; font-family: 'Font Awesome 6 Free'; font-weight: 900;
+  position: absolute; top: 10px; right: 12px; color: var(--blue-primary); font-size: 13px;
+}
+.svc-item .ic { font-size: 22px; color: var(--blue-primary); margin-bottom: 8px; display: block; }
+.svc-item h4 { font-size: 14.5px; color: var(--blue-dark); margin-bottom: 4px; font-weight: 700; }
+.svc-item .dur { font-size: 12px; color: var(--text-gray); display: flex; align-items: center; gap: 6px; }
+.svc-item .dur i { color: var(--blue-light); }
+
+/* Days */
+.days-row { display: flex; gap: 12px; overflow-x: auto; padding-bottom: 8px; }
+.day-chip {
+  min-width: 118px; border: 2px solid var(--border-color); border-radius: 14px; padding: 14px 12px;
+  background: var(--text-white); cursor: pointer; text-align: center; transition: all 0.25s; flex-shrink: 0;
+  font-family: 'Poppins', sans-serif; position: relative;
+}
+.day-chip:hover { border-color: var(--blue-light); }
+.day-chip.selected { border-color: var(--blue-primary); background: var(--bg-light); box-shadow: 0 6px 18px rgba(0,120,215,0.15); }
+.day-chip .dw { font-size: 13px; font-weight: 600; color: var(--blue-dark); }
+.day-chip .dd { font-size: 12px; color: var(--text-gray); margin: 2px 0 8px; }
+.day-chip .badge {
+  display: inline-block; font-size: 10.5px; font-weight: 600; border-radius: 20px; padding: 3px 10px;
+}
+.day-chip .badge.ok { background: #dcfce7; color: #15803d; }
+.day-chip .badge.tight { background: #ffedd5; color: #c2410c; }
+.day-chip .badge.full { background: #fee2e2; color: #b91c1c; }
+.day-chip .badge.closed { background: #e5e7eb; color: #6b7280; }
+
+/* Times */
+.time-note {
+  background: var(--bg-light); border: 1px solid var(--border-color); border-radius: 12px;
+  padding: 12px 16px; font-size: 13.5px; color: var(--text-gray); margin-bottom: 20px; line-height: 1.6;
+}
+.time-note i { color: var(--blue-primary); margin-right: 6px; }
+.time-note strong { color: var(--blue-dark); }
+.shift-block { margin-bottom: 22px; }
+.shift-head { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.shift-head i { color: var(--gold); font-size: 17px; }
+.shift-head h3 { font-size: 16px; color: var(--blue-dark); font-weight: 700; }
+.shift-head .shift-free { font-size: 12px; color: var(--text-gray); }
+.slot-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(118px, 1fr)); gap: 10px; }
+.slot-btn {
+  border: 2px solid var(--border-color); border-radius: 12px; padding: 12px 10px;
+  background: var(--text-white); cursor: pointer; text-align: center; transition: all 0.25s;
+  font-family: 'Poppins', sans-serif;
+}
+.slot-btn .t { font-size: 15px; font-weight: 700; color: var(--blue-dark); display: block; }
+.slot-btn .s { font-size: 11px; color: var(--text-gray); }
+.slot-btn.free:hover { border-color: var(--green-whatsapp); transform: translateY(-2px); }
+.slot-btn.selected { border-color: var(--green-whatsapp); background: #f0fdf4; box-shadow: 0 6px 18px rgba(37,211,102,0.18); }
+.slot-btn.selected .t { color: #15803d; }
+.slot-btn.busy { cursor: not-allowed; background: #f9fafb; opacity: .62; border-color: #e5e7eb; }
+.slot-btn.busy .t { color: #9ca3af; text-decoration: line-through; text-decoration-thickness: 2px; }
+.slot-btn.busy .s { color: #9ca3af; }
+.empty-slot-msg { color: var(--text-gray); font-size: 13.5px; padding: 8px 0; }
+
+/* Details */
+.details-summary { background: var(--bg-light); border: 1px solid var(--border-color); border-radius: 14px; padding: 18px 20px; margin-bottom: 22px; }
+.details-summary h3 { font-size: 14px; color: var(--text-gray); text-transform: uppercase; letter-spacing: .6px; margin-bottom: 10px; }
+.sum-row { display: flex; align-items: center; gap: 10px; padding: 6px 0; font-size: 14.5px; color: var(--text-dark); }
+.sum-row i { color: var(--blue-primary); width: 18px; text-align: center; font-size: 14px; }
+.sum-row strong { color: var(--blue-dark); font-weight: 600; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.field label { display: block; font-size: 12.5px; color: var(--text-gray); font-weight: 500; margin-bottom: 6px; }
+.field label i { color: var(--blue-light); margin-right: 5px; }
+.field input {
+  width: 100%; padding: 13px 14px; border-radius: 10px; border: 1px solid var(--border-color);
+  font-family: 'Poppins', sans-serif; font-size: 14px; outline: none; transition: border 0.3s;
+}
+.field input:focus { border-color: var(--blue-primary); }
+
+/* Photos */
+.photo-field { grid-column: 1 / -1; margin-top: 4px; }
+.photo-hint { font-size: 12.5px; color: var(--text-gray); line-height: 1.6; margin-bottom: 12px; }
+.photo-hint i { color: var(--blue-light); }
+.photo-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.photo-btn {
+  flex: 1; min-width: 180px;
+  background: var(--bg-light); border: 2px solid var(--border-color); color: var(--blue-dark);
+  padding: 14px 18px; border-radius: 12px; font-family: 'Poppins', sans-serif; font-size: 14px; font-weight: 600;
+  cursor: pointer; transition: all 0.25s; display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+}
+.photo-btn:hover { border-color: var(--blue-primary); color: var(--blue-primary); transform: translateY(-2px); }
+.photo-btn i { font-size: 17px; color: var(--blue-primary); }
+.photo-preview { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 16px; }
+.photo-thumb {
+  position: relative; width: 92px; height: 92px; border-radius: 12px; overflow: hidden;
+  border: 2px solid var(--border-color); background: var(--bg-light);
+}
+.photo-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.photo-thumb .rm {
+  position: absolute; top: 3px; right: 3px; width: 22px; height: 22px; border-radius: 50%;
+  border: none; background: var(--red); color: #fff; font-size: 11px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+}
+.photo-empty { font-size: 12.5px; color: var(--text-gray); padding: 8px 0; }
+.photo-empty i { color: var(--blue-light); }
+
+.confirm-btn {
+  width: 100%; background: var(--green-whatsapp); color: #fff; border: none; cursor: pointer;
+  padding: 16px; border-radius: 12px; font-family: 'Poppins', sans-serif; font-size: 16px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 18px;
+  transition: all 0.3s; box-shadow: 0 6px 20px rgba(37,211,102,0.4);
+}
+.confirm-btn:hover { background: #1ebe57; transform: translateY(-2px); }
+.privacy-note { text-align: center; font-size: 12px; color: var(--text-gray); margin-top: 12px; }
+.privacy-note i { color: var(--blue-light); margin-right: 4px; }
+
+/* Edit links / actions */
+.step-actions { margin-top: 24px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.btn-ghost {
+  background: transparent; border: 2px solid var(--border-color); color: var(--blue-dark);
+  padding: 12px 22px; border-radius: 10px; font-family: 'Poppins', sans-serif; font-size: 13.5px; font-weight: 600; cursor: pointer; transition: all 0.25s;
+}
+.btn-ghost:hover { border-color: var(--blue-primary); color: var(--blue-primary); }
+
+/* Success */
+#successBox { display: none; text-align: center; padding: 50px 20px; }
+#successBox .big-ic { font-size: 56px; color: var(--green-whatsapp); margin-bottom: 16px; }
+#successBox h2 { color: var(--blue-dark); font-size: 24px; margin-bottom: 10px; }
+#successBox p { color: var(--text-gray); font-size: 14.5px; line-height: 1.7; max-width: 460px; margin: 0 auto 22px; }
+#successBox .again { color: var(--blue-primary); font-weight: 600; font-size: 14px; background: none; border: none; cursor: pointer; font-family: 'Poppins', sans-serif; }
+#successBox .again:hover { text-decoration: underline; }
+
+/* Footer */
+.site-footer { background: var(--text-white); border-top: 1px solid var(--border-color); padding: 26px 0; margin-top: 40px; text-align: center; font-size: 13px; color: var(--text-gray); }
+.site-footer .f-actions { display: flex; justify-content: center; gap: 22px; flex-wrap: wrap; margin-top: 10px; font-size: 13px; }
+.site-footer .f-actions span i { color: var(--blue-primary); margin-right: 6px; }
+
+/* WhatsApp float */
+.whatsapp-float {
+  position: fixed; bottom: 24px; right: 24px; z-index: 999; width: 60px; height: 60px; border-radius: 50%;
+  background: var(--green-whatsapp); color: var(--text-white); display: flex; align-items: center; justify-content: center;
+  font-size: 30px; box-shadow: 0 4px 15px rgba(37,211,102,0.4); transition: transform 0.3s, box-shadow 0.3s;
+}
+.whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 6px 25px rgba(37,211,102,0.6); color: var(--text-white); }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+
+@media (max-width: 640px) {
+  .page-hero h1 { font-size: 25px; }
+  .booking-step { padding: 24px 18px; }
+  .form-grid { grid-template-columns: 1fr; }
+  .photo-btn { min-width: 130px; }
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <div class="brand">
+      <a href="podologia.html" aria-label="Clínica Cois"><img src="logo.jpeg" alt="Clínica Cois"></a>
+      <a class="back-link" href="podologia.html"><i class="fas fa-arrow-left"></i> Voltar para Podologia</a>
+    </div>
+    <div class="phone"><i class="fab fa-whatsapp"></i> (71) 99108-5981</div>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <h1>Agendamento Online <span>Podologia</span></h1>
+    <p>Escolha o tratamento, o dia e o horário disponível para a sua avaliação podológica na Clínica Cois (Rio Vermelho, Salvador). Envie fotos da região a tratar para adiantarmos a sua avaliação. A confirmação chega no seu WhatsApp.</p>
+    <div class="price-banner"><i class="fas fa-tag"></i> Tratamentos a partir de R$ 140</div>
+    <div class="how-strip">
+      <span class="how-step"><span class="num">1</span> Escolha o tratamento</span>
+      <span class="how-step"><span class="num">2</span> Selecione o dia</span>
+      <span class="how-step"><span class="num">3</span> Escolha o horário</span>
+      <span class="how-step"><span class="num">4</span> Fotos e confirmação</span>
+    </div>
+  </div>
+</section>
+
+<main class="container">
+  <div class="booking-card">
+
+    <!-- Step 1: Serviço -->
+    <section class="booking-step active" id="step-service">
+      <div class="step-head">
+        <div class="ball">1</div>
+        <div><h2>Escolha o tratamento</h2><p>Selecione o cuidado podológico desejado para continuar.</p></div>
+      </div>
+      <div class="svc-grid" id="svcGrid"></div>
+    </section>
+
+    <!-- Step 2: Dia -->
+    <section class="booking-step" id="step-day">
+      <div class="step-head">
+        <div class="ball">2</div>
+        <div><h2>Escolha o dia</h2><p>Somente dias úteis com horários disponíveis.</p></div>
+      </div>
+      <div class="days-row" id="daysRow"></div>
+      <div class="step-actions">
+        <button class="btn-ghost" onclick="goStep(0)"><i class="fas fa-arrow-left"></i> Voltar</button>
+      </div>
+    </section>
+
+    <!-- Step 3: Horário -->
+    <section class="booking-step" id="step-time">
+      <div class="step-head">
+        <div class="ball">3</div>
+        <div><h2>Escolha o horário</h2><p>Horários livres aparecem em verde e selecionáveis.</p></div>
+      </div>
+      <div id="timeNote" class="time-note"></div>
+      <div id="timeContent"></div>
+      <div class="step-actions">
+        <button class="btn-ghost" onclick="goStep(1)"><i class="fas fa-arrow-left"></i> Voltar</button>
+      </div>
+    </section>
+
+    <!-- Step 4: Dados + fotos -->
+    <section class="booking-step" id="step-details">
+      <div class="step-head">
+        <div class="ball">4</div>
+        <div><h2>Seus dados e fotos</h2><p>Preencha, adicione fotos se quiser e receba a confirmação no WhatsApp.</p></div>
+      </div>
+      <div class="details-summary">
+        <h3>Resumo do agendamento</h3>
+        <div class="sum-row"><i class="fas fa-shoe-prints"></i> <span id="sumSvc"></span></div>
+        <div class="sum-row"><i class="fas fa-calendar-day"></i> <span id="sumDay"></span></div>
+        <div class="sum-row"><i class="fas fa-clock"></i> <span id="sumTime"></span></div>
+        <div class="sum-row"><i class="fas fa-tag"></i> <span><strong>Valor: a partir de R$ 140</strong></span></div>
+      </div>
+      <div class="form-grid">
+        <div class="field">
+          <label for="nome"><i class="fas fa-user"></i> Seu nome</label>
+          <input type="text" id="nome" placeholder="Ex.: Maria Silva" required>
+        </div>
+        <div class="field">
+          <label for="telefone"><i class="fab fa-whatsapp"></i> Seu WhatsApp</label>
+          <input type="tel" id="telefone" placeholder="DDD + número" required>
+        </div>
+        <div class="field photo-field">
+          <label for="photoInput"><i class="fas fa-camera"></i> Foto(s) das regiões a tratar <span style="font-weight:400;text-transform:none;color:var(--blue-light);">(opcional)</span></label>
+          <p class="photo-hint"><i class="fas fa-info-circle"></i> Você pode tirar uma foto agora com a câmera ou escolher da galeria/documentos. Elas serão enviadas no WhatsApp junto com a sua mensagem para agilizar a avaliação.</p>
+          <div class="photo-actions">
+            <button type="button" class="photo-btn" onclick="openPhotoPicker('camera')"><i class="fas fa-camera-retro"></i> Tirar foto</button>
+            <button type="button" class="photo-btn" onclick="openPhotoPicker('file')"><i class="fas fa-images"></i> Galeria / Documentos</button>
+          </div>
+          <input type="file" id="photoInput" accept="image/*" multiple style="display:none;">
+          <div id="photoPreview" class="photo-preview"></div>
+        </div>
+      </div>
+      <button class="confirm-btn" onclick="confirmBooking()"><i class="fab fa-whatsapp"></i> Confirmar agendamento</button>
+      <div class="privacy-note"><i class="fas fa-lock"></i> Seus dados ficam seguros. Sem spam.</div>
+      <div class="step-actions">
+        <button class="btn-ghost" onclick="goStep(2)"><i class="fas fa-arrow-left"></i> Voltar</button>
+      </div>
+    </section>
+
+    <div id="successBox"></div>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>© 2026 Clínica Cois - Rio Vermelho, Salvador - BA. Todos os direitos reservados.</div>
+    <div class="f-actions">
+      <span><i class="fas fa-phone-alt"></i> (71) 3334-0123</span>
+      <span><i class="fas fa-clock"></i> Seg à Sex 08h às 19h30</span>
+    </div>
+  </div>
+</footer>
+
+<a class="whatsapp-float" href="https://api.whatsapp.com/send/?phone=5571991085981&text=Ol%C3%A1%2C+vim+da+p%C3%A1gina+de+Podologia+e+gostaria+de+agendar+uma+avalia%C3%A7%C3%A3o%21" target="_blank" rel="nofollow noopener" aria-label="Contato do WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<script>
+/* =========================================================
+   CONFIGURAÇÃO DAS VAGAS
+   -----------------------------------------
+   A quantidade de vagas livres varia a cada dia entre
+   minFreePerDay e maxFreePerDay para parecer natural.
+   Para liberar MAIS horários (que hoje aparecem como
+   ocupados), basta aumentar maxFreePerDay.
+   ========================================================= */
+const CONFIG = {
+  waNumber: '5571991085981',
+  daysAhead: 7,                 // quantos dias úteis à frente são exibidos
+  closeSameDayAtHour: 14,       // a partir desse horário o dia de hoje fecha para novos agendamentos
+  minLeadMinutes: 60,           // folga mínima entre o momento da visita e a sessão (mesmo dia)
+  minFreePerDay: 3,             // mínimo de vagas livres por dia
+  maxFreePerDay: 6              // máximo de vagas livres por dia
+};
+
+const SHIFTS = {
+  manha: { label: 'Manhã', times: ['08:00', '09:00', '10:00', '11:00'] },
+  tarde: { label: 'Tarde', times: ['13:00', '14:00', '15:00', '16:00', '17:00'] },
+  noite: { label: 'Noite', times: ['18:00'] }
+};
+const SHIFTS_ORDER = ['manha', 'tarde', 'noite'];
+
+const SERVICES = [
+  { name: 'Consulta / Avaliação Podológica', dur: '30 a 45 min', icon: 'fa-heart-pulse' },
+  { name: 'Podologia — Cuidado completo dos pés', dur: '45 a 60 min', icon: 'fa-shoe-prints' },
+  { name: 'Tratamento de unha encravada', dur: '40 a 60 min', icon: 'fa-exclamation-circle' },
+  { name: 'Tratamento de calos e calosidades', dur: '30 a 45 min', icon: 'fa-circle-dot' },
+  { name: 'Tratamento de calcanhar rachado', dur: '30 a 45 min', icon: 'fa-bolt' },
+  { name: 'Hidratação profunda dos pés', dur: '30 a 40 min', icon: 'fa-fill-drip' },
+  { name: 'Remoção de excesso de pele', dur: '30 a 45 min', icon: 'fa-hand-sparkles' },
+  { name: 'Corte técnico de unhas', dur: '20 a 30 min', icon: 'fa-scissors' },
+  { name: 'Limpeza e cuidado das unhas', dur: '30 a 40 min', icon: 'fa-spa' },
+  { name: 'Cuidados com unhas espessadas', dur: '30 a 45 min', icon: 'fa-layer-group' },
+  { name: 'Cuidados para alterações nas unhas', dur: '30 a 45 min', icon: 'fa-vials' },
+  { name: 'Tratamento de frieira (micose)', dur: '30 a 45 min', icon: 'fa-bacteria' },
+  { name: 'Podologia preventiva', dur: '30 a 45 min', icon: 'fa-shield-virus' },
+  { name: 'Podologia para idosos', dur: '45 a 60 min', icon: 'fa-hand-holding-heart' }
+];
+
+/* ---------- utilitários ---------- */
+function toMin(t) { const p = t.split(':'); return (+p[0]) * 60 + (+p[1]); }
+
+function mulberry32(a) {
+  return function () {
+    a |= 0; a = a + 0x6D2B79F5 | 0;
+    let t = Math.imul(a ^ a >>> 15, 1 | a);
+    t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+    return ((t ^ t >>> 14) >>> 0) / 4294967296;
+  };
+}
+function daySeed(d) { return d.getFullYear() * 10000 + (d.getMonth() + 1) * 100 + d.getDate(); }
+
+function shuffle(arr, rng) {
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(rng() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+/* ---------- estado ---------- */
+const state = { service: null, dayIdx: null, shift: null, time: null };
+let businessDays = [];
+let photoFiles = [];
+
+function isBusinessDay(d) { return d.getDay() !== 0 && d.getDay() !== 6; }
+
+function buildDays() {
+  const days = [];
+  const now = new Date();
+  for (let i = 0; i < 30 && days.length < CONFIG.daysAhead; i++) {
+    const d = new Date(now.getFullYear(), now.getMonth(), now.getDate() + i);
+    if (!isBusinessDay(d)) continue;
+    days.push(d);
+  }
+  return days;
+}
+
+/* ---------- regras de disponibilidade ---------- */
+function getPlan(day, idx, now) {
+  const nowM = now.getHours() * 60 + now.getMinutes();
+  const rng = mulberry32(daySeed(day) * 977 + 13);
+  const allTimes = [];
+  SHIFTS_ORDER.forEach(s => SHIFTS[s].times.forEach(t => allTimes.push({ shift: s, time: t })));
+
+  let pool = allTimes;
+  let nMax = CONFIG.maxFreePerDay;
+
+  if (idx === 0) {
+    if (nowM >= CONFIG.closeSameDayAtHour * 60) return { closed: true, free: [] };
+    pool = allTimes.filter(sl => {
+      if (sl.shift === 'manha') return false;
+      return toMin(sl.time) > nowM + CONFIG.minLeadMinutes;
+    });
+  } else if (idx === 1 && nowM >= CONFIG.closeSameDayAtHour * 60) {
+    pool = allTimes.filter(sl => sl.shift === 'manha');
+    nMax = Math.min(nMax, pool.length);
+  } else if (idx === 2 && nowM >= CONFIG.closeSameDayAtHour * 60) {
+    pool = allTimes.filter(sl => sl.shift === 'tarde');
+  }
+
+  const n = Math.min(CONFIG.minFreePerDay + Math.floor(rng() * (nMax - CONFIG.minFreePerDay + 1)), pool.length);
+  let pick = shuffle(pool, rng).slice(0, n);
+  if (n >= 3 && pick.length > 0 && pick.every(p => p.shift === pick[0].shift)) {
+    const alt = shuffle(pool, rng).find(sl => sl.shift !== pick[0].shift && !pick.includes(sl));
+    if (alt) pick[1] = alt;
+  }
+  return { closed: false, free: pick.sort((a, b) => (SHIFTS_ORDER.indexOf(a.shift) - SHIFTS_ORDER.indexOf(b.shift)) || (toMin(a.time) - toMin(b.time))) };
+}
+
+function getFreeTimesCount(day) {
+  const now = new Date();
+  return getPlan(day, businessDays.indexOf(day), now).free.length;
+}
+
+/* ---------- rótulos ---------- */
+const DT = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
+const DM = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'];
+
+function dayLabel(day, idx) {
+  if (idx === 0) return 'Hoje';
+  if (idx === 1) return 'Amanhã';
+  return DT[day.getDay()] + ' ' + day.getDate() + '/' + (day.getMonth() + 1);
+}
+
+/* ---------- render ---------- */
+function renderServices() {
+  const grid = document.getElementById('svcGrid');
+  const url = new URLSearchParams(location.search);
+  const preselect = url.get('tratamento');
+  grid.innerHTML = '';
+  SERVICES.forEach(sv => {
+    const btn = document.createElement('button');
+    btn.className = 'svc-item' + (preselect && sv.name === preselect ? ' selected' : '');
+    btn.innerHTML = `<span class="ic"><i class="fas ${sv.icon}"></i></span><h4>${sv.name}</h4><span class="dur"><i class="fas fa-clock"></i> ${sv.dur}</span>`;
+    btn.onclick = () => {
+      state.service = sv.name;
+      document.querySelectorAll('.svc-item').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      goStep(1);
+    };
+    grid.appendChild(btn);
+  });
+}
+
+function renderDays() {
+  businessDays = buildDays();
+  const row = document.getElementById('daysRow');
+  const now = new Date();
+  const nowM = now.getHours() * 60 + now.getMinutes();
+  row.innerHTML = '';
+  businessDays.forEach((d, i) => {
+    const plan = getPlan(d, i, now);
+    const freeCount = plan.closed ? 0 : plan.free.length;
+    let badge, badgeClass;
+    if (d.toDateString() === now.toDateString() && nowM >= CONFIG.closeSameDayAtHour * 60) {
+      badge = 'Hoje fechado'; badgeClass = 'full';
+    } else if (freeCount === 0) {
+      badge = 'Lotado'; badgeClass = 'full';
+    } else if (freeCount <= 2) {
+      badge = freeCount + ' vagas'; badgeClass = 'tight';
+    } else {
+      badge = freeCount + ' vagas'; badgeClass = 'ok';
+    }
+    const chip = document.createElement('button');
+    chip.className = 'day-chip';
+    chip.innerHTML = `<div class="dw">${dayLabel(d, i)}</div><div class="dd">${DM[d.getMonth()]} ${String(d.getDate()).padStart(2, '0')}</div><span class="badge ${badgeClass}">${badge}</span>`;
+    chip.onclick = () => {
+      state.dayIdx = i;
+      state.shift = null;
+      state.time = null;
+      document.querySelectorAll('.day-chip').forEach(c => c.classList.remove('selected'));
+      chip.classList.add('selected');
+      goStep(2);
+    };
+    row.appendChild(chip);
+  });
+}
+
+function renderTimes() {
+  const now = new Date();
+  const day = businessDays[state.dayIdx];
+  const plan = getPlan(day, state.dayIdx, now);
+  const note = document.getElementById('timeNote');
+  const content = document.getElementById('timeContent');
+
+  const nowM = now.getHours() * 60 + now.getMinutes();
+  if (day.toDateString() === now.toDateString() && nowM >= CONFIG.closeSameDayAtHour * 60) {
+    note.innerHTML = '<i class="fas fa-info-circle"></i> <strong>Hoje os horários já foram preenchidos.</strong> Escolha outro dia abaixo — amanhã e os próximos dias têm vagas.';
+    content.innerHTML = '';
+    return;
+  }
+  if (plan.closed || plan.free.length === 0) {
+    note.innerHTML = '<i class="fas fa-info-circle"></i> <strong>Nenhum horário livre neste dia.</strong> Selecione outro dia.';
+    content.innerHTML = '';
+    return;
+  }
+
+  if (state.dayIdx === 1 && nowM >= CONFIG.closeSameDayAtHour * 60) {
+    note.innerHTML = '<i class="fas fa-info-circle"></i> <strong>Vagas para amanhã (manhã):</strong> ' + plan.free.map(f => f.time).join(', ') + ' — horários limitados do turno matutino.';
+  } else if (state.dayIdx === 2 && nowM >= CONFIG.closeSameDayAtHour * 60) {
+    note.innerHTML = '<i class="fas fa-info-circle"></i> <strong>Vagas para a tarde de ' + dayLabel(day, state.dayIdx) + ':</strong> poucos horários do turno vespertino.';
+  } else {
+    note.innerHTML = '<i class="fas fa-info-circle"></i> <strong>' + plan.free.length + ' horário(s) livre(s) neste dia.</strong> Os demais já estão reservados.';
+  }
+
+  content.innerHTML = '';
+  SHIFTS_ORDER.forEach(s => {
+    const shiftTimes = SHIFTS[s].times;
+    const block = document.createElement('div');
+    block.className = 'shift-block';
+    const freeIn = plan.free.filter(f => f.shift === s);
+    const head = document.createElement('div');
+    head.className = 'shift-head';
+    head.innerHTML = `<i class="fas fa-sun"></i><h3>${SHIFTS[s].label}</h3>`;
+    if (freeIn.length) head.innerHTML += `<span class="shift-free">${freeIn.length} vaga(s)</span>`;
+    block.appendChild(head);
+    const grid = document.createElement('div');
+    grid.className = 'slot-grid';
+    shiftTimes.forEach(t => {
+      const isFree = plan.free.some(f => f.shift === s && f.time === t);
+      const btn = document.createElement('button');
+      if (isFree) {
+        btn.className = 'slot-btn free';
+        btn.innerHTML = `<span class="t">${t}</span><span class="s">Disponível</span>`;
+        btn.onclick = () => {
+          state.shift = s;
+          state.time = t;
+          document.querySelectorAll('.slot-btn').forEach(b => b.classList.remove('selected'));
+          btn.classList.add('selected');
+          goStep(3);
+        };
+      } else {
+        btn.className = 'slot-btn busy';
+        btn.disabled = true;
+        btn.innerHTML = `<span class="t">${t}</span><span class="s">Ocupado</span>`;
+      }
+      grid.appendChild(btn);
+    });
+    block.appendChild(grid);
+    content.appendChild(block);
+  });
+}
+
+/* ---------- navegação ---------- */
+function goStep(i) {
+  document.querySelectorAll('.booking-step').forEach(s => s.classList.remove('active'));
+  if (i === 2) renderTimes();
+  if (i === 3) renderDetails();
+  document.getElementById('step-' + ['service', 'day', 'time', 'details'][i]).classList.add('active');
+  window.scrollTo({ top: document.querySelector('.booking-card').getBoundingClientRect().top + window.pageYOffset - 100, behavior: 'smooth' });
+}
+
+function renderDetails() {
+  const day = businessDays[state.dayIdx];
+  document.getElementById('sumSvc').textContent = state.service;
+  document.getElementById('sumDay').textContent = dayLabel(day, state.dayIdx) + ', ' + day.getDate() + ' de ' + DM[day.getMonth()] + ' de ' + day.getFullYear() + ' (' + SHIFTS[state.shift].label + ')';
+  document.getElementById('sumTime').textContent = state.time;
+}
+
+/* ---------- fotos ---------- */
+function openPhotoPicker(mode) {
+  const input = document.getElementById('photoInput');
+  if (mode === 'camera') {
+    input.setAttribute('capture', 'user');
+    input.setAttribute('accept', 'image/*');
+  } else {
+    input.removeAttribute('capture');
+    input.setAttribute('accept', 'image/*,image/jpeg,image/png,image/webp');
+  }
+  input.value = '';
+  input.click();
+}
+
+document.getElementById('photoInput').addEventListener('change', function () {
+  photoFiles = Array.from(this.files || []);
+  renderPhotoPreview();
+});
+
+function renderPhotoPreview() {
+  const box = document.getElementById('photoPreview');
+  box.innerHTML = '';
+  if (photoFiles.length === 0) {
+    box.innerHTML = '<span class="photo-empty"><i class="fas fa-camera"></i> Nenhuma foto adicionada ainda.</span>';
+    return;
+  }
+  photoFiles.forEach((f, i) => {
+    if (!f.type.startsWith('image/')) return;
+    const wrap = document.createElement('div');
+    wrap.className = 'photo-thumb';
+    const img = document.createElement('img');
+    img.src = URL.createObjectURL(f);
+    wrap.appendChild(img);
+    const rm = document.createElement('button');
+    rm.className = 'rm';
+    rm.innerHTML = '<i class="fas fa-times"></i>';
+    rm.onclick = () => {
+      photoFiles.splice(i, 1);
+      photoFiles = photoFiles.filter(Boolean);
+      renderPhotoPreview();
+    };
+    wrap.appendChild(rm);
+    box.appendChild(wrap);
+  });
+}
+
+/* ---------- confirmação ---------- */
+function openWhatsApp(msg) {
+  const url = 'https://api.whatsapp.com/send/?phone=' + CONFIG.waNumber + '&text=' + encodeURIComponent(msg);
+  window.open(url, '_blank', 'nofollow noopener');
+}
+
+function confirmBooking() {
+  const nome = document.getElementById('nome').value.trim();
+  const tel = document.getElementById('telefone').value.trim();
+  if (!nome) { alert('Por favor, informe seu nome.'); return; }
+  if (!tel) { alert('Por favor, informe seu WhatsApp para confirmarmos o horário.'); return; }
+
+  const day = businessDays[state.dayIdx];
+  const dateStr = String(day.getDate()).padStart(2, '0') + '/' + String(day.getMonth() + 1).padStart(2, '0') + '/' + day.getFullYear();
+
+  const lines = [
+    'Olá, vim da página de Podologia e gostaria de confirmar meu agendamento!',
+    '',
+    '🦶 Tratamento: ' + state.service,
+    '🗓️ Data: ' + dateStr + ' (' + SHIFTS[state.shift].label + ')',
+    '⏰ Horário: ' + state.time,
+    '💰 Valor: a partir de R$ 140',
+    '🖐️ Nome: ' + nome,
+    '📱 WhatsApp: ' + tel
+  ];
+  if (photoFiles.length) lines.push('📸 Anexando ' + photoFiles.length + ' foto(s) da região a tratar.');
+
+  const msg = lines.join('\n');
+  const successText = photoFiles.length
+    ? 'Abrimos o WhatsApp com o resumo do seu agendamento e as fotos preparadas para envio. É só anexar e enviar a mensagem — nossa equipe responde rapidinho.'
+    : 'Abrimos o WhatsApp com o resumo do seu agendamento. É só enviar a mensagem para confirmar a vaga — nossa equipe responde rapidinho.';
+
+  if (photoFiles.length && navigator.canShare) {
+    const shareData = { title: 'Agendamento Podologia - Clínica Cois', text: msg, files: photoFiles };
+    if (navigator.canShare(shareData)) {
+      navigator.share(shareData).catch(() => { openWhatsApp(msg); });
+    } else {
+      openWhatsApp(msg);
+    }
+  } else {
+    openWhatsApp(msg);
+  }
+
+  document.querySelectorAll('.booking-step').forEach(s => s.classList.remove('active'));
+  document.getElementById('successBox').innerHTML =
+    '<div class="big-ic"><i class="fas fa-check-circle"></i></div>' +
+    '<h2>Solicitação enviada!</h2>' +
+    '<p>' + successText + '</p>' +
+    '<button class="again" onclick="resetFlow()">Agendar outro horário</button>';
+  document.getElementById('successBox').style.display = 'block';
+  window.scrollTo({ top: document.querySelector('.booking-card').getBoundingClientRect().top + window.pageYOffset - 100, behavior: 'smooth' });
+}
+
+function resetFlow() {
+  document.getElementById('successBox').style.display = 'none';
+  state.service = null; state.dayIdx = null; state.shift = null; state.time = null;
+  document.getElementById('nome').value = '';
+  document.getElementById('telefone').value = '';
+  photoFiles = [];
+  renderPhotoPreview();
+  document.querySelectorAll('.svc-item').forEach(b => b.classList.remove('selected'));
+  renderDays();
+  goStep(0);
+}
+
+/* ---------- init ---------- */
+document.addEventListener('DOMContentLoaded', () => {
+  renderServices();
+  renderDays();
+  renderPhotoPreview();
+});
+</script>
+</body>
+</html>
