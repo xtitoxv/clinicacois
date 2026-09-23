@@ -315,26 +315,29 @@ a { text-decoration: none; color: inherit; }
 /* =========================================================
    CONFIGURAÇÃO DAS VAGAS
    -----------------------------------------
-   A quantidade de vagas livres varia a cada dia entre
-   minFreePerDay e maxFreePerDay para parecer natural.
-   Para liberar MAIS horários (que hoje aparecem como
-   ocupados), basta aumentar maxFreePerDay.
+   - Horários de 30 em 30 minutos.
+   - Cada turno (Manhã e Tarde) libera de minFreePerShift a
+     maxFreePerShift vagas por dia, variadas e espaçadas.
+   - Hoje nunca é liberado online: informa que o próximo
+     turno disponível é amanhã.
+   - O turno da noite (17:30 às 19:30) não tem vagas online:
+     esses horários são agendados pessoalmente ou por telefone.
    ========================================================= */
 const CONFIG = {
   waNumber: '5571991085981',
   daysAhead: 7,                 // quantos dias úteis à frente são exibidos
-  closeSameDayAtHour: 14,       // a partir desse horário o dia de hoje fecha para novos agendamentos
-  minLeadMinutes: 60,           // folga mínima entre o momento da visita e a sessão (mesmo dia)
-  minFreePerDay: 3,             // mínimo de vagas livres por dia
-  maxFreePerDay: 6              // máximo de vagas livres por dia
+  minFreePerShift: 3,           // mínimo de vagas livres por turno
+  maxFreePerShift: 5            // máximo de vagas livres por turno
 };
 
 const SHIFTS = {
-  manha: { label: 'Manhã', times: ['08:00', '09:00', '10:00', '11:00'] },
-  tarde: { label: 'Tarde', times: ['13:00', '14:00', '15:00', '16:00', '17:00'] },
-  noite: { label: 'Noite', times: ['18:00'] }
+  manha: { label: 'Manhã', times: ['08:00', '08:30', '09:00', '09:30', '10:00', '10:30', '11:00', '11:30'] },
+  tarde: { label: 'Tarde', times: ['13:00', '13:30', '14:00', '14:30', '15:00', '15:30', '16:00', '16:30', '17:00', '17:30', '18:00', '18:30', '19:00', '19:30'] }
 };
-const SHIFTS_ORDER = ['manha', 'tarde', 'noite'];
+const SHIFTS_ORDER = ['manha', 'tarde'];
+// A partir de 17:30 os horários não são liberados online:
+// reservados para agendamento pessoal ou por telefone.
+const ONLINE_CUTOFF_MIN = 17 * 60;
 
 const SERVICES = [
   { name: 'Massagem Relaxante', dur: '50 a 60 min', icon: 'fa-heart' },
@@ -371,6 +374,26 @@ function shuffle(arr, rng) {
   return a;
 }
 
+// Seleciona 'n' índices espaçados e variados dentro de um array,
+// garantindo que os horários liberados não fiquem todos juntos.
+function pickSpaced(arr, n, rng) {
+  if (n >= arr.length) return arr.slice();
+  const step = (arr.length - 1) / (n - 1);
+  const idxs = [];
+  for (let i = 0; i < n; i++) {
+    const base = Math.round(i * step);
+    const jitter = Math.floor(rng() * 3) - 1;
+    let idx = base + jitter;
+    idx = Math.max(0, Math.min(arr.length - 1, idx));
+    if (!idxs.includes(idx)) idxs.push(idx);
+  }
+  while (idxs.length < n) {
+    const cand = Math.floor(rng() * arr.length);
+    if (!idxs.includes(cand)) idxs.push(cand);
+  }
+  return idxs.sort((a, b) => a - b).map(i => arr[i]);
+}
+
 /* ---------- estado ---------- */
 const state = { service: null, dayIdx: null, shift: null, time: null };
 let businessDays = [];
@@ -389,40 +412,25 @@ function buildDays() {
 }
 
 /* ---------- regras de disponibilidade ---------- */
-function getPlan(day, idx, now) {
-  const nowM = now.getHours() * 60 + now.getMinutes();
+function getPlan(day, idx) {
   const rng = mulberry32(daySeed(day) * 977 + 13);
-  const allTimes = [];
-  SHIFTS_ORDER.forEach(s => SHIFTS[s].times.forEach(t => allTimes.push({ shift: s, time: t })));
 
-  let pool = allTimes;
-  let nMax = CONFIG.maxFreePerDay;
+  // Hoje nunca é liberado online: avisa que o próximo turno é amanhã.
+  if (idx === 0) return { closed: true, free: [] };
 
-  if (idx === 0) {
-    if (nowM >= CONFIG.closeSameDayAtHour * 60) return { closed: true, free: [] };
-    pool = allTimes.filter(sl => {
-      if (sl.shift === 'manha') return false;
-      return toMin(sl.time) > nowM + CONFIG.minLeadMinutes;
-    });
-  } else if (idx === 1 && nowM >= CONFIG.closeSameDayAtHour * 60) {
-    pool = allTimes.filter(sl => sl.shift === 'manha');
-    nMax = Math.min(nMax, pool.length);
-  } else if (idx === 2 && nowM >= CONFIG.closeSameDayAtHour * 60) {
-    pool = allTimes.filter(sl => sl.shift === 'tarde');
-  }
-
-  const n = Math.min(CONFIG.minFreePerDay + Math.floor(rng() * (nMax - CONFIG.minFreePerDay + 1)), pool.length);
-  let pick = shuffle(pool, rng).slice(0, n);
-  if (n >= 3 && pick.length > 0 && pick.every(p => p.shift === pick[0].shift)) {
-    const alt = shuffle(pool, rng).find(sl => sl.shift !== pick[0].shift && !pick.includes(sl));
-    if (alt) pick[1] = alt;
-  }
-  return { closed: false, free: pick.sort((a, b) => (SHIFTS_ORDER.indexOf(a.shift) - SHIFTS_ORDER.indexOf(b.shift)) || (toMin(a.time) - toMin(b.time))) };
+  const free = [];
+  SHIFTS_ORDER.forEach(s => {
+    // Só sorteia horários até às 17:00; 17:30 em diante fica sempre ocupado.
+    let times = SHIFTS[s].times;
+    if (s === 'tarde') times = SHIFTS[s].times.filter(t => toMin(t) <= ONLINE_CUTOFF_MIN);
+    const n = CONFIG.minFreePerShift + Math.floor(rng() * (CONFIG.maxFreePerShift - CONFIG.minFreePerShift + 1));
+    pickSpaced(times, Math.min(n, times.length), rng).forEach(t => free.push({ shift: s, time: t }));
+  });
+  return { closed: false, free: free.sort((a, b) => (SHIFTS_ORDER.indexOf(a.shift) - SHIFTS_ORDER.indexOf(b.shift)) || (toMin(a.time) - toMin(b.time))) };
 }
 
 function getFreeTimesCount(day) {
-  const now = new Date();
-  return getPlan(day, businessDays.indexOf(day), now).free.length;
+  return getPlan(day, businessDays.indexOf(day)).free.length;
 }
 
 /* ---------- rótulos ---------- */
@@ -458,18 +466,16 @@ function renderServices() {
 function renderDays() {
   businessDays = buildDays();
   const row = document.getElementById('daysRow');
-  const now = new Date();
-  const nowM = now.getHours() * 60 + now.getMinutes();
   row.innerHTML = '';
   businessDays.forEach((d, i) => {
-    const plan = getPlan(d, i, now);
+    const plan = getPlan(d, i);
     const freeCount = plan.closed ? 0 : plan.free.length;
     let badge, badgeClass;
-    if (d.toDateString() === now.toDateString() && nowM >= CONFIG.closeSameDayAtHour * 60) {
+    if (i === 0) {
       badge = 'Hoje fechado'; badgeClass = 'full';
     } else if (freeCount === 0) {
       badge = 'Lotado'; badgeClass = 'full';
-    } else if (freeCount <= 2) {
+    } else if (freeCount <= 4) {
       badge = freeCount + ' vagas'; badgeClass = 'tight';
     } else {
       badge = freeCount + ' vagas'; badgeClass = 'ok';
@@ -490,15 +496,13 @@ function renderDays() {
 }
 
 function renderTimes() {
-  const now = new Date();
   const day = businessDays[state.dayIdx];
-  const plan = getPlan(day, state.dayIdx, now);
+  const plan = getPlan(day, state.dayIdx);
   const note = document.getElementById('timeNote');
   const content = document.getElementById('timeContent');
 
-  const nowM = now.getHours() * 60 + now.getMinutes();
-  if (day.toDateString() === now.toDateString() && nowM >= CONFIG.closeSameDayAtHour * 60) {
-    note.innerHTML = '<i class="fas fa-info-circle"></i> <strong>Hoje os horários já foram preenchidos.</strong> Escolha outro dia abaixo — amanhã e os próximos dias têm vagas.';
+  if (state.dayIdx === 0) {
+    note.innerHTML = '<i class="fas fa-info-circle"></i> <strong>Hoje os horários já foram todos preenchidos.</strong> O próximo turno disponível é amanhã — escolha um dos dias abaixo e selecione os horários ainda livres.';
     content.innerHTML = '';
     return;
   }
@@ -508,13 +512,7 @@ function renderTimes() {
     return;
   }
 
-  if (state.dayIdx === 1 && nowM >= CONFIG.closeSameDayAtHour * 60) {
-    note.innerHTML = '<i class="fas fa-info-circle"></i> <strong>Vagas para amanhã (manhã):</strong> ' + plan.free.map(f => f.time).join(', ') + ' — horários limitados do turno matutino.';
-  } else if (state.dayIdx === 2 && nowM >= CONFIG.closeSameDayAtHour * 60) {
-    note.innerHTML = '<i class="fas fa-info-circle"></i> <strong>Vagas para a tarde de ' + dayLabel(day, state.dayIdx) + ':</strong> poucos horários do turno vespertino.';
-  } else {
-    note.innerHTML = '<i class="fas fa-info-circle"></i> <strong>' + plan.free.length + ' horário(s) livre(s) neste dia.</strong> Os demais já estão reservados.';
-  }
+  note.innerHTML = '<i class="fas fa-info-circle"></i> <strong>' + plan.free.length + ' horário(s) livre(s) neste dia.</strong> Os demais já estão reservados — disponibilizamos apenas alguns horários espaçados por turno.';
 
   content.innerHTML = '';
   SHIFTS_ORDER.forEach(s => {
@@ -524,7 +522,8 @@ function renderTimes() {
     const freeIn = plan.free.filter(f => f.shift === s);
     const head = document.createElement('div');
     head.className = 'shift-head';
-    head.innerHTML = `<i class="fas fa-sun"></i><h3>${SHIFTS[s].label}</h3>`;
+    const icon = s === 'manha' ? 'fa-sun' : 'fa-cloud-sun';
+    head.innerHTML = `<i class="fas ${icon}"></i><h3>${SHIFTS[s].label}</h3>`;
     if (freeIn.length) head.innerHTML += `<span class="shift-free">${freeIn.length} vaga(s)</span>`;
     block.appendChild(head);
     const grid = document.createElement('div');
