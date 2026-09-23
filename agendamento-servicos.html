@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agendamento Online | Clínica Cois</title>
+<meta name="description" content="Agende seu atendimento na Clínica Cois em Salvador: escolha o serviço, o dia e o horário disponível e receba a confirmação no WhatsApp.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://clinicacois.com.br/agendamento-servicos">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --blue-primary: #0078D7;
+  --blue-dark: #005A9E;
+  --blue-light: #4DABF5;
+  --blue-bg: #004578;
+  --text-white: #FFFFFF;
+  --text-dark: #333333;
+  --text-gray: #666666;
+  --bg-light: #f0f6fc;
+  --border-color: #cce4f7;
+  --green-whatsapp: #25D366;
+  --gold: #f59e0b;
+  --red: #dc2626;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Poppins', sans-serif; color: var(--text-dark); background: var(--bg-light); }
+h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; }
+img { max-width: 100%; height: auto; }
+a { text-decoration: none; color: inherit; }
+.container { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+
+/* Header */
+.site-header {
+  background: var(--text-white); border-bottom: 1px solid var(--border-color);
+  padding: 14px 0; position: sticky; top: 0; z-index: 100;
+}
+.site-header .container { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.site-header .brand { display: flex; align-items: center; gap: 12px; }
+.site-header .brand img { height: 40px; width: auto; }
+.site-header .back-link { color: var(--blue-dark); font-weight: 500; font-size: 14px; }
+.site-header .back-link i { margin-right: 6px; color: var(--blue-primary); }
+.site-header .phone { font-size: 14px; color: var(--text-gray); }
+.site-header .phone i { color: var(--green-whatsapp); margin-right: 6px; }
+
+/* Hero */
+.page-hero { background: linear-gradient(135deg, #00284d 0%, #003366 45%, #005A9E 100%); color: #fff; padding: 48px 0 60px; }
+.page-hero h1 { font-size: 32px; font-weight: 800; margin-bottom: 10px; }
+.page-hero h1 span { color: #7cc0ff; }
+.page-hero p { font-size: 15px; color: rgba(255,255,255,0.85); line-height: 1.7; max-width: 640px; }
+.how-strip { display: flex; gap: 26px; flex-wrap: wrap; margin-top: 24px; }
+.how-step { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.9); }
+.how-step .num {
+  width: 30px; height: 30px; border-radius: 50%; background: var(--gold); color: #7c2d12;
+  display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; flex-shrink: 0;
+}
+
+/* Booking card */
+.booking-card {
+  background: var(--text-white); border: 1px solid var(--border-color); border-radius: 18px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.08); margin-top: -34px; overflow: hidden;
+}
+.booking-step { display: none; padding: 34px 32px; }
+.booking-step.active { display: block; animation: fadeUp 0.35s ease; }
+.step-head { display: flex; align-items: center; gap: 12px; margin-bottom: 22px; }
+.step-head .ball {
+  width: 38px; height: 38px; border-radius: 50%; background: var(--blue-primary); color: #fff;
+  display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 17px; flex-shrink: 0;
+}
+.step-head h2 { font-size: 20px; color: var(--blue-dark); }
+.step-head p { font-size: 13px; color: var(--text-gray); }
+
+/* Services */
+.svc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 14px; }
+.svc-item {
+  border: 2px solid var(--border-color); border-radius: 14px; padding: 16px 16px 12px;
+  background: var(--text-white); cursor: pointer; transition: all 0.25s; text-align: left;
+  font-family: 'Poppins', sans-serif; position: relative;
+}
+.svc-item:hover { border-color: var(--blue-light); transform: translateY(-2px); }
+.svc-item.selected { border-color: var(--blue-primary); background: var(--bg-light); box-shadow: 0 6px 18px rgba(0,120,215,0.15); }
+.svc-item.selected::after {
+  content: '\f00c'; font-family: 'Font Awesome 6 Free'; font-weight: 900;
+  position: absolute; top: 10px; right: 12px; color: var(--blue-primary); font-size: 13px;
+}
+.svc-item .ic { font-size: 22px; color: var(--blue-primary); margin-bottom: 8px; display: block; }
+.svc-item h4 { font-size: 14.5px; color: var(--blue-dark); margin-bottom: 4px; font-weight: 700; }
+.svc-item .dur { font-size: 12px; color: var(--text-gray); display: flex; align-items: center; gap: 6px; }
+.svc-item .dur i { color: var(--blue-light); }
+
+/* Days */
+.days-row { display: flex; gap: 12px; overflow-x: auto; padding-bottom: 8px; }
+.day-chip {
+  min-width: 118px; border: 2px solid var(--border-color); border-radius: 14px; padding: 14px 12px;
+  background: var(--text-white); cursor: pointer; text-align: center; transition: all 0.25s; flex-shrink: 0;
+  font-family: 'Poppins', sans-serif; position: relative;
+}
+.day-chip:hover { border-color: var(--blue-light); }
+.day-chip.selected { border-color: var(--blue-primary); background: var(--bg-light); box-shadow: 0 6px 18px rgba(0,120,215,0.15); }
+.day-chip .dw { font-size: 13px; font-weight: 600; color: var(--blue-dark); }
+.day-chip .dd { font-size: 12px; color: var(--text-gray); margin: 2px 0 8px; }
+.day-chip .badge {
+  display: inline-block; font-size: 10.5px; font-weight: 600; border-radius: 20px; padding: 3px 10px;
+}
+.day-chip .badge.ok { background: #dcfce7; color: #15803d; }
+.day-chip .badge.tight { background: #ffedd5; color: #c2410c; }
+.day-chip .badge.full { background: #fee2e2; color: #b91c1c; }
+.day-chip .badge.closed { background: #e5e7eb; color: #6b7280; }
+
+/* Times */
+.time-note {
+  background: var(--bg-light); border: 1px solid var(--border-color); border-radius: 12px;
+  padding: 12px 16px; font-size: 13.5px; color: var(--text-gray); margin-bottom: 20px; line-height: 1.6;
+}
+.time-note i { color: var(--blue-primary); margin-right: 6px; }
+.time-note strong { color: var(--blue-dark); }
+.shift-block { margin-bottom: 22px; }
+.shift-head { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.shift-head i { color: var(--gold); font-size: 17px; }
+.shift-head h3 { font-size: 16px; color: var(--blue-dark); font-weight: 700; }
+.shift-head .shift-free { font-size: 12px; color: var(--text-gray); }
+.slot-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(118px, 1fr)); gap: 10px; }
+.slot-btn {
+  border: 2px solid var(--border-color); border-radius: 12px; padding: 12px 10px;
+  background: var(--text-white); cursor: pointer; text-align: center; transition: all 0.25s;
+  font-family: 'Poppins', sans-serif;
+}
+.slot-btn .t { font-size: 15px; font-weight: 700; color: var(--blue-dark); display: block; }
+.slot-btn .s { font-size: 11px; color: var(--text-gray); }
+.slot-btn.free:hover { border-color: var(--green-whatsapp); transform: translateY(-2px); }
+.slot-btn.selected { border-color: var(--green-whatsapp); background: #f0fdf4; box-shadow: 0 6px 18px rgba(37,211,102,0.18); }
+.slot-btn.selected .t { color: #15803d; }
+.slot-btn.busy { cursor: not-allowed; background: #f9fafb; opacity: .62; border-color: #e5e7eb; }
+.slot-btn.busy .t { color: #9ca3af; text-decoration: line-through; text-decoration-thickness: 2px; }
+.slot-btn.busy .s { color: #9ca3af; }
+.empty-slot-msg { color: var(--text-gray); font-size: 13.5px; padding: 8px 0; }
+
+/* Details */
+.details-summary { background: var(--bg-light); border: 1px solid var(--border-color); border-radius: 14px; padding: 18px 20px; margin-bottom: 22px; }
+.details-summary h3 { font-size: 14px; color: var(--text-gray); text-transform: uppercase; letter-spacing: .6px; margin-bottom: 10px; }
+.sum-row { display: flex; align-items: center; gap: 10px; padding: 6px 0; font-size: 14.5px; color: var(--text-dark); }
+.sum-row i { color: var(--blue-primary); width: 18px; text-align: center; font-size: 14px; }
+.sum-row strong { color: var(--blue-dark); font-weight: 600; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.field label { display: block; font-size: 12.5px; color: var(--text-gray); font-weight: 500; margin-bottom: 6px; }
+.field label i { color: var(--blue-light); margin-right: 5px; }
+.field input {
+  width: 100%; padding: 13px 14px; border-radius: 10px; border: 1px solid var(--border-color);
+  font-family: 'Poppins', sans-serif; font-size: 14px; outline: none; transition: border 0.3s;
+}
+.field input:focus { border-color: var(--blue-primary); }
+.confirm-btn {
+  width: 100%; background: var(--green-whatsapp); color: #fff; border: none; cursor: pointer;
+  padding: 16px; border-radius: 12px; font-family: 'Poppins', sans-serif; font-size: 16px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 18px;
+  transition: all 0.3s; box-shadow: 0 6px 20px rgba(37,211,102,0.4);
+}
+.confirm-btn:hover { background: #1ebe57; transform: translateY(-2px); }
+.privacy-note { text-align: center; font-size: 12px; color: var(--text-gray); margin-top: 12px; }
+.privacy-note i { color: var(--blue-light); margin-right: 4px; }
+
+/* Edit links / actions */
+.step-actions { margin-top: 24px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.btn-ghost {
+  background: transparent; border: 2px solid var(--border-color); color: var(--blue-dark);
+  padding: 12px 22px; border-radius: 10px; font-family: 'Poppins', sans-serif; font-size: 13.5px; font-weight: 600; cursor: pointer; transition: all 0.25s;
+}
+.btn-ghost:hover { border-color: var(--blue-primary); color: var(--blue-primary); }
+
+/* Success */
+#successBox { display: none; text-align: center; padding: 50px 20px; }
+#successBox .big-ic { font-size: 56px; color: var(--green-whatsapp); margin-bottom: 16px; }
+#successBox h2 { color: var(--blue-dark); font-size: 24px; margin-bottom: 10px; }
+#successBox p { color: var(--text-gray); font-size: 14.5px; line-height: 1.7; max-width: 460px; margin: 0 auto 22px; }
+#successBox .again { color: var(--blue-primary); font-weight: 600; font-size: 14px; background: none; border: none; cursor: pointer; font-family: 'Poppins', sans-serif; }
+#successBox .again:hover { text-decoration: underline; }
+
+/* Footer */
+.site-footer { background: var(--text-white); border-top: 1px solid var(--border-color); padding: 26px 0; margin-top: 40px; text-align: center; font-size: 13px; color: var(--text-gray); }
+.site-footer .f-actions { display: flex; justify-content: center; gap: 22px; flex-wrap: wrap; margin-top: 10px; font-size: 13px; }
+.site-footer .f-actions span i { color: var(--blue-primary); margin-right: 6px; }
+
+/* WhatsApp float */
+.whatsapp-float {
+  position: fixed; bottom: 24px; right: 24px; z-index: 999; width: 60px; height: 60px; border-radius: 50%;
+  background: var(--green-whatsapp); color: var(--text-white); display: flex; align-items: center; justify-content: center;
+  font-size: 30px; box-shadow: 0 4px 15px rgba(37,211,102,0.4); transition: transform 0.3s, box-shadow 0.3s;
+}
+.whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 6px 25px rgba(37,211,102,0.6); color: var(--text-white); }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+
+@media (max-width: 640px) {
+  .page-hero h1 { font-size: 25px; }
+  .booking-step { padding: 24px 18px; }
+  .form-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <div class="brand">
+      <a href="index.html" aria-label="Clínica Cois"><img src="logo.jpeg" alt="Clínica Cois"></a>
+      <a class="back-link" href="index.html"><i class="fas fa-arrow-left"></i> Voltar para o site</a>
+    </div>
+    <div class="phone"><i class="fab fa-whatsapp"></i> (71) 99108-5981</div>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <h1>Agendamento Online <span>Clínica Cois</span></h1>
+    <p>Escolha o serviço, o dia e o horário disponível para o seu atendimento na Clínica Cois (Rio Vermelho, Salvador). A confirmação chega direto no seu WhatsApp.</p>
+    <div class="how-strip">
+      <span class="how-step"><span class="num">1</span> Escolha o serviço</span>
+      <span class="how-step"><span class="num">2</span> Selecione o dia</span>
+      <span class="how-step"><span class="num">3</span> Escolha o horário</span>
+      <span class="how-step"><span class="num">4</span> Confirme no WhatsApp</span>
+    </div>
+  </div>
+</section>
+
+<main class="container">
+  <div class="booking-card">
+
+    <!-- Step 1: Serviço -->
+    <section class="booking-step active" id="step-service">
+      <div class="step-head">
+        <div class="ball">1</div>
+        <div><h2>Escolha o serviço</h2><p>Selecione o atendimento desejado para continuar.</p></div>
+      </div>
+      <div class="svc-grid" id="svcGrid"></div>
+    </section>
+
+    <!-- Step 2: Dia -->
+    <section class="booking-step" id="step-day">
+      <div class="step-head">
+        <div class="ball">2</div>
+        <div><h2>Escolha o dia</h2><p>Somente dias úteis com horários disponíveis.</p></div>
+      </div>
+      <div class="days-row" id="daysRow"></div>
+      <div class="step-actions">
+        <button class="btn-ghost" onclick="goStep(0)"><i class="fas fa-arrow-left"></i> Voltar</button>
+      </div>
+    </section>
+
+    <!-- Step 3: Horário -->
+    <section class="booking-step" id="step-time">
+      <div class="step-head">
+        <div class="ball">3</div>
+        <div><h2>Escolha o horário</h2><p>Horários livres aparecem em verde e selecionáveis.</p></div>
+      </div>
+      <div id="timeNote" class="time-note"></div>
+      <div id="timeContent"></div>
+      <div class="step-actions">
+        <button class="btn-ghost" onclick="goStep(1)"><i class="fas fa-arrow-left"></i> Voltar</button>
+      </div>
+    </section>
+
+    <!-- Step 4: Dados -->
+    <section class="booking-step" id="step-details">
+      <div class="step-head">
+        <div class="ball">4</div>
+        <div><h2>Seus dados</h2><p>Preencha e receba a confirmação no WhatsApp.</p></div>
+      </div>
+      <div class="details-summary">
+        <h3>Resumo do agendamento</h3>
+        <div class="sum-row"><i class="fas fa-spa"></i> <span id="sumSvc"></span></div>
+        <div class="sum-row"><i class="fas fa-calendar-day"></i> <span id="sumDay"></span></div>
+        <div class="sum-row"><i class="fas fa-clock"></i> <span id="sumTime"></span></div>
+      </div>
+      <div class="form-grid">
+        <div class="field">
+          <label for="nome"><i class="fas fa-user"></i> Seu nome</label>
+          <input type="text" id="nome" placeholder="Ex.: Maria Silva" required>
+        </div>
+        <div class="field">
+          <label for="telefone"><i class="fab fa-whatsapp"></i> Seu WhatsApp</label>
+          <input type="tel" id="telefone" placeholder="DDD + número" required>
+        </div>
+      </div>
+      <button class="confirm-btn" onclick="confirmBooking()"><i class="fab fa-whatsapp"></i> Confirmar agendamento</button>
+      <div class="privacy-note"><i class="fas fa-lock"></i> Seus dados ficam seguros. Sem spam.</div>
+      <div class="step-actions">
+        <button class="btn-ghost" onclick="goStep(2)"><i class="fas fa-arrow-left"></i> Voltar</button>
+      </div>
+    </section>
+
+    <div id="successBox"></div>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>© 2026 Clínica Cois - Rio Vermelho, Salvador - BA. Todos os direitos reservados.</div>
+    <div class="f-actions">
+      <span><i class="fas fa-phone-alt"></i> (71) 3334-0123</span>
+      <span><i class="fas fa-clock"></i> Seg à Sex 08h às 19h30</span>
+    </div>
+  </div>
+</footer>
+
+<a class="whatsapp-float" href="https://api.whatsapp.com/send/?phone=5571991085981&text=Ol%C3%A1%2C+vim+do+site+da+Cl%C3%ADnica+Cois+e+gostaria+de+agendar+um+atendimento%21" target="_blank" rel="nofollow noopener" aria-label="Contato do WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<script>
+/* =========================================================
+   CONFIGURAÇÃO DAS VAGAS
+   -----------------------------------------
+   - Horários de 30 em 30 minutos.
+   - Cada turno (Manhã e Tarde) libera de minFreePerShift a
+     maxFreePerShift vagas por dia, variadas e espaçadas.
+   - Hoje nunca é liberado online: informa que o próximo
+     turno disponível é amanhã.
+   - O turno da noite (17:30 às 19:30) não tem vagas online:
+     esses horários são agendados pessoalmente ou por telefone.
+   ========================================================= */
+const CONFIG = {
+  waNumber: '5571991085981',
+  daysAhead: 7,                 // quantos dias úteis à frente são exibidos
+  minFreePerShift: 3,           // mínimo de vagas livres por turno
+  maxFreePerShift: 5            // máximo de vagas livres por turno
+};
+
+const SHIFTS = {
+  manha: { label: 'Manhã', times: ['08:00', '08:30', '09:00', '09:30', '10:00', '10:30', '11:00', '11:30'] },
+  tarde: { label: 'Tarde', times: ['13:00', '13:30', '14:00', '14:30', '15:00', '15:30', '16:00', '16:30', '17:00', '17:30', '18:00', '18:30', '19:00', '19:30'] }
+};
+const SHIFTS_ORDER = ['manha', 'tarde'];
+// A partir de 17:30 os horários não são liberados online:
+// reservados para agendamento pessoal ou por telefone.
+const ONLINE_CUTOFF_MIN = 17 * 60;
+
+const SERVICES = [
+  { name: 'Acupuntura', cat: 'Fisioterapia', dur: '30 a 45 min', icon: 'fa-bolt' },
+  { name: 'Fisioterapia Pélvica', cat: 'Fisioterapia', dur: '50 a 60 min', icon: 'fa-ribbon' },
+  { name: 'Fisioterapia para Gestantes', cat: 'Fisioterapia', dur: '50 a 60 min', icon: 'fa-baby' },
+  { name: 'Ozonioterapia', cat: 'Fisioterapia', dur: '30 a 45 min', icon: 'fa-atom' },
+  { name: 'Pilates Adulto', cat: 'Fisioterapia', dur: '50 a 60 min', icon: 'fa-dumbbell' },
+  { name: 'Pilates Kids', cat: 'Fisioterapia', dur: '30 a 45 min', icon: 'fa-child' },
+  { name: 'Quiropraxia', cat: 'Fisioterapia', dur: '30 a 45 min', icon: 'fa-bone' },
+  { name: 'Reeducação Postural Global (RPG)', cat: 'Fisioterapia', dur: '45 a 60 min', icon: 'fa-person-walking' },
+  { name: 'Terapia Neural', cat: 'Fisioterapia', dur: '30 a 45 min', icon: 'fa-brain' },
+  { name: 'Terapias Injetáveis', cat: 'Fisioterapia', dur: '30 a 45 min', icon: 'fa-syringe' },
+  { name: 'Depilação', cat: 'Estética', dur: '30 a 60 min', icon: 'fa-sun' },
+  { name: 'Designer de Sobrancelhas e Micropigmentação', cat: 'Estética', dur: '60 a 90 min', icon: 'fa-eye' },
+  { name: 'Drenagem Linfática', cat: 'Estética', dur: '50 a 70 min', icon: 'fa-water' },
+  { name: 'Estética Facial e Corporal', cat: 'Estética', dur: '50 a 70 min', icon: 'fa-star' },
+  { name: 'Harmonização Facial', cat: 'Estética', dur: '60 a 90 min', icon: 'fa-face-smile' },
+  { name: 'Laserterapia', cat: 'Estética', dur: '30 a 45 min', icon: 'fa-wand-magic-sparkles' },
+  { name: 'Manicure e Nail Designer', cat: 'Estética', dur: '60 a 90 min', icon: 'fa-hand-sparkles' },
+  { name: 'Peelings', cat: 'Estética', dur: '40 a 60 min', icon: 'fa-gem' },
+  { name: 'Radiofrequência', cat: 'Estética', dur: '40 a 60 min', icon: 'fa-radio' },
+  { name: 'Ventosaterapia', cat: 'Estética', dur: '30 a 45 min', icon: 'fa-burn' }
+];
+
+/* ---------- utilitários ---------- */
+function toMin(t) { const p = t.split(':'); return (+p[0]) * 60 + (+p[1]); }
+
+function mulberry32(a) {
+  return function () {
+    a |= 0; a = a + 0x6D2B79F5 | 0;
+    let t = Math.imul(a ^ a >>> 15, 1 | a);
+    t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+    return ((t ^ t >>> 14) >>> 0) / 4294967296;
+  };
+}
+function daySeed(d) { return d.getFullYear() * 10000 + (d.getMonth() + 1) * 100 + d.getDate(); }
+
+function shuffle(arr, rng) {
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(rng() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+// Seleciona 'n' índices espaçados e variados dentro de um array,
+// garantindo que os horários liberados não fiquem todos juntos.
+function pickSpaced(arr, n, rng) {
+  if (n >= arr.length) return arr.slice();
+  const step = (arr.length - 1) / (n - 1);
+  const idxs = [];
+  for (let i = 0; i < n; i++) {
+    const base = Math.round(i * step);
+    const jitter = Math.floor(rng() * 3) - 1;
+    let idx = base + jitter;
+    idx = Math.max(0, Math.min(arr.length - 1, idx));
+    if (!idxs.includes(idx)) idxs.push(idx);
+  }
+  while (idxs.length < n) {
+    const cand = Math.floor(rng() * arr.length);
+    if (!idxs.includes(cand)) idxs.push(cand);
+  }
+  return idxs.sort((a, b) => a - b).map(i => arr[i]);
+}
+
+/* ---------- estado ---------- */
+const state = { service: null, dayIdx: null, shift: null, time: null };
+let businessDays = [];
+
+function isBusinessDay(d) { return d.getDay() !== 0 && d.getDay() !== 6; }
+
+function buildDays() {
+  const days = [];
+  const now = new Date();
+  for (let i = 0; i < 30 && days.length < CONFIG.daysAhead; i++) {
+    const d = new Date(now.getFullYear(), now.getMonth(), now.getDate() + i);
+    if (!isBusinessDay(d)) continue;
+    days.push(d);
+  }
+  return days;
+}
+
+/* ---------- regras de disponibilidade ---------- */
+function getPlan(day, idx) {
+  const rng = mulberry32(daySeed(day) * 977 + 13);
+
+  // Hoje nunca é liberado online: avisa que o próximo turno é amanhã.
+  if (idx === 0) return { closed: true, free: [] };
+
+  const free = [];
+  SHIFTS_ORDER.forEach(s => {
+    // Só sorteia horários até às 17:00; 17:30 em diante fica sempre ocupado.
+    let times = SHIFTS[s].times;
+    if (s === 'tarde') times = SHIFTS[s].times.filter(t => toMin(t) <= ONLINE_CUTOFF_MIN);
+    const n = CONFIG.minFreePerShift + Math.floor(rng() * (CONFIG.maxFreePerShift - CONFIG.minFreePerShift + 1));
+    pickSpaced(times, Math.min(n, times.length), rng).forEach(t => free.push({ shift: s, time: t }));
+  });
+  return { closed: false, free: free.sort((a, b) => (SHIFTS_ORDER.indexOf(a.shift) - SHIFTS_ORDER.indexOf(b.shift)) || (toMin(a.time) - toMin(b.time))) };
+}
+
+function getFreeTimesCount(day) {
+  return getPlan(day, businessDays.indexOf(day)).free.length;
+}
+
+/* ---------- rótulos ---------- */
+const DT = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
+const DM = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'];
+
+function dayLabel(day, idx) {
+  if (idx === 0) return 'Hoje';
+  if (idx === 1) return 'Amanhã';
+  return DT[day.getDay()] + ' ' + day.getDate() + '/' + (day.getMonth() + 1);
+}
+
+/* ---------- render ---------- */
+function renderServices() {
+  const grid = document.getElementById('svcGrid');
+  const url = new URLSearchParams(location.search);
+  const preselect = url.get('servico');
+  grid.innerHTML = '';
+  SERVICES.forEach(sv => {
+    const btn = document.createElement('button');
+    btn.className = 'svc-item' + (preselect && sv.name === preselect ? ' selected' : '');
+    btn.innerHTML = `<span class="ic"><i class="fas ${sv.icon}"></i></span><h4>${sv.name}</h4><span class="dur"><i class="fas fa-clock"></i> ${sv.dur}</span>`;
+    btn.onclick = () => {
+      state.service = sv.name;
+      document.querySelectorAll('.svc-item').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      goStep(1);
+    };
+    grid.appendChild(btn);
+  });
+}
+
+function renderDays() {
+  businessDays = buildDays();
+  const row = document.getElementById('daysRow');
+  row.innerHTML = '';
+  businessDays.forEach((d, i) => {
+    const plan = getPlan(d, i);
+    const freeCount = plan.closed ? 0 : plan.free.length;
+    let badge, badgeClass;
+    if (i === 0) {
+      badge = 'Hoje fechado'; badgeClass = 'full';
+    } else if (freeCount === 0) {
+      badge = 'Lotado'; badgeClass = 'full';
+    } else if (freeCount <= 4) {
+      badge = freeCount + ' vagas'; badgeClass = 'tight';
+    } else {
+      badge = freeCount + ' vagas'; badgeClass = 'ok';
+    }
+    const chip = document.createElement('button');
+    chip.className = 'day-chip';
+    chip.innerHTML = `<div class="dw">${dayLabel(d, i)}</div><div class="dd">${DM[d.getMonth()]} ${String(d.getDate()).padStart(2, '0')}</div><span class="badge ${badgeClass}">${badge}</span>`;
+    chip.onclick = () => {
+      state.dayIdx = i;
+      state.shift = null;
+      state.time = null;
+      document.querySelectorAll('.day-chip').forEach(c => c.classList.remove('selected'));
+      chip.classList.add('selected');
+      goStep(2);
+    };
+    row.appendChild(chip);
+  });
+}
+
+function renderTimes() {
+  const day = businessDays[state.dayIdx];
+  const plan = getPlan(day, state.dayIdx);
+  const note = document.getElementById('timeNote');
+  const content = document.getElementById('timeContent');
+
+  if (state.dayIdx === 0) {
+    note.innerHTML = '<i class="fas fa-info-circle"></i> <strong>Hoje os horários já foram todos preenchidos.</strong> O próximo turno disponível é amanhã — escolha um dos dias abaixo e selecione os horários ainda livres.';
+    content.innerHTML = '';
+    return;
+  }
+  if (plan.closed || plan.free.length === 0) {
+    note.innerHTML = '<i class="fas fa-info-circle"></i> <strong>Nenhum horário livre neste dia.</strong> Selecione outro dia.';
+    content.innerHTML = '';
+    return;
+  }
+
+  note.innerHTML = '<i class="fas fa-info-circle"></i> <strong>' + plan.free.length + ' horário(s) livre(s) neste dia.</strong> Os demais já estão reservados — disponibilizamos apenas alguns horários espaçados por turno.';
+
+  content.innerHTML = '';
+  SHIFTS_ORDER.forEach(s => {
+    const shiftTimes = SHIFTS[s].times;
+    const block = document.createElement('div');
+    block.className = 'shift-block';
+    const freeIn = plan.free.filter(f => f.shift === s);
+    const head = document.createElement('div');
+    head.className = 'shift-head';
+    const icon = s === 'manha' ? 'fa-sun' : 'fa-cloud-sun';
+    head.innerHTML = `<i class="fas ${icon}"></i><h3>${SHIFTS[s].label}</h3>`;
+    if (freeIn.length) head.innerHTML += `<span class="shift-free">${freeIn.length} vaga(s)</span>`;
+    block.appendChild(head);
+    const grid = document.createElement('div');
+    grid.className = 'slot-grid';
+    shiftTimes.forEach(t => {
+      const isFree = plan.free.some(f => f.shift === s && f.time === t);
+      const btn = document.createElement('button');
+      if (isFree) {
+        btn.className = 'slot-btn free';
+        btn.innerHTML = `<span class="t">${t}</span><span class="s">Disponível</span>`;
+        btn.onclick = () => {
+          state.shift = s;
+          state.time = t;
+          document.querySelectorAll('.slot-btn').forEach(b => b.classList.remove('selected'));
+          btn.classList.add('selected');
+          goStep(3);
+        };
+      } else {
+        btn.className = 'slot-btn busy';
+        btn.disabled = true;
+        btn.innerHTML = `<span class="t">${t}</span><span class="s">Ocupado</span>`;
+      }
+      grid.appendChild(btn);
+    });
+    block.appendChild(grid);
+    content.appendChild(block);
+  });
+}
+
+/* ---------- navegação ---------- */
+function goStep(i) {
+  document.querySelectorAll('.booking-step').forEach(s => s.classList.remove('active'));
+  if (i === 2) renderTimes();
+  if (i === 3) renderDetails();
+  document.getElementById('step-' + ['service', 'day', 'time', 'details'][i]).classList.add('active');
+  window.scrollTo({ top: document.querySelector('.booking-card').getBoundingClientRect().top + window.pageYOffset - 100, behavior: 'smooth' });
+}
+
+function renderDetails() {
+  const day = businessDays[state.dayIdx];
+  document.getElementById('sumSvc').textContent = state.service;
+  document.getElementById('sumDay').textContent = dayLabel(day, state.dayIdx) + ', ' + day.getDate() + ' de ' + DM[day.getMonth()] + ' de ' + day.getFullYear() + ' (' + SHIFTS[state.shift].label + ')';
+  document.getElementById('sumTime').textContent = state.time;
+}
+
+function confirmBooking() {
+  const nome = document.getElementById('nome').value.trim();
+  const tel = document.getElementById('telefone').value.trim();
+  if (!nome) { alert('Por favor, informe seu nome.'); return; }
+  if (!tel) { alert('Por favor, informe seu WhatsApp para confirmarmos o horário.'); return; }
+
+  const day = businessDays[state.dayIdx];
+  const dateStr = String(day.getDate()).padStart(2, '0') + '/' + String(day.getMonth() + 1).padStart(2, '0') + '/' + day.getFullYear();
+
+  const lines = [
+    'Olá, vim do site da Clínica Cois e gostaria de confirmar meu agendamento!',
+    '',
+    '📌 Serviço: ' + state.service,
+    '🗓️ Data: ' + dateStr + ' (' + SHIFTS[state.shift].label + ')',
+    '⏰ Horário: ' + state.time,
+    '🖐️ Nome: ' + nome,
+    '📱 WhatsApp: ' + tel
+  ];
+  const msg = encodeURIComponent(lines.join('\n'));
+  window.open(`https://api.whatsapp.com/send/?phone=${CONFIG.waNumber}&text=${msg}`, '_blank', 'nofollow noopener');
+
+  document.querySelectorAll('.booking-step').forEach(s => s.classList.remove('active'));
+  document.getElementById('successBox').innerHTML =
+    '<div class="big-ic"><i class="fas fa-check-circle"></i></div>' +
+    '<h2>Solicitação enviada!</h2>' +
+    '<p>Abrimos o WhatsApp com o resumo do seu agendamento. É só enviar a mensagem para confirmar a vaga — nossa equipe responde rapidinho.</p>' +
+    '<button class="again" onclick="resetFlow()">Agendar outro horário</button>';
+  document.getElementById('successBox').style.display = 'block';
+  window.scrollTo({ top: document.querySelector('.booking-card').getBoundingClientRect().top + window.pageYOffset - 100, behavior: 'smooth' });
+}
+
+function resetFlow() {
+  document.getElementById('successBox').style.display = 'none';
+  state.service = null; state.dayIdx = null; state.shift = null; state.time = null;
+  document.getElementById('nome').value = '';
+  document.getElementById('telefone').value = '';
+  document.querySelectorAll('.svc-item').forEach(b => b.classList.remove('selected'));
+  renderDays();
+  goStep(0);
+}
+
+/* ---------- init ---------- */
+document.addEventListener('DOMContentLoaded', () => {
+  renderServices();
+  renderDays();
+});
+</script>
+</body>
+</html>

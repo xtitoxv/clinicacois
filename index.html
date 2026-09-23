@@ -81,16 +81,20 @@ a { text-decoration: none; color: inherit; }
   content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
   background: linear-gradient(135deg, rgba(0,51,102,0.88) 0%, rgba(0,69,120,0.65) 50%, rgba(0,90,158,0.35) 100%);
 }
-.hero-content { text-align: center; max-width: 800px; margin: 0 auto; padding: 60px 20px; position: relative; z-index: 2; }
-.hero-content h1 {
+.hero-grid {
+  position: relative; z-index: 2;
+  display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 50px; align-items: center;
+  max-width: 1200px; margin: 0 auto; padding: 60px 20px;
+}
+.hero-grid h1 {
   color: var(--text-white); font-size: 44px; font-weight: 700; margin-bottom: 12px;
   animation: fadeInDown 1s ease; line-height: 1.2;
 }
-.hero-content h2 {
+.hero-grid h2 {
   color: var(--text-white); font-size: 20px; font-weight: 300; margin-bottom: 20px;
   opacity: 0.95; animation: fadeInDown 1s ease 0.2s both; line-height: 1.5;
 }
-.hero-content p {
+.hero-grid p {
   color: var(--text-white); font-size: 17px; line-height: 1.7; margin-bottom: 30px;
   opacity: 0.9; animation: fadeInDown 1s ease 0.4s both;
 }
@@ -101,6 +105,44 @@ a { text-decoration: none; color: inherit; }
   box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
 }
 .hero-btn:hover { background: #1ebe57; transform: translateY(-2px); box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6); }
+.hero-btn.btn-wa { background: var(--blue-primary); box-shadow: 0 4px 15px rgba(0,120,215,0.45); }
+.hero-btn.btn-wa:hover { background: var(--blue-hover); box-shadow: 0 6px 25px rgba(0,120,215,0.6); }
+.hero-badge {
+  display: inline-block; background: rgba(255,255,255,0.14); backdrop-filter: blur(5px);
+  border: 1px solid rgba(255,255,255,0.25); border-radius: 30px;
+  padding: 8px 20px; margin-bottom: 22px;
+  color: #fff; font-size: 14px; font-weight: 500;
+  animation: fadeInDown 1s ease;
+}
+.hero-badge i { margin-right: 8px; color: var(--green-whatsapp); }
+.hero-cta { display: flex; flex-wrap: wrap; gap: 14px; animation: fadeInDown 1s ease 0.5s both; }
+.hero-features {
+  display: flex; flex-wrap: wrap; gap: 26px; margin-top: 30px;
+  animation: fadeInDown 1s ease 0.7s both;
+}
+.hero-feature { display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.95); font-size: 13.5px; font-weight: 500; }
+.hero-feature i { color: var(--blue-light); font-size: 18px; }
+.hero-card {
+  background: rgba(255,255,255,0.08); backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.18); border-radius: 22px;
+  padding: 34px 30px; color: #fff; box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+  animation: fadeInRight 1s ease 0.3s both;
+}
+.hero-card-title { font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 6px; display: flex; align-items: center; gap: 10px; }
+.hero-card-title i { color: var(--gold); }
+.hero-card-sub { font-size: 13px; color: rgba(255,255,255,0.75); margin-bottom: 22px; }
+.lead-submit {
+  width: 100%; background: var(--green-whatsapp); color: #fff; border: none; cursor: pointer;
+  padding: 15px; border-radius: 12px; font-family: 'Poppins', sans-serif;
+  font-size: 15px; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 10px;
+  transition: all 0.3s; box-shadow: 0 6px 20px rgba(37,211,102,0.4); margin-top: 4px;
+}
+.lead-submit:hover { background: #1ebe57; transform: translateY(-2px); }
+.hero-card-mini { margin-top: 14px; display: flex; flex-direction: column; gap: 8px; }
+.hero-card-mini div { font-size: 12.5px; color: rgba(255,255,255,0.85); display: flex; align-items: center; gap: 7px; }
+.hero-card-mini i { color: var(--green-whatsapp); font-size: 12px; }
+.hero-card-note { text-align: center; font-size: 11.5px; color: rgba(255,255,255,0.7); margin-top: 12px; }
+.hero-card-note i { color: var(--blue-light); margin-right: 4px; }
 
 /* Section common */
 .section { padding: 80px 0; }
@@ -443,6 +485,7 @@ a { text-decoration: none; color: inherit; }
   from { opacity: 0; transform: translateY(-30px); }
   to { opacity: 1; transform: translateY(0); }
 }
+@keyframes fadeInRight { from { opacity: 0; transform: translateX(40px); } to { opacity: 1; transform: translateX(0); } }
 
 /* Logo pulse glow */
 @keyframes logoGlow {
@@ -462,11 +505,13 @@ a { text-decoration: none; color: inherit; }
 @media (max-width: 1024px) {
   .structure-grid { grid-template-columns: 1fr; gap: 40px; }
   .services-grid { grid-template-columns: 1fr; }
+  .hero-grid { grid-template-columns: 1fr; gap: 34px; }
+  .hero-card { max-width: 520px; margin: 0 auto; }
   .patho-grid { grid-template-columns: repeat(2, 1fr); }
   .testi-grid { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
-  .hero-content h1, .about-text h3 { font-size: 36px; }
-  .hero-content h2, .about-text h4 { font-size: 18px; }
+  .hero-grid h1, .about-text h3 { font-size: 36px; }
+  .hero-grid h2, .about-text h4 { font-size: 18px; }
 }
 @media (max-width: 768px) {
   .header-nav { display: none; }
@@ -474,9 +519,9 @@ a { text-decoration: none; color: inherit; }
   .header-nav.active { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: var(--text-white); padding: 20px; gap: 15px; border-bottom: 3px solid var(--blue-primary); }
   .hero-bg { background-position: center 20%; }
   .hero { min-height: 90vh; }
-  .hero-content h1, .about-text h3 { font-size: 28px; }
-  .hero-content h2, .about-text h4 { font-size: 16px; }
-  .hero-content p, .about-text p { font-size: 14px; }
+  .hero-grid h1, .about-text h3 { font-size: 28px; }
+  .hero-grid h2, .about-text h4 { font-size: 16px; }
+  .hero-grid p, .about-text p { font-size: 14px; }
   .hero-btn { padding: 14px 30px; font-size: 14px; }
   .section-title h2 { font-size: 28px; }
   .patho-grid { grid-template-columns: 1fr; }
@@ -527,9 +572,7 @@ a { text-decoration: none; color: inherit; }
     <a href="massoterapia.html" style="color:#0078D7;font-weight:600;">Massoterapia</a>
     <a href="podologia.html" style="color:var(--blue-primary);font-weight:600;">Podologia</a>
     <a href="domicilio.html" style="color:#25D366;font-weight:600;">Domicílio</a>
-    <a class="header-btn" href="https://api.whatsapp.com/send/?phone=5571991085981&text=Ol%C3%A1%2C+vim+atrav%C3%A9s+do+site+e+gostaria+de+saber+mais+informa%C3%A7%C3%B5es%21" target="_blank" rel="nofollow noopener">
-      Agendar consulta
-    </a>
+    <a class="header-btn" href="agendamento-servicos.html" target="_blank" rel="noopener"><i class="fas fa-calendar-check"></i> Agendar online</a>
   </nav>
 </header>
 
@@ -591,13 +634,34 @@ a { text-decoration: none; color: inherit; }
 
 <section class="hero" id="inicio">
   <div class="hero-bg"></div>
-  <div class="hero-content">
-    <h1>Cuidado completo para toda a sua família</h1>
-    <h2>Fisioterapia ortopédica, estética e bem-estar em um só lugar</h2>
-    <p>Na Clínica COIS, cuidamos de você e da sua família com excelência, acolhimento e resultados reais. Agende sua avaliação e descubra uma nova forma de cuidar da sua saúde.</p>
-    <a class="hero-btn" href="https://api.whatsapp.com/send/?phone=5571991085981&text=Ol%C3%A1%2C+vim+atrav%C3%A9s+do+site+e+gostaria+de+agendar+uma+avalia%C3%A7%C3%A3o%21" target="_blank" rel="nofollow noopener">
-      Agende sua Avaliação
-    </a>
+  <div class="hero-grid">
+    <div>
+      <div class="hero-badge">
+        <i class="fas fa-hand-holding-heart"></i> Fisioterapia e estética em Salvador — Clínica Cois
+      </div>
+      <h1>Cuidado completo para toda a sua família</h1>
+      <h2>Fisioterapia ortopédica, estética e bem-estar em um só lugar</h2>
+      <p>Na Clínica COIS, cuidamos de você e da sua família com excelência, acolhimento e resultados reais. Agende sua avaliação e descubra uma nova forma de cuidar da sua saúde.</p>
+      <div class="hero-cta">
+        <a class="hero-btn" href="agendamento-servicos.html" target="_blank" rel="noopener"><i class="fas fa-calendar-check"></i> Agendar online</a>
+        <a class="hero-btn btn-wa" href="https://api.whatsapp.com/send/?phone=5571991085981&text=Ol%C3%A1%2C+vim+atrav%C3%A9s+do+site+e+gostaria+de+saber+mais+informa%C3%A7%C3%B5es%21" target="_blank" rel="nofollow noopener"><i class="fab fa-whatsapp"></i> Falar no WhatsApp</a>
+      </div>
+      <div class="hero-features">
+        <div class="hero-feature"><i class="fas fa-user-md"></i> Equipe qualificada</div>
+        <div class="hero-feature"><i class="fas fa-wind"></i> Ambiente climatizado</div>
+        <div class="hero-feature"><i class="fas fa-calendar-check"></i> Atendimento marcado, sem espera</div>
+      </div>
+    </div>
+    <div class="hero-card" id="agendar">
+      <div class="hero-card-title"><i class="fas fa-calendar-check"></i> Agendamento online</div>
+      <div class="hero-card-sub">Escolha o serviço, o dia e o horário disponível para o seu atendimento. Confirmação rápida no WhatsApp.</div>
+      <a class="lead-submit" href="agendamento-servicos.html" target="_blank" rel="noopener" style="text-decoration:none;"><i class="fas fa-calendar-plus"></i> Agendar meu atendimento</a>
+      <div class="hero-card-mini">
+        <div><i class="fas fa-check"></i> Confirmação rápida no WhatsApp</div>
+        <div><i class="fas fa-check"></i> Agendamento em menos de 1 minuto</div>
+      </div>
+      <div class="hero-card-note"><i class="fas fa-lock"></i> Seus dados ficam seguros. Sem spam.</div>
+    </div>
   </div>
 </section>
 
@@ -671,7 +735,7 @@ a { text-decoration: none; color: inherit; }
         <h4>Diagnósticos completos para tratamentos realmente eficazes</h4>
         <p>Na Clínica Cois, cada paciente passa por uma avaliação detalhada antes de iniciar o tratamento. Utilizamos o que há de mais moderno em tecnologia diagnóstica para oferecer uma análise precisa das suas condições.</p>
         <p>Com esses dados em mãos, conseguimos criar um plano terapêutico personalizado, seguro e totalmente alinhado com as suas reais necessidades de reabilitação.</p>
-        <a class="header-btn" href="https://api.whatsapp.com/send/?phone=5571991085981&text=Ol%C3%A1%2C+vim+atrav%C3%A9s+do+site+e+gostaria+de+saber+mais+informa%C3%A7%C3%B5es%21" target="_blank" rel="nofollow noopener" style="display:inline-block;margin-top:20px;">Agende sua avaliação agora</a>
+        <a class="header-btn" href="agendamento-servicos.html" target="_blank" rel="noopener" style="display:inline-block;margin-top:20px;">Agende sua consulta agora</a>
       </div>
     </div>
   </div>
@@ -691,67 +755,67 @@ a { text-decoration: none; color: inherit; }
           <span class="card-badge card-badge-fisio">Fisioterapia</span>
           <h3>Acupuntura</h3>
           <p>Técnica milenar que estimula pontos energéticos do corpo para alívio de dores, redução do estresse e tratamento de condições crônicas com agulhas finas.</p>
-          <a class="service-btn" href="https://api.whatsapp.com/send/?phone=5571991085981&text=Ol%C3%A1%2C+gostaria+de+saber+mais+sobre+Acupuntura">Saiba mais <i class="fas fa-arrow-right"></i></a>
+          <a class="service-btn" href="agendamento-servicos.html?servico=Acupuntura" target="_blank" rel="noopener">Agendar <i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="service-card-sm">
           <span class="card-badge card-badge-fisio">Fisioterapia</span>
           <h3>Fisioterapia Pélvica</h3>
           <p>Tratamento especializado para disfunções do assoalho pélvico, incontinência urinária, dores pélvicas e recuperação no pós-parto, com abordagem humanizada.</p>
-          <a class="service-btn" href="https://api.whatsapp.com/send/?phone=5571991085981&text=Ol%C3%A1%2C+gostaria+de+saber+mais+sobre+Fisioterapia+P%C3%A9lvica">Saiba mais <i class="fas fa-arrow-right"></i></a>
+          <a class="service-btn" href="agendamento-servicos.html?servico=Fisioterapia%20P%C3%A9lvica" target="_blank" rel="noopener">Agendar <i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="service-card-sm">
           <span class="card-badge card-badge-fisio">Fisioterapia</span>
           <h3>Fisioterapia para Gestantes</h3>
           <p>Acompanhamento fisioterapêutico durante a gestação para alívio de dores, preparação para o parto e recuperação pós-parto com segurança e acolhimento.</p>
-          <a class="service-btn" href="https://api.whatsapp.com/send/?phone=5571991085981&text=Ol%C3%A1%2C+gostaria+de+saber+mais+sobre+Fisioterapia+para+Gestantes">Saiba mais <i class="fas fa-arrow-right"></i></a>
+          <a class="service-btn" href="agendamento-servicos.html?servico=Fisioterapia%20para%20Gestantes" target="_blank" rel="noopener">Agendar <i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="service-card-sm">
           <span class="card-badge card-badge-fisio">Fisioterapia</span>
           <h3>Massoterapia</h3>
           <p>Técnicas manuais de massagem terapêutica para alívio de tensões musculares, redução do estresse, melhora da circulação e bem-estar geral.</p>
-          <a class="service-btn" href="https://api.whatsapp.com/send/?phone=5571991085981&text=Ol%C3%A1%2C+gostaria+de+saber+mais+sobre+Massoterapia">Saiba mais <i class="fas fa-arrow-right"></i></a>
+          <a class="service-btn" href="agendamento.html" target="_blank" rel="noopener">Agendar <i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="service-card-sm">
           <span class="card-badge card-badge-fisio">Fisioterapia</span>
           <h3>Ozonioterapia</h3>
           <p>Terapia com ozônio medicinal que potencializa a cicatrização, reduz inflamações e fortalece o sistema imunológico, auxiliando em diversos tratamentos.</p>
-          <a class="service-btn" href="https://api.whatsapp.com/send/?phone=5571991085981&text=Ol%C3%A1%2C+gostaria+de+saber+mais+sobre+Ozonioterapia">Saiba mais <i class="fas fa-arrow-right"></i></a>
+          <a class="service-btn" href="agendamento-servicos.html?servico=Ozonioterapia" target="_blank" rel="noopener">Agendar <i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="service-card-sm">
           <span class="card-badge card-badge-fisio">Fisioterapia</span>
           <h3>Pilates Adulto</h3>
           <p>Método de condicionamento físico que fortalece o core, melhora a flexibilidade e a postura, com exercícios controlados e respiração coordenada.</p>
-          <a class="service-btn" href="https://api.whatsapp.com/send/?phone=5571991085981&text=Ol%C3%A1%2C+gostaria+de+saber+mais+sobre+Pilates+Adulto">Saiba mais <i class="fas fa-arrow-right"></i></a>
+          <a class="service-btn" href="agendamento-servicos.html?servico=Pilates%20Adulto" target="_blank" rel="noopener">Agendar <i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="service-card-sm">
           <span class="card-badge card-badge-fisio">Fisioterapia</span>
           <h3>Pilates Kids</h3>
           <p>Pilates adaptado para crianças, desenvolvendo coordenação motora, equilíbrio e concentração de forma lúdica, auxiliando no desenvolvimento saudável.</p>
-          <a class="service-btn" href="https://api.whatsapp.com/send/?phone=5571991085981&text=Ol%C3%A1%2C+gostaria+de+saber+mais+sobre+Pilates+Kids">Saiba mais <i class="fas fa-arrow-right"></i></a>
+          <a class="service-btn" href="agendamento-servicos.html?servico=Pilates%20Kids" target="_blank" rel="noopener">Agendar <i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="service-card-sm">
           <span class="card-badge card-badge-fisio">Fisioterapia</span>
           <h3>Quiropraxia</h3>
           <p>Ajustes articulares precisos para restaurar a função do sistema nervoso e musculoesquelético, aliviando dores na coluna e melhorando a mobilidade.</p>
-          <a class="service-btn" href="https://api.whatsapp.com/send/?phone=5571991085981&text=Ol%C3%A1%2C+gostaria+de+saber+mais+sobre+Quiropraxia">Saiba mais <i class="fas fa-arrow-right"></i></a>
+          <a class="service-btn" href="agendamento-servicos.html?servico=Quiropraxia" target="_blank" rel="noopener">Agendar <i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="service-card-sm">
           <span class="card-badge card-badge-fisio">Fisioterapia</span>
           <h3>Reeducação Postural Global (RPG)</h3>
           <p>Método que trata desvios posturais através de alongamentos globais, aliviando dores e realinhando o corpo de forma integrada e duradoura.</p>
-          <a class="service-btn" href="https://api.whatsapp.com/send/?phone=5571991085981&text=Ol%C3%A1%2C+gostaria+de+saber+mais+sobre+RPG">Saiba mais <i class="fas fa-arrow-right"></i></a>
+          <a class="service-btn" href="agendamento-servicos.html?servico=Reeduca%C3%A7%C3%A3o%20Postural%20Global%20(RPG)" target="_blank" rel="noopener">Agendar <i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="service-card-sm">
           <span class="card-badge card-badge-fisio">Fisioterapia</span>
           <h3>Terapia Neural</h3>
           <p>Abordagem que utiliza microinjeções de anestésico em pontos específicos para tratar dores crônicas, disfunções e reequilibrar o sistema nervoso autônomo.</p>
-          <a class="service-btn" href="https://api.whatsapp.com/send/?phone=5571991085981&text=Ol%C3%A1%2C+gostaria+de+saber+mais+sobre+Terapia+Neural">Saiba mais <i class="fas fa-arrow-right"></i></a>
+          <a class="service-btn" href="agendamento-servicos.html?servico=Terapia%20Neural" target="_blank" rel="noopener">Agendar <i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="service-card-sm">
           <span class="card-badge card-badge-fisio">Fisioterapia</span>
           <h3>Terapias Injetáveis</h3>
           <p>Procedimentos minimamente invasivos com aplicação de medicamentos e substâncias terapêuticas para tratamento de dores, inflamações e recuperação muscular.</p>
-          <a class="service-btn" href="https://api.whatsapp.com/send/?phone=5571991085981&text=Ol%C3%A1%2C+gostaria+de+saber+mais+sobre+Terapias+Injet%C3%A1veis">Saiba mais <i class="fas fa-arrow-right"></i></a>
+          <a class="service-btn" href="agendamento-servicos.html?servico=Terapias%20Injet%C3%A1veis" target="_blank" rel="noopener">Agendar <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
     </div>
@@ -764,67 +828,67 @@ a { text-decoration: none; color: inherit; }
           <span class="card-badge card-badge-estetica">Estética</span>
           <h3>Depilação</h3>
           <p>Depilação com técnicas modernas para resultados duradouros e menos dolorosos, cuidando da sua pele com produtos de alta qualidade e higiene.</p>
-          <a class="service-btn" href="https://api.whatsapp.com/send/?phone=5571991085981&text=Ol%C3%A1%2C+gostaria+de+saber+mais+sobre+Depila%C3%A7%C3%A3o">Saiba mais <i class="fas fa-arrow-right"></i></a>
+          <a class="service-btn" href="agendamento-servicos.html?servico=Depila%C3%A7%C3%A3o" target="_blank" rel="noopener">Agendar <i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="service-card-sm">
           <span class="card-badge card-badge-estetica">Estética</span>
           <h3>Designer de Sobrancelhas e Micropigmentação</h3>
           <p>Técnicas de design e micropigmentação para sobrancelhas perfeitas, realçando o olhar com resultados naturais e duradouros.</p>
-          <a class="service-btn" href="https://api.whatsapp.com/send/?phone=5571991085981&text=Ol%C3%A1%2C+gostaria+de+saber+mais+sobre+Designer+de+Sobrancelhas">Saiba mais <i class="fas fa-arrow-right"></i></a>
+          <a class="service-btn" href="agendamento-servicos.html?servico=Designer%20de%20Sobrancelhas%20e%20Micropigmenta%C3%A7%C3%A3o" target="_blank" rel="noopener">Agendar <i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="service-card-sm">
           <span class="card-badge card-badge-estetica">Estética</span>
           <h3>Drenagem Linfática</h3>
           <p>Técnica de massagem suave que estimula o sistema linfático, reduz inchaços, elimina toxinas e combate a celulite de forma eficiente.</p>
-          <a class="service-btn" href="https://api.whatsapp.com/send/?phone=5571991085981&text=Ol%C3%A1%2C+gostaria+de+saber+mais+sobre+Drenagem+Linf%C3%A1tica">Saiba mais <i class="fas fa-arrow-right"></i></a>
+          <a class="service-btn" href="agendamento-servicos.html?servico=Drenagem%20Linf%C3%A1tica" target="_blank" rel="noopener">Agendar <i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="service-card-sm">
           <span class="card-badge card-badge-estetica">Estética</span>
           <h3>Estética Facial e Corporal</h3>
           <p>Tratamentos estéticos personalizados para rejuvenescimento facial, redução de medidas e cuidados com a pele, realçando sua beleza natural.</p>
-          <a class="service-btn" href="https://api.whatsapp.com/send/?phone=5571991085981&text=Ol%C3%A1%2C+gostaria+de+saber+mais+sobre+Est%C3%A9tica">Saiba mais <i class="fas fa-arrow-right"></i></a>
+          <a class="service-btn" href="agendamento-servicos.html?servico=Est%C3%A9tica%20Facial%20e%20Corporal" target="_blank" rel="noopener">Agendar <i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="service-card-sm">
           <span class="card-badge card-badge-estetica">Estética</span>
           <h3>Harmonização Facial</h3>
           <p>Procedimentos estéticos minimamente invasivos para equilibrar proporções faciais, suavizar marcas de expressão e realçar a beleza com naturalidade.</p>
-          <a class="service-btn" href="https://api.whatsapp.com/send/?phone=5571991085981&text=Ol%C3%A1%2C+gostaria+de+saber+mais+sobre+Harmoniza%C3%A7%C3%A3o+Facial">Saiba mais <i class="fas fa-arrow-right"></i></a>
+          <a class="service-btn" href="agendamento-servicos.html?servico=Harmoniza%C3%A7%C3%A3o%20Facial" target="_blank" rel="noopener">Agendar <i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="service-card-sm">
           <span class="card-badge card-badge-estetica">Estética</span>
           <h3>Laserterapia</h3>
           <p>Tratamento a laser para rejuvenescimento, cicatrização, redução de pelos e manchas, com tecnologia segura e resultados eficazes.</p>
-          <a class="service-btn" href="https://api.whatsapp.com/send/?phone=5571991085981&text=Ol%C3%A1%2C+gostaria+de+saber+mais+sobre+Laserterapia">Saiba mais <i class="fas fa-arrow-right"></i></a>
+          <a class="service-btn" href="agendamento-servicos.html?servico=Laserterapia" target="_blank" rel="noopener">Agendar <i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="service-card-sm">
           <span class="card-badge card-badge-estetica">Estética</span>
           <h3>Manicure e Nail Designer</h3>
           <p>Cuidados completos para as unhas das mãos e pés, com tendências em nail art, alongamento e esmaltação para um visual impecável.</p>
-          <a class="service-btn" href="https://api.whatsapp.com/send/?phone=5571991085981&text=Ol%C3%A1%2C+gostaria+de+saber+mais+sobre+Manicure+e+Nail+Designer">Saiba mais <i class="fas fa-arrow-right"></i></a>
+          <a class="service-btn" href="agendamento-servicos.html?servico=Manicure%20e%20Nail%20Designer" target="_blank" rel="noopener">Agendar <i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="service-card-sm">
           <span class="card-badge card-badge-estetica">Estética</span>
           <h3>Peelings</h3>
           <p>Tratamentos de renovação facial com ácidos e substâncias específicas para clarear manchas, suavizar rugas e revitalizar a pele do rosto.</p>
-          <a class="service-btn" href="https://api.whatsapp.com/send/?phone=5571991085981&text=Ol%C3%A1%2C+gostaria+de+saber+mais+sobre+Peelings">Saiba mais <i class="fas fa-arrow-right"></i></a>
+          <a class="service-btn" href="agendamento-servicos.html?servico=Peelings" target="_blank" rel="noopener">Agendar <i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="service-card-sm">
           <span class="card-badge card-badge-estetica">Estética</span>
           <h3>Podologia</h3>
           <p>Cuidados especializados com a saúde dos pés, tratamento de calosidades, unhas encravadas e outras condições que afetam o bem-estar e a mobilidade.</p>
-          <a class="service-btn" href="podologia.html">Saiba mais <i class="fas fa-arrow-right"></i></a>
+          <a class="service-btn" href="agendamento-podologia.html" target="_blank" rel="noopener">Agendar <i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="service-card-sm">
           <span class="card-badge card-badge-estetica">Estética</span>
           <h3>Radiofrequência</h3>
           <p>Tecnologia que utiliza ondas eletromagnéticas para estimular colágeno, firmar a pele, reduzir gordura localizada e combater a flacidez.</p>
-          <a class="service-btn" href="https://api.whatsapp.com/send/?phone=5571991085981&text=Ol%C3%A1%2C+gostaria+de+saber+mais+sobre+Radiofrequ%C3%AAncia">Saiba mais <i class="fas fa-arrow-right"></i></a>
+          <a class="service-btn" href="agendamento-servicos.html?servico=Radiofrequ%C3%AAncia" target="_blank" rel="noopener">Agendar <i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="service-card-sm">
           <span class="card-badge card-badge-estetica">Estética</span>
           <h3>Ventosaterapia</h3>
           <p>Terapia com ventosas que promove relaxamento muscular, melhora a circulação sanguínea e auxilia no alívio de dores e tensões.</p>
-          <a class="service-btn" href="https://api.whatsapp.com/send/?phone=5571991085981&text=Ol%C3%A1%2C+gostaria+de+saber+mais+sobre+Ventosaterapia">Saiba mais <i class="fas fa-arrow-right"></i></a>
+          <a class="service-btn" href="agendamento-servicos.html?servico=Ventosaterapia" target="_blank" rel="noopener">Agendar <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
     </div>
