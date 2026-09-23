@@ -636,7 +636,9 @@ function openPhotoPicker(mode) {
 }
 
 document.getElementById('photoInput').addEventListener('change', function () {
-  photoFiles = Array.from(this.files || []);
+  const files = Array.from(this.files || []).filter(f => f.type.startsWith('image/'));
+  photoFiles = photoFiles.concat(files);
+  this.value = '';
   renderPhotoPreview();
 });
 
