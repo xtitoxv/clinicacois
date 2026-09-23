@@ -149,6 +149,9 @@ a { text-decoration: none; color: inherit; }
   transition: all 0.3s; box-shadow: 0 6px 20px rgba(37,211,102,0.4); margin-top: 4px;
 }
 .lead-submit:hover { background: #1ebe57; transform: translateY(-2px); }
+.hero-card-mini { margin-top: 14px; display: flex; flex-direction: column; gap: 8px; }
+.hero-card-mini div { font-size: 12.5px; color: rgba(255,255,255,0.85); display: flex; align-items: center; gap: 7px; }
+.hero-card-mini i { color: var(--green-whatsapp); font-size: 12px; }
 .hero-card-note { text-align: center; font-size: 11.5px; color: rgba(255,255,255,0.7); margin-top: 12px; }
 .hero-card-note i { color: var(--blue-light); margin-right: 4px; }
 
@@ -534,7 +537,7 @@ a { text-decoration: none; color: inherit; }
     <a href="podologia.html">Podologia</a>
     <a href="massoterapia.html" class="active" style="color:var(--blue-primary);font-weight:600;">Massoterapia</a>
     <a href="domicilio.html" style="color:#25D366;font-weight:600;">Domicílio</a>
-    <a class="header-btn" href="#agendar" onclick="scrollToAgendar(event)">Agendar sessão</a>
+    <a class="header-btn" href="agendamento.html" target="_blank" rel="noopener">Agendar sessão</a>
   </nav>
 </header>
 
@@ -549,7 +552,7 @@ a { text-decoration: none; color: inherit; }
         <h2>9 técnicas de massagem terapêutica em um só lugar, com <strong>profissionais qualificados</strong>, ambiente climatizado e <strong>atendimento 100% humanizado</strong> no Rio Vermelho.</h2>
         <p>Sessões personalizadas para aliviar dores, reduzir o estresse, melhorar a circulação, dar mais disposição e potencializar a sua qualidade de vida — desde a primeira sessão.</p>
         <div class="hero-cta">
-          <a class="hero-btn" href="#agendar" onclick="scrollToAgendar(event)"><i class="fab fa-whatsapp"></i> Agendar minha sessão</a>
+          <a class="hero-btn" href="agendamento.html" target="_blank" rel="noopener"><i class="fas fa-calendar-check"></i> Agendar sessão online</a>
           <a class="hero-btn btn-wa" href="#tecnicas"><i class="fas fa-list-check"></i> Ver técnicas</a>
         </div>
         <div class="hero-features">
@@ -560,26 +563,13 @@ a { text-decoration: none; color: inherit; }
         </div>
       </div>
       <div class="hero-card" id="agendar">
-        <div class="hero-card-title"><i class="fas fa-calendar-check"></i> Agende seu horário</div>
-        <div class="hero-card-sub">Preencha e receba a confirmação do seu horário no WhatsApp.</div>
-        <form class="lead-form" onsubmit="sendLead(event)">
-          <input type="text" name="nome" placeholder="Seu nome" required>
-          <input type="tel" name="telefone" placeholder="Seu WhatsApp (DDD + número)" required>
-          <select name="tecnica" required>
-            <option value="" disabled selected>Escolha a técnica desejada</option>
-            <option>Massagem Relaxante</option>
-            <option>Drenagem Linfática</option>
-            <option>Reflexologia Podal</option>
-            <option>Massagem com Pedras Quentes</option>
-            <option>Massagem Desportiva</option>
-            <option>Massagem Redutora e Modeladora</option>
-            <option>Liberação Miofascial</option>
-            <option>Shiatsu</option>
-            <option>Tuina</option>
-            <option>Ainda não sei / Quero orientação</option>
-          </select>
-          <button type="submit" class="lead-submit"><i class="fab fa-whatsapp"></i> Quero agendar minha sessão</button>
-        </form>
+        <div class="hero-card-title"><i class="fas fa-calendar-check"></i> Agendamento online</div>
+        <div class="hero-card-sub">Escolha a técnica, o dia e o horário disponível para a sua sessão. Confirmação rápida no WhatsApp.</div>
+        <a class="lead-submit" href="agendamento.html" target="_blank" rel="noopener" style="text-decoration:none;"><i class="fas fa-calendar-plus"></i> Agendar minha sessão</a>
+        <div class="hero-card-mini">
+          <div><i class="fas fa-check"></i> Confirmação rápida no WhatsApp</div>
+          <div><i class="fas fa-check"></i> Agendamento em menos de 1 minuto</div>
+        </div>
         <div class="hero-card-note"><i class="fas fa-lock"></i> Seus dados ficam seguros. Sem spam.</div>
       </div>
     </div>
@@ -610,7 +600,7 @@ a { text-decoration: none; color: inherit; }
           <span class="intro-check"><i class="fas fa-check-circle"></i> Resultados desde a 1ª sessão</span>
         </div>
         <div class="intro-cta">
-          <a class="hero-btn btn-wa" href="#agendar" onclick="scrollToAgendar(event)" style="display:inline-flex;padding:14px 30px;font-size:15px;"><i class="fab fa-whatsapp"></i> Agendar agora</a>
+          <a class="hero-btn btn-wa" href="agendamento.html" target="_blank" rel="noopener" style="display:inline-flex;padding:14px 30px;font-size:15px;"><i class="fas fa-calendar-check"></i> Agendar agora</a>
         </div>
       </div>
     </div>
@@ -652,7 +642,7 @@ a { text-decoration: none; color: inherit; }
           <li>Estimula a circulação sanguínea e linfática</li>
           <li>Sensação imediata de leveza e bem-estar</li>
         </ul>
-        <a class="tech-btn" href="#agendar" onclick="openLead('Massagem Relaxante', event)"><i class="fab fa-whatsapp"></i> Agendar esta técnica</a>
+        <a class="tech-btn" href="agendamento.html" target="_blank" rel="noopener" onclick="openLead('Massagem Relaxante', event)"><i class="fab fa-whatsapp"></i> Agendar esta técnica</a>
       </div>
 
       <div class="tech-card reveal" data-cat="estetica">
@@ -673,7 +663,7 @@ a { text-decoration: none; color: inherit; }
           <li>Fortalece a imunidade</li>
           <li>Melhora o aspecto da celulite</li>
         </ul>
-        <a class="tech-btn" href="#agendar" onclick="openLead('Drenagem Linfática', event)"><i class="fab fa-whatsapp"></i> Agendar esta técnica</a>
+        <a class="tech-btn" href="agendamento.html" target="_blank" rel="noopener" onclick="openLead('Drenagem Linfática', event)"><i class="fab fa-whatsapp"></i> Agendar esta técnica</a>
       </div>
 
       <div class="tech-card reveal" data-cat="relaxamento">
@@ -694,7 +684,7 @@ a { text-decoration: none; color: inherit; }
           <li>Melhora o sono e o humor</li>
           <li>Estimula o funcionamento dos órgãos</li>
         </ul>
-        <a class="tech-btn" href="#agendar" onclick="openLead('Reflexologia Podal', event)"><i class="fab fa-whatsapp"></i> Agendar esta técnica</a>
+        <a class="tech-btn" href="agendamento.html" target="_blank" rel="noopener" onclick="openLead('Reflexologia Podal', event)"><i class="fab fa-whatsapp"></i> Agendar esta técnica</a>
       </div>
 
       <div class="tech-card reveal" data-cat="relaxamento">
@@ -715,7 +705,7 @@ a { text-decoration: none; color: inherit; }
           <li>Melhora a circulação sanguínea</li>
           <li>Experiência sensorial de spa</li>
         </ul>
-        <a class="tech-btn" href="#agendar" onclick="openLead('Massagem com Pedras Quentes', event)"><i class="fab fa-whatsapp"></i> Agendar esta técnica</a>
+        <a class="tech-btn" href="agendamento.html" target="_blank" rel="noopener" onclick="openLead('Massagem com Pedras Quentes', event)"><i class="fab fa-whatsapp"></i> Agendar esta técnica</a>
       </div>
 
       <div class="tech-card reveal" data-cat="dor">
@@ -736,7 +726,7 @@ a { text-decoration: none; color: inherit; }
           <li>Alivia cãibras e fadiga</li>
           <li>Melhora a performance esportiva</li>
         </ul>
-        <a class="tech-btn" href="#agendar" onclick="openLead('Massagem Desportiva', event)"><i class="fab fa-whatsapp"></i> Agendar esta técnica</a>
+        <a class="tech-btn" href="agendamento.html" target="_blank" rel="noopener" onclick="openLead('Massagem Desportiva', event)"><i class="fab fa-whatsapp"></i> Agendar esta técnica</a>
       </div>
 
       <div class="tech-card reveal" data-cat="estetica">
@@ -757,7 +747,7 @@ a { text-decoration: none; color: inherit; }
           <li>Melhora a firmeza e elasticidade da pele</li>
           <li>Realça o contorno corporal</li>
         </ul>
-        <a class="tech-btn" href="#agendar" onclick="openLead('Massagem Redutora e Modeladora', event)"><i class="fab fa-whatsapp"></i> Agendar esta técnica</a>
+        <a class="tech-btn" href="agendamento.html" target="_blank" rel="noopener" onclick="openLead('Massagem Redutora e Modeladora', event)"><i class="fab fa-whatsapp"></i> Agendar esta técnica</a>
       </div>
 
       <div class="tech-card reveal" data-cat="dor">
@@ -778,7 +768,7 @@ a { text-decoration: none; color: inherit; }
           <li>Melhora a postura e a mobilidade</li>
           <li>Reduz a rigidez muscular</li>
         </ul>
-        <a class="tech-btn" href="#agendar" onclick="openLead('Liberação Miofascial', event)"><i class="fab fa-whatsapp"></i> Agendar esta técnica</a>
+        <a class="tech-btn" href="agendamento.html" target="_blank" rel="noopener" onclick="openLead('Liberação Miofascial', event)"><i class="fab fa-whatsapp"></i> Agendar esta técnica</a>
       </div>
 
       <div class="tech-card reveal" data-cat="oriental">
@@ -799,7 +789,7 @@ a { text-decoration: none; color: inherit; }
           <li>Restaura a energia e vitalidade</li>
           <li>Reduz o estresse e a fadiga</li>
         </ul>
-        <a class="tech-btn" href="#agendar" onclick="openLead('Shiatsu', event)"><i class="fab fa-whatsapp"></i> Agendar esta técnica</a>
+        <a class="tech-btn" href="agendamento.html" target="_blank" rel="noopener" onclick="openLead('Shiatsu', event)"><i class="fab fa-whatsapp"></i> Agendar esta técnica</a>
       </div>
 
       <div class="tech-card reveal" data-cat="oriental">
@@ -820,7 +810,7 @@ a { text-decoration: none; color: inherit; }
           <li>Auxilia na recuperação de lesões</li>
           <li>Reduz o estresse e reequilibra o corpo</li>
         </ul>
-        <a class="tech-btn" href="#agendar" onclick="openLead('Tuina', event)"><i class="fab fa-whatsapp"></i> Agendar esta técnica</a>
+        <a class="tech-btn" href="agendamento.html" target="_blank" rel="noopener" onclick="openLead('Tuina', event)"><i class="fab fa-whatsapp"></i> Agendar esta técnica</a>
       </div>
 
     </div>
@@ -838,7 +828,7 @@ a { text-decoration: none; color: inherit; }
         <div class="step-num">1</div>
         <h3>Converse conosco</h3>
         <p>Você entra em contato pelo WhatsApp, conta seu objetivo e garante seu horário sem burocracia.</p>
-        <a class="step-link" href="#agendar" onclick="scrollToAgendar(event)"><i class="fas fa-arrow-right"></i> Reservar horário</a>
+        <a class="step-link" href="agendamento.html" target="_blank" rel="noopener"><i class="fas fa-arrow-right"></i> Reservar horário</a>
       </div>
       <div class="step-card reveal">
         <div class="step-num">2</div>
@@ -877,7 +867,7 @@ a { text-decoration: none; color: inherit; }
           <li>Sem taxa de cancelamento antecipado</li>
           <li>Cupom de benefício para a 2ª sessão</li>
         </ul>
-        <a class="offer-cta" href="#agendar" onclick="scrollToAgendar(event)"><i class="fab fa-whatsapp"></i> Quero o desconto</a>
+        <a class="offer-cta" href="agendamento.html" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Quero o desconto</a>
       </div>
       <div class="offer-card reveal" style="border:none;background:transparent;box-shadow:none;text-align:center;">
         <i class="fas fa-heart" style="font-size:44px;color:var(--gold);margin-bottom:14px;display:inline-block;"></i>
@@ -1038,7 +1028,7 @@ a { text-decoration: none; color: inherit; }
     <div class="cta-box reveal">
       <h3>Relaxar o corpo e a mente é um presente que você pode se dar hoje</h3>
       <p class="cta-sub">Agende sua sessão de massoterapia na Clínica Cois e sinta a diferença de um cuidado feito por quem ama o que faz.</p>
-      <a class="cta-btn" href="#agendar" onclick="scrollToAgendar(event)"><i class="fab fa-whatsapp"></i> Agendar pelo WhatsApp</a>
+      <a class="cta-btn" href="agendamento.html" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Agendar pelo WhatsApp</a>
       <div class="cta-alts">
         <span><i class="fas fa-phone-alt"></i> (71) 3334-0123</span>
         <span><i class="fas fa-map-marker-alt"></i> Rio Vermelho, Salvador - BA</span>
@@ -1078,17 +1068,6 @@ const THECONST = {
   waNumber: '5571991085981'
 };
 
-function sendLead(e) {
-  e.preventDefault();
-  const f = e.target;
-  const nome = encodeURIComponent(f.nome.value.trim());
-  const tel = encodeURIComponent(f.telefone.value.trim());
-  const tec = encodeURIComponent(f.tecnica.value);
-  const msg = `Ol%C3%A1%2C+vim+da+p%C3%A1gina+de+Massoterapia+e+gostaria+de+agendar+uma+sess%C3%A3o%21%0A%0A%E2%9C%8D%EF%B8%8F+Nome%3A+${nome}%0A%F0%9F%93%B1+WhatsApp%3A+${tel}%0A%F0%9F%92%86+T%C3%A9cnica+de+interesse%3A+${tec}`;
-  window.open(`https://api.whatsapp.com/send/?phone=${THECONST.waNumber}&text=${msg}`, '_blank', 'nofollow noopener');
-  return false;
-}
-
 function scrollToAgendar(e) {
   e.preventDefault();
   const el = document.getElementById('agendar');
@@ -1102,13 +1081,7 @@ function scrollToAgendar(e) {
 
 function openLead(tech, e) {
   e.preventDefault();
-  scrollToAgendar(e);
-  const el = document.getElementById('agendar');
-  if (el) {
-    const select = el.querySelector('select[name="tecnica"]');
-    const opt = Array.from(select.options).find(o => o.text.trim() === tech);
-    if (opt) select.value = opt.value;
-  }
+  window.open('agendamento.html?tecnica=' + encodeURIComponent(tech), '_blank', 'noopener');
 }
 
 document.addEventListener('DOMContentLoaded', function() {
