@@ -315,18 +315,18 @@ a { text-decoration: none; color: inherit; }
 /* =========================================================
    CONFIGURAÇÃO DAS VAGAS
    -----------------------------------------
+   A quantidade de vagas livres varia a cada dia entre
+   minFreePerDay e maxFreePerDay para parecer natural.
    Para liberar MAIS horários (que hoje aparecem como
-   ocupados), basta aumentar os números abaixo.
+   ocupados), basta aumentar maxFreePerDay.
    ========================================================= */
 const CONFIG = {
   waNumber: '5571991085981',
   daysAhead: 7,                 // quantos dias úteis à frente são exibidos
   closeSameDayAtHour: 14,       // a partir desse horário o dia de hoje fecha para novos agendamentos
   minLeadMinutes: 60,           // folga mínima entre o momento da visita e a sessão (mesmo dia)
-  nearShiftFreeSlots: 3,        // vagas livres no turno mais próximo (hoje à tarde)
-  tomorrowMorningTimes: ['08:00', '10:00', '11:00'], // vagas de amanhã quando hoje já fechou
-  nextDayTardeSlots: 3,         // vagas na tarde do dia seguinte quando hoje já fechou
-  defaultFreePerDay: 3          // vagas livres padrão por dia útil
+  minFreePerDay: 3,             // mínimo de vagas livres por dia
+  maxFreePerDay: 6              // máximo de vagas livres por dia
 };
 
 const SHIFTS = {
@@ -395,7 +395,7 @@ function getPlan(day, idx, now) {
   SHIFTS_ORDER.forEach(s => SHIFTS[s].times.forEach(t => allTimes.push({ shift: s, time: t })));
 
   let pool = allTimes;
-  let n = CONFIG.defaultFreePerDay;
+  let nMax = CONFIG.maxFreePerDay;
 
   if (idx === 0) {
     if (nowM >= CONFIG.closeSameDayAtHour * 60) return { closed: true, free: [] };
@@ -403,15 +403,14 @@ function getPlan(day, idx, now) {
       if (sl.shift === 'manha') return false;
       return toMin(sl.time) > nowM + CONFIG.minLeadMinutes;
     });
-    n = CONFIG.nearShiftFreeSlots;
   } else if (idx === 1 && nowM >= CONFIG.closeSameDayAtHour * 60) {
-    return { closed: false, free: CONFIG.tomorrowMorningTimes.map(t => ({ shift: 'manha', time: t })) };
+    pool = allTimes.filter(sl => sl.shift === 'manha');
+    nMax = Math.min(nMax, pool.length);
   } else if (idx === 2 && nowM >= CONFIG.closeSameDayAtHour * 60) {
     pool = allTimes.filter(sl => sl.shift === 'tarde');
-    n = CONFIG.nextDayTardeSlots;
   }
 
-  n = Math.min(n, pool.length);
+  const n = Math.min(CONFIG.minFreePerDay + Math.floor(rng() * (nMax - CONFIG.minFreePerDay + 1)), pool.length);
   let pick = shuffle(pool, rng).slice(0, n);
   if (n >= 3 && pick.length > 0 && pick.every(p => p.shift === pick[0].shift)) {
     const alt = shuffle(pool, rng).find(sl => sl.shift !== pick[0].shift && !pick.includes(sl));
