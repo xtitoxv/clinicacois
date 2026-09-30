@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Agendamento Online - Podologia | Clínica Cois</title>
-<meta name="description" content="Agende sua avaliação podológica na Clínica Cois em Salvador: escolha o tratamento, o dia e o horário disponível, envie fotos das regiões a tratar e receba a confirmação no WhatsApp. Valor a partir de R$ 140.">
+<meta name="description" content="Agende sua avaliação podológica na Clínica Cois em Salvador: escolha o tratamento, o dia e o horário disponível, envie fotos das regiões a tratar e receba a confirmação no WhatsApp.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://clinicacois.com.br/agendamento-podologia">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -52,11 +52,6 @@ a { text-decoration: none; color: inherit; }
 .page-hero h1 { font-size: 32px; font-weight: 800; margin-bottom: 10px; }
 .page-hero h1 span { color: #7cc0ff; }
 .page-hero p { font-size: 15px; color: rgba(255,255,255,0.85); line-height: 1.7; max-width: 640px; }
-.price-banner {
-  display: inline-flex; align-items: center; gap: 9px; background: var(--gold); color: #7c2d12;
-  font-weight: 700; font-size: 14px; padding: 8px 18px; border-radius: 30px; margin-top: 16px;
-}
-.price-banner i { font-size: 15px; }
 .how-strip { display: flex; gap: 26px; flex-wrap: wrap; margin-top: 24px; }
 .how-step { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.9); }
 .how-step .num {
@@ -251,7 +246,6 @@ a { text-decoration: none; color: inherit; }
   <div class="container">
     <h1>Agendamento Online <span>Podologia</span></h1>
     <p>Escolha o tratamento, o dia e o horário disponível para a sua avaliação podológica na Clínica Cois (Rio Vermelho, Salvador). Envie fotos da região a tratar para adiantarmos a sua avaliação. A confirmação chega no seu WhatsApp.</p>
-    <div class="price-banner"><i class="fas fa-tag"></i> Serviços de Podologia a partir de R$ 140,00</div>
     <div class="how-strip">
       <span class="how-step"><span class="num">1</span> Escolha o tratamento</span>
       <span class="how-step"><span class="num">2</span> Selecione o dia</span>
@@ -309,7 +303,6 @@ a { text-decoration: none; color: inherit; }
         <div class="sum-row"><i class="fas fa-shoe-prints"></i> <span id="sumSvc"></span></div>
         <div class="sum-row"><i class="fas fa-calendar-day"></i> <span id="sumDay"></span></div>
         <div class="sum-row"><i class="fas fa-clock"></i> <span id="sumTime"></span></div>
-        <div class="sum-row"><i class="fas fa-tag"></i> <span><strong>Valor: a partir de R$ 140,00</strong></span></div>
       </div>
       <div class="form-grid">
         <div class="field">
@@ -690,7 +683,6 @@ function confirmBooking() {
     '🦶 Tratamento: ' + state.service,
     '🗓️ Data: ' + dateStr + ' (' + SHIFTS[state.shift].label + ')',
     '⏰ Horário: ' + state.time,
-    '💰 Valor: a partir de R$ 140,00',
     '🖐️ Nome: ' + nome,
     '📱 WhatsApp: ' + tel
   ];
