@@ -320,22 +320,28 @@ a { text-decoration: none; color: inherit; }
      maxFreePerShift vagas por dia, variadas e espaçadas.
    - Hoje nunca é liberado online: informa que o próximo
      turno disponível é amanhã.
-   - O turno da noite (17:30 às 19:30) não tem vagas online:
-     esses horários são agendados pessoalmente ou por telefone.
+   - O turno da Noite (18:00, 18:30 e 19:00) entra no sorteio
+     com menos vagas, ficando disponível em dias variados.
+   - 17:30 e 19:30 seguem sem vagas online: são agendados
+     pessoalmente ou por telefone.
    ========================================================= */
 const CONFIG = {
   waNumber: '5571991085981',
   daysAhead: 7,                 // quantos dias úteis à frente são exibidos
   minFreePerShift: 3,           // mínimo de vagas livres por turno
-  maxFreePerShift: 5            // máximo de vagas livres por turno
+  maxFreePerShift: 5,           // máximo de vagas livres por turno
+  minFreeNight: 0,              // mínimo de vagas livres no turno da noite
+  maxFreeNight: 3               // máximo de vagas livres no turno da noite
 };
 
 const SHIFTS = {
   manha: { label: 'Manhã', times: ['08:00', '08:30', '09:00', '09:30', '10:00', '10:30', '11:00', '11:30'] },
-  tarde: { label: 'Tarde', times: ['13:00', '13:30', '14:00', '14:30', '15:00', '15:30', '16:00', '16:30', '17:00', '17:30', '18:00', '18:30', '19:00', '19:30'] }
+  tarde: { label: 'Tarde', times: ['13:00', '13:30', '14:00', '14:30', '15:00', '15:30', '16:00', '16:30', '17:00', '17:30', '19:30'] },
+  noite: { label: 'Noite', times: ['18:00', '18:30', '19:00'] }
 };
-const SHIFTS_ORDER = ['manha', 'tarde'];
-// A partir de 17:30 os horários não são liberados online:
+const SHIFTS_ORDER = ['manha', 'tarde', 'noite'];
+const SHIFT_ICONS = { manha: 'fa-sun', tarde: 'fa-cloud-sun', noite: 'fa-moon' };
+// Horários da tarde liberados online (17:30 e 19:30 ficam sempre ocupados):
 // reservados para agendamento pessoal ou por telefone.
 const ONLINE_CUTOFF_MIN = 17 * 60;
 
@@ -388,7 +394,7 @@ function shuffle(arr, rng) {
 // garantindo que os horários liberados não fiquem todos juntos.
 function pickSpaced(arr, n, rng) {
   if (n >= arr.length) return arr.slice();
-  const step = (arr.length - 1) / (n - 1);
+  const step = n > 1 ? (arr.length - 1) / (n - 1) : 0;
   const idxs = [];
   for (let i = 0; i < n; i++) {
     const base = Math.round(i * step);
@@ -408,6 +414,7 @@ function pickSpaced(arr, n, rng) {
 const state = { service: null, dayIdx: null, shift: null, time: null };
 let businessDays = [];
 
+// Sem domingo nem sábado: a clínica não atende nesses dias.
 function isBusinessDay(d) { return d.getDay() !== 0 && d.getDay() !== 6; }
 
 function buildDays() {
@@ -430,10 +437,13 @@ function getPlan(day, idx) {
 
   const free = [];
   SHIFTS_ORDER.forEach(s => {
-    // Só sorteia horários até às 17:00; 17:30 em diante fica sempre ocupado.
+    // Tarde só sorteia até 17:00; 17:30 e 19:30 ficam sempre ocupados.
+    // Noite sorteia 18:00, 18:30 e 19:00, com menos vagas e em dias variados.
     let times = SHIFTS[s].times;
+    const min = s === 'noite' ? CONFIG.minFreeNight : CONFIG.minFreePerShift;
+    const max = s === 'noite' ? CONFIG.maxFreeNight : CONFIG.maxFreePerShift;
     if (s === 'tarde') times = SHIFTS[s].times.filter(t => toMin(t) <= ONLINE_CUTOFF_MIN);
-    const n = CONFIG.minFreePerShift + Math.floor(rng() * (CONFIG.maxFreePerShift - CONFIG.minFreePerShift + 1));
+    const n = min + Math.floor(rng() * (max - min + 1));
     pickSpaced(times, Math.min(n, times.length), rng).forEach(t => free.push({ shift: s, time: t }));
   });
   return { closed: false, free: free.sort((a, b) => (SHIFTS_ORDER.indexOf(a.shift) - SHIFTS_ORDER.indexOf(b.shift)) || (toMin(a.time) - toMin(b.time))) };
@@ -532,7 +542,7 @@ function renderTimes() {
     const freeIn = plan.free.filter(f => f.shift === s);
     const head = document.createElement('div');
     head.className = 'shift-head';
-    const icon = s === 'manha' ? 'fa-sun' : 'fa-cloud-sun';
+    const icon = SHIFT_ICONS[s] || 'fa-clock';
     head.innerHTML = `<i class="fas ${icon}"></i><h3>${SHIFTS[s].label}</h3>`;
     if (freeIn.length) head.innerHTML += `<span class="shift-free">${freeIn.length} vaga(s)</span>`;
     block.appendChild(head);
